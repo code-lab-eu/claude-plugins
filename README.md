@@ -7,7 +7,7 @@ Claude Code plugin marketplace for Code Lab.
 Per developer, for all projects:
 
 ```
-/plugin marketplace add <git URL of this repository>
+/plugin marketplace add git@github.com:code-lab-eu/claude-plugins.git
 /plugin install self-improvement-loop@code-lab
 ```
 
@@ -19,7 +19,7 @@ Per project, for every contributor, in the committed `.claude/settings.json`:
     "code-lab": {
       "source": {
         "source": "git",
-        "url": "<git URL of this repository>"
+        "url": "git@github.com:code-lab-eu/claude-plugins.git"
       }
     }
   },
