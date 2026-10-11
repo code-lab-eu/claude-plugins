@@ -54,12 +54,9 @@ This has been a recurring failure across multiple sessions.
 If an action produced nothing noteworthy, the note may stay unchanged — do not
 pad it.
 
-Plan mode restricts edits to the plan file alone, which makes writing to
-`docs/notes/` impossible while it is active. Do not treat this as a reason to
-repeat the same "still in plan mode" explanation every blocked turn: defer
-the update, keep working, and write one batched update to the note on the
-first turn after plan mode ends, covering everything that happened while it
-was active.
+Plan mode does not exempt you from this. Write the note update as usual: the
+write is initiated by the agent and the developer is shown a confirmation
+dialog. Do not skip or defer the update because plan mode is active.
 
 ## 4. Closing the loop
 
