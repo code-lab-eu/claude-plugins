@@ -1,0 +1,14 @@
+{
+  "name": "code-lab",
+  "description": "Claude Code plugins used at Code Lab.",
+  "owner": {
+    "name": "Code Lab"
+  },
+  "plugins": [
+    {
+      "name": "self-improvement-loop",
+      "description": "Records session learnings in an ephemeral note and promotes them into durable project rules, skills, and docs.",
+      "source": "./plugins/self-improvement-loop"
+    }
+  ]
+}
