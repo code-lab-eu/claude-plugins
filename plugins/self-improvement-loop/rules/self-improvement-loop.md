@@ -15,10 +15,12 @@ it is. Seed the file with the template at the bottom of this rule.
 These notes are **ephemeral**: `docs/notes/` is excluded from version control
 and the developer purges it regularly. If `git check-ignore docs/notes` reports
 that the directory is not ignored, add `docs/notes/` to `.git/info/exclude`; do
-not edit `.gitignore` for this. Treat a note as scratch input for the loop,
-never as a source of truth. **Never link to or cite a session note from durable
-documentation** (guides, ADRs, READMEs, skills, rules, code comments) — anything
-worth keeping must be promoted into its proper home when the loop closes (§4).
+not edit `.gitignore` for this: that file is tracked and shared with the whole
+team, and the session note is a personal practice. Treat a note as scratch
+input for the loop, never as a source of truth. **Never link to or cite a
+session note from durable documentation** (guides, ADRs, READMEs, skills,
+rules, code comments) — anything worth keeping must be promoted into its proper
+home when the loop closes (§4).
 
 ## 2. During the session — record noteworthy facts
 
@@ -26,11 +28,14 @@ Append to the note whenever any of the following occurs. Be specific (quote the
 exact command, file, error, or wording); a finding a future session can act on
 beats a vague summary.
 
+Keep entries concise and evidence-based. Do not record private internal
+deliberation or reconstruct unspoken intermediate thoughts.
+
 - **Lessons learned** — anything now understood that wasn't before.
 - **Developer corrections** — what the developer pushed back on, and the rule
   it implies. Cross-check existing memory and rules; flag conflicts.
-- **Non-trivial discovery** — how a non-obvious fact was found (the search path,
-  not just the answer), so it need not be rediscovered.
+- **Non-trivial discovery** — the finding, its supporting file or source, and
+  any commands or results needed to reproduce or verify it.
 - **Skill gaps** — a task that should have a skill/rule but doesn't.
 - **Repeated attempts** — anything that took several tries to get right, and why.
 - **Inconsistencies & conflicts** — contradictions between docs, rules, memory,
@@ -53,6 +58,11 @@ This has been a recurring failure across multiple sessions.
 
 If an action produced nothing noteworthy, the note may stay unchanged — do not
 pad it.
+
+Session notes capture observable work history: developer feedback, actions
+taken, results, decisions, and follow-up improvements. Keep durable
+documentation focused on the design, constraints, and maintenance guidance
+relevant to its readers.
 
 Plan mode does not exempt you from this. Write the note update as usual: the
 write is initiated by the agent and the developer is shown a confirmation

@@ -9,14 +9,17 @@ description: Close the self-improvement loop by promoting findings from the sess
 2. **Identify actionable findings** — only those that yield a tangible
    improvement to future work: new or updated skills, rules, docs, scripts,
    automations, or memory.
-3. **Auto-apply every finding immediately** — make the edits/additions in this
-   session.
-4. **Then ask the developer to review** the applied changes, **before
-   committing**. List what changed and why, so the review is quick.
+3. **Vet each finding with the developer before anything is applied**, one
+   AskUserQuestion per finding. The question quotes the correction or
+   observation as it was made and offers the plausible ways to encode it, each
+   a different reading of what was meant; where only one reading exists, it
+   offers that one. The developer picks one or provides guidance.
+4. **Apply the encodings the developer chose.** The developer reviews the
+   resulting diff and stages what they approve, **before committing**.
 
 Findings that are not actionable (one-offs, already-covered ground) produce no
 change. Because the note is ephemeral, anything that must survive the next purge
-has to be promoted out of the note in step 3 — don't rely on the note itself to
+has to be promoted out of the note in step 4 — don't rely on the note itself to
 preserve it.
 
 ## Where promoted knowledge lives
