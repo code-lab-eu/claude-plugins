@@ -65,3 +65,14 @@ Session notes are per developer and are never committed. The rule adds
 `docs/notes/` to `.git/info/exclude` when the directory is not already ignored.
 
 Requires `jq`.
+
+### drupal-contrib
+
+Local development of Drupal contrib modules and themes. Nothing it sets up is
+committed to the project's repository.
+
+| Component | Purpose |
+|---|---|
+| `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout, such as a drupal.org issue fork, with the ddev-drupal-contrib add-on, and keeps its files out of git through `.git/info/exclude`. |
+
+Requires DDEV.

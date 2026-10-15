@@ -9,6 +9,11 @@
       "name": "self-improvement-loop",
       "description": "Records session learnings in an ephemeral note and promotes them into durable project rules, skills, and docs.",
       "source": "./plugins/self-improvement-loop"
+    },
+    {
+      "name": "drupal-contrib",
+      "description": "Local development of Drupal contrib modules and themes, without changing the project's repository.",
+      "source": "./plugins/drupal-contrib"
     }
   ]
 }
