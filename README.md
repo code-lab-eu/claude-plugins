@@ -9,6 +9,7 @@ Per developer, for all projects:
 ```
 /plugin marketplace add git@github.com:code-lab-eu/claude-plugins.git
 /plugin install self-improvement-loop@code-lab
+/plugin install drupal-contrib@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -46,6 +47,16 @@ git check-ignore .claude/settings.local.json || echo '.claude/settings.local.jso
 ```
 
 Do not add the file to the customer's `.gitignore`.
+
+## Updating
+
+Installed plugins update from the pushed repository, and only when a plugin's
+`version` changes. Restart Claude Code afterwards:
+
+```
+claude plugin marketplace update code-lab
+claude plugin update <plugin>@code-lab --scope <user|project|local>
+```
 
 ## Plugins
 
