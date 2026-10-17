@@ -9,17 +9,27 @@ description: Close the self-improvement loop by promoting findings from the sess
 2. **Identify actionable findings** — only those that yield a tangible
    improvement to future work: new or updated skills, rules, docs, scripts,
    automations, or memory.
-3. **Vet each finding with the developer before anything is applied**, one
-   AskUserQuestion per finding. The question quotes the correction or
-   observation as it was made and offers the plausible ways to encode it, each
-   a different reading of what was meant; where only one reading exists, it
-   offers that one. The developer picks one or provides guidance.
-4. **Apply the encodings the developer chose.** The developer reviews the
+3. **Check each finding against the current text.** Read the file it would go
+   into and the files that file refers to, and drop the finding when they
+   already state it. A note entry can be outdated: work later in the session
+   may have documented or fixed what it describes.
+4. **Vet each remaining finding with the developer before anything is
+   applied**, one AskUserQuestion per finding. The question quotes the
+   correction or observation as it was made and offers the plausible ways to
+   encode it, each a different reading of what was meant; where only one
+   reading exists, it offers that one. The developer picks one or provides
+   guidance.
+5. **Apply the encodings the developer chose.** The developer reviews the
    resulting diff and stages what they approve, **before committing**.
 
-Findings that are not actionable (one-offs, already-covered ground) produce no
-change. Because the note is ephemeral, anything that must survive the next purge
-has to be promoted out of the note in step 4 — don't rely on the note itself to
+Every added instruction costs context on each use and makes the others less
+likely to be followed. A finding earns a place only when it is likely to recur
+and nothing else covers it. Prefer sharpening or replacing an existing sentence
+over adding a new one. Findings that are not actionable (one-offs,
+already-covered ground) produce no change.
+
+Because the note is ephemeral, anything that must survive the next purge has to
+be promoted out of the note in step 5 — don't rely on the note itself to
 preserve it.
 
 ## Where promoted knowledge lives
