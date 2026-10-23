@@ -1,0 +1,9 @@
+{
+  "name": "grilling",
+  "version": "1.0.0",
+  "description": "Grills the developer about a plan, one question per message, until both share an understanding of it.",
+  "author": {
+    "name": "Code Lab"
+  },
+  "license": "MIT"
+}

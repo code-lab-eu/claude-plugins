@@ -10,6 +10,7 @@ Per developer, for all projects:
 /plugin marketplace add git@github.com:code-lab-eu/claude-plugins.git
 /plugin install self-improvement-loop@code-lab
 /plugin install drupal-contrib@code-lab
+/plugin install grilling@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -87,3 +88,18 @@ committed to the project's repository.
 | `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout, such as a drupal.org issue fork, with the ddev-drupal-contrib add-on, and keeps its files out of git through `.git/info/exclude`. |
 
 Requires DDEV.
+
+### grilling
+
+Grills the developer about a plan until both share an understanding of it. Each
+message asks one question, with options, pros and cons, best practice, and a
+recommendation. Nothing is acted on before the developer confirms the shared
+understanding.
+
+| Component | Purpose |
+|---|---|
+| `grilling:grilling` skill | The interview method. Triggered by "grill" phrases and by requests to stress-test a plan. |
+| `grilling:grill-me` skill | User-invoked entry point, `/grilling:grill-me`, that starts a grilling session. |
+
+Adapted from the MIT-licensed skills of Matt Pocock; see
+`plugins/grilling/LICENSE`.

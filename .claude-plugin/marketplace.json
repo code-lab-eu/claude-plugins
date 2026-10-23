@@ -14,6 +14,11 @@
       "name": "drupal-contrib",
       "description": "Local development of Drupal contrib modules and themes, without changing the project's repository.",
       "source": "./plugins/drupal-contrib"
+    },
+    {
+      "name": "grilling",
+      "description": "Grills the developer about a plan, one question per message, until both share an understanding of it.",
+      "source": "./plugins/grilling"
     }
   ]
 }
