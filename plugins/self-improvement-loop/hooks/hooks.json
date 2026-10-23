@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq 'if .stop_hook_active == true then empty else {decision:\"block\",reason:\"Before stopping, update the active docs/notes/<session-slug>.md note per the self-improvement loop rule with anything noteworthy from this turn (developer corrections, non-trivial discoveries, struggles, skill gaps, inconsistencies). If genuinely nothing was noteworthy, stop again and leave the note unchanged. Do not write a reply to the developer for this check.\"} end' || exit 0",
+            "command": "jq 'if .stop_hook_active == true then empty else {decision:\"block\",reason:\"Before stopping, update the active docs/notes/<session-slug>.md note per the self-improvement loop rule with anything noteworthy from this turn (developer corrections, non-trivial discoveries, struggles, skill gaps, inconsistencies). If genuinely nothing was noteworthy, stop again and leave the note unchanged. Reply with exactly \\\"Session notes updated.\\\" when the note was updated, or else with the reason it was not, in at most 8 words.\"} end' || exit 0",
             "statusMessage": "Checking session-note cadence..."
           }
         ]
