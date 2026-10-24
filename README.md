@@ -7,7 +7,7 @@ Claude Code plugin marketplace for Code Lab.
 Per developer, for all projects:
 
 ```
-/plugin marketplace add git@github.com:code-lab-eu/claude-plugins.git
+/plugin marketplace add https://github.com/code-lab-eu/claude-plugins.git
 /plugin install self-improvement-loop@code-lab
 /plugin install drupal-contrib@code-lab
 /plugin install grilling@code-lab
@@ -21,7 +21,7 @@ Per project, for every contributor, in the committed `.claude/settings.json`:
     "code-lab": {
       "source": {
         "source": "git",
-        "url": "git@github.com:code-lab-eu/claude-plugins.git"
+        "url": "https://github.com/code-lab-eu/claude-plugins.git"
       }
     }
   },
@@ -98,6 +98,7 @@ understanding.
 
 | Component | Purpose |
 |---|---|
+| `SessionStart` hook | Adds `rules/decisions.md`, the decision format, to the context on startup, `/clear`, and compaction. |
 | `grilling:grilling` skill | The interview method. Triggered by "grill" phrases and by requests to stress-test a plan. |
 | `grilling:grill-me` skill | User-invoked entry point, `/grilling:grill-me`, that starts a grilling session. |
 

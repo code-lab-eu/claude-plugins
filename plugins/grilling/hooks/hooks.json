@@ -1,0 +1,16 @@
+{
+  "description": "Loads the decision presentation rule at session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/rules/decisions.md\""
+          }
+        ]
+      }
+    ]
+  }
+}

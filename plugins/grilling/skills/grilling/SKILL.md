@@ -10,38 +10,8 @@ off it.
 The **frontier** is every decision whose prerequisites are already settled —
 the questions you can ask _now_ without guessing at answers you haven't heard
 yet. Pick the frontier question that unblocks the most others, ask it, and wait
-for the user's answer. Ask in the chat text, never with the AskUserQuestion
-tool.
-
-Each question should be formatted like so:
-
-```
-<The decision and why it matters now: what depends on it, what is already settled that leads to it, and the facts found that bear on it.>
-
-**Option A: <short name>.** <What the option is and how it works.>
-
-- Pros: <pro>
-- Cons:
-  - <con>
-  - <con>
-
-**Option B: <short name>.** <What the option is and how it works.>
-
-- Pros:
-  - <pro>
-  - <pro>
-- Cons: <con>
-
-**Option C: <short name>.** …
-
-**Best practice.** <One paragraph naming what is commonly done, with concrete references (tools, projects, documentation). Say when something is from memory and not verified.>
-
-**Recommendation: <option>.** <One short paragraph with the reason.>
-```
-
-List every option worth considering. A minor detail whose answer does not
-depend on the question may follow the options, with its own reasoning and
-recommendation.
+for the user's answer. Format each question as the "Rule: presenting
+decisions" in your context describes.
 
 Each answer reshapes the tree — settled decisions push the frontier outward and
 unblock questions that depended on them. Recompute the frontier and ask the
