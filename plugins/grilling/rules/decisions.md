@@ -14,7 +14,9 @@ existing solution. An existing solution is the first option.
 ## Format
 
 Put one decision per message, in the chat text, never with the AskUserQuestion
-tool. This format replaces the question format of any other skill.
+tool. This format replaces the question format of any other skill. A decision
+stays open until the developer picks an option; a question or remark about it
+does not settle it.
 
 ```
 <The decision and why it matters now: what depends on it, what is already settled that leads to it, and the facts found that bear on it.>
