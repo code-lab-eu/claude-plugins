@@ -12,7 +12,7 @@
     },
     {
       "name": "drupal-contrib",
-      "description": "Local development of Drupal contrib modules and themes, without changing the project's repository.",
+      "description": "Local development of Drupal contrib modules and themes, without changing the project's repository, with code written in the form Drupal core uses.",
       "source": "./plugins/drupal-contrib"
     },
     {

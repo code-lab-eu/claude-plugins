@@ -13,7 +13,7 @@ If the topic is unclear at the start, use a placeholder and rename the file once
 it is. Seed the file with the template at the bottom of this rule.
 
 These notes are **ephemeral**: `docs/notes/` is excluded from version control
-and the developer purges it regularly. If `git check-ignore docs/notes` reports
+and the developer purges it regularly. If `git check-ignore docs/notes/` reports
 that the directory is not ignored, add `docs/notes/` to `.git/info/exclude`; do
 not edit `.gitignore` for this: that file is tracked and shared with the whole
 team, and the session note is a personal practice. Treat a note as scratch

@@ -1,7 +1,7 @@
 {
   "name": "drupal-contrib",
-  "version": "1.0.0",
-  "description": "Local development of Drupal contrib modules and themes, without changing the project's repository.",
+  "version": "1.1.0",
+  "description": "Local development of Drupal contrib modules and themes, without changing the project's repository, with code written in the form Drupal core uses.",
   "author": {
     "name": "Code Lab"
   }
