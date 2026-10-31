@@ -110,10 +110,10 @@ Adapted from the MIT-licensed skills of Matt Pocock; see
 
 ### drupal-security
 
-Helps maintainers resolve vulnerabilities in their drupal.org projects that the
-[Drupal Security Team](https://www.drupal.org/drupal-security-team) manages in
-confidential work items on git.drupalcode.org. The skills are placeholders
-still to be worked out.
+Helps maintainers resolve vulnerabilities in their drupal.org contrib projects
+that the [Drupal Security Team](https://www.drupal.org/drupal-security-team)
+manages in confidential work items on git.drupalcode.org. Drupal core is not
+covered. The skills are placeholders still to be worked out.
 
 | Component | Purpose |
 |---|---|
@@ -123,4 +123,6 @@ still to be worked out.
 | `reference/workflow.md` | The security issue process, from report to published advisory. |
 | `reference/risk-levels.md` | The risk score metrics, levels and conventions. |
 
-Requires `glab` authenticated for git.drupalcode.org.
+Requires `glab` authenticated for git.drupalcode.org. Works best with the
+drupal-contrib plugin installed: the skills use its local site and code skills
+when they are present.

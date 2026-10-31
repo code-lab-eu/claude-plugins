@@ -22,7 +22,7 @@
     },
     {
       "name": "drupal-security",
-      "description": "Helps maintainers resolve vulnerabilities in their drupal.org projects that the Drupal Security Team reports: validate the report, fix every supported branch in the private fork, and draft the security advisory.",
+      "description": "Helps maintainers resolve vulnerabilities in their drupal.org contrib projects through the Drupal Security Team process: validate the report, fix every supported branch in the private fork, and draft the security advisory.",
       "source": "./plugins/drupal-security"
     }
   ]

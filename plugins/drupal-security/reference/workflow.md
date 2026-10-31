@@ -1,7 +1,9 @@
 # Drupal security issue workflow
 
-How a vulnerability reported in a drupal.org project goes from the private
-report to a published security advisory (SA), from the maintainer's side.
+How a vulnerability reported in a drupal.org contrib project goes from the
+private report to a published security advisory (SA), from the maintainer's
+side. Drupal core follows its own release procedures, which this plugin does
+not cover.
 
 Sources, checked 2026-10-31:
 
@@ -43,11 +45,13 @@ public issue queue.
 
 ## Stages
 
-1. **Report.** A confidential work item is created in the `security` group on
-   git.drupalcode.org, titled with the project's machine name, such as
-   `token: access bypass in ...`. Automation creates a private fork, adds
-   labels and posts instructions. Maintainers are granted access with a comment
-   line `/access @gitlab-username`.
+1. **Report.** The reporter files a confidential issue titled with the
+   project's machine name, such as `token: access bypass in ...`. Automation
+   creates a private fork of the project in the `security` group, such as
+   `security/185873-scheduler-security` forked from `project/scheduler`, with
+   the report as its work item 1, adds labels and posts instructions.
+   Maintainers are granted access with a comment line
+   `/access @gitlab-username`.
 2. **Validate.** The maintainer confirms the vulnerability, asks the reporter
    for details when needed, and checks the project for similar
    vulnerabilities. Progress on the code must show within **2 weeks** of first

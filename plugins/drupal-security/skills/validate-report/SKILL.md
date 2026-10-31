@@ -1,6 +1,6 @@
 ---
 name: validate-report
-description: Validates a vulnerability report in a confidential Drupal security work item on git.drupalcode.org, scores its risk, and posts the assessment. Use when a Drupal Security Team report about a maintained project comes in.
+description: Validates a vulnerability report in a confidential Drupal security work item on git.drupalcode.org, scores its risk, and posts the assessment. Use when a vulnerability report about a maintained project comes in.
 ---
 
 # Validate a security report
@@ -16,7 +16,8 @@ The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 2. Check eligibility: covered project, affected stable release of a supported
    branch, code hosted on drupal.org, no advanced permission needed.
 3. Reproduce the vulnerability on a local site for the highest supported
-   branch.
+   branch, set up with `drupal-contrib:ddev-drupal-contrib` when the
+   drupal-contrib plugin is installed.
 4. Score the risk on all six metrics, with a reason for each value.
 5. Search the project for the same pattern elsewhere.
 6. Post the findings as a comment on the work item, ending with the AI
