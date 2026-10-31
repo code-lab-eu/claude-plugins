@@ -8,9 +8,10 @@ Per developer, for all projects:
 
 ```
 /plugin marketplace add https://github.com/code-lab-eu/claude-plugins.git
-/plugin install self-improvement-loop@code-lab
 /plugin install drupal-contrib@code-lab
+/plugin install drupal-security@code-lab
 /plugin install grilling@code-lab
+/plugin install self-improvement-loop@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -106,3 +107,20 @@ understanding.
 
 Adapted from the MIT-licensed skills of Matt Pocock; see
 `plugins/grilling/LICENSE`.
+
+### drupal-security
+
+Helps maintainers resolve vulnerabilities in their drupal.org projects that the
+[Drupal Security Team](https://www.drupal.org/drupal-security-team) manages in
+confidential work items on git.drupalcode.org. The skills are placeholders
+still to be worked out.
+
+| Component | Purpose |
+|---|---|
+| `drupal-security:validate-report` skill | Confirms the vulnerability, scores its risk, comments the assessment with an AI disclosure, and adds the `Security advisory::needed` label. |
+| `drupal-security:fix-vulnerability` skill | Fixes the highest supported branch in the private fork and backports the fix, one merge request per branch. |
+| `drupal-security:draft-advisory` skill | Drafts the security advisory from the form link drupalbot posts. |
+| `reference/workflow.md` | The security issue process, from report to published advisory. |
+| `reference/risk-levels.md` | The risk score metrics, levels and conventions. |
+
+Requires `glab` authenticated for git.drupalcode.org.

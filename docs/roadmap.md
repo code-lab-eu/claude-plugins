@@ -10,3 +10,11 @@
   description, or defines something by what it is not.
 - **Compressed rule wording.** Shorten the rule and skill text to reduce the
   context it costs on every session, without dropping any instruction.
+
+## drupal-security
+
+- **Skill bodies.** Work out the three placeholder skills: validate-report,
+  fix-vulnerability and draft-advisory.
+- **Release skill.** Guide the coordinated release: apply each merge request
+  diff to the canonical repository with a neutral commit message, tag, and
+  create the unpublished "Security update" release node.

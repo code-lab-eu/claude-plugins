@@ -1,0 +1,8 @@
+{
+  "name": "drupal-security",
+  "version": "0.1.0",
+  "description": "Helps maintainers resolve vulnerabilities in their drupal.org projects that the Drupal Security Team reports: validate the report, fix every supported branch in the private fork, and draft the security advisory.",
+  "author": {
+    "name": "Code Lab"
+  }
+}

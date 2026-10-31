@@ -19,6 +19,11 @@
       "name": "grilling",
       "description": "Grills the developer about a plan, one question per message, until both share an understanding of it.",
       "source": "./plugins/grilling"
+    },
+    {
+      "name": "drupal-security",
+      "description": "Helps maintainers resolve vulnerabilities in their drupal.org projects that the Drupal Security Team reports: validate the report, fix every supported branch in the private fork, and draft the security advisory.",
+      "source": "./plugins/drupal-security"
     }
   ]
 }
