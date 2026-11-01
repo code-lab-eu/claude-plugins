@@ -42,6 +42,13 @@ does not settle it.
 **Recommendation: <option>.** <One short paragraph with the reason.>
 ```
 
-List every option worth considering. A minor detail whose answer does not
-depend on the question may follow the options, with its own reasoning and
-recommendation.
+List only the options that are worth considering: those that fit what is
+already settled, including approaches the developer already uses or described,
+and that the facts found do not rule out. Never add options for balance or
+completeness. Name an alternative that is ruled out in one line of the decision
+text, with the reason, not as an option. When the facts leave one option,
+present that one and ask for confirmation. Variants of one option that differ
+only in a value are one option; give the value as part of the recommendation.
+
+A minor detail whose answer does not depend on the question may follow the
+options, with its own reasoning and recommendation.
