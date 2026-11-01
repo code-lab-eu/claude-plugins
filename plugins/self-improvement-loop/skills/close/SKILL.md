@@ -16,7 +16,9 @@ description: Close the self-improvement loop by promoting findings from the sess
 4. **Vet each remaining finding with the developer before anything is
    applied**, one finding per message. The question quotes the correction or
    observation as it was made and offers the plausible ways to encode it, each
-   a different reading of what was meant; where only one reading exists, it
+   a different reading of what was meant, and each in a home whose readers the
+   finding's evidence covers: a finding seen in one project goes into that
+   project, not into a shared or global home. Where only one reading exists, it
    offers that one. The developer picks one or provides guidance.
 5. **Apply the encodings the developer chose.** The developer reviews the
    resulting diff and stages what they approve, **before committing**.
