@@ -15,7 +15,7 @@ https://www.drupal.org/drupal-security-team/security-team-procedures/drafting-a-
 ## Steps
 
 1. Find drupalbot's link to the draft form in the work item.
-2. Write the fields:
+2. Write the fields in the chat, in the order of the form:
    - **Security risk:** the six metric values, rechecked against the final fix.
    - **Vulnerability:** the type, such as "Access bypass".
    - **Description:** two or three paragraphs: what the project does, the
@@ -24,8 +24,10 @@ https://www.drupal.org/drupal-security-team/security-team-procedures/drafting-a-
    - **Solution:** every supported branch, highest version first, naming the
      unaffected ones, and any workaround.
    - **Reported by**, **Fixed by:** drupal.org usernames.
-3. Hand the draft to the maintainer to submit; the draft is saved on
-   drupal.org.
+3. The maintainer fills the form from that text and saves the draft. When the
+   chrome-devtools-mcp plugin is installed, offer to fill the form in the
+   maintainer's logged-in browser instead, and leave saving to the
+   maintainer.
 4. Post the advisory link in the work item.
 
 Done when the advisory link is in the work item.

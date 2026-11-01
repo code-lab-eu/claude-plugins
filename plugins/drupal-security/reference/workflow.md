@@ -5,6 +5,10 @@ private report to a published security advisory (SA), from the maintainer's
 side. Drupal core follows its own release procedures, which this plugin does
 not cover.
 
+Volunteers report vulnerabilities through a private process; the Security Team
+manages the reports and guides the maintainer through the fix, the advisory and
+the release.
+
 Sources, checked 2026-10-31:
 
 - https://www.drupal.org/drupal-security-team/contacted-by-the-security-team-now-what
@@ -28,6 +32,28 @@ co-maintainers.
   in overview table."
 - Tests that would reveal how to exploit the issue are committed later, after
   the SA (core waits two months). Ask the security team when unsure.
+
+## AI disclosure
+
+drupal.org's
+[AI policy](https://www.drupal.org/docs/develop/issues/issue-procedures-and-etiquette/policy-on-the-use-of-ai-when-contributing-to-drupal)
+requires a human-written statement at the end of every comment and merge
+request description that AI helped write. End each one drafted for the
+maintainer with this placeholder, and post it only after the maintainer has
+replaced it with their own words:
+
+```
+AI disclosure: <write what AI was used for>
+```
+
+## Environment
+
+The skills run inside the developer's project: a checkout of the module, or a
+Drupal project that has it installed. The developer decides how the project is
+set up, and tests run with its own tooling. A module checkout has the module's
+`<machine_name>.info.yml` at its root; when it has no local site yet and the
+drupal-contrib plugin is installed, set one up with
+`drupal-contrib:ddev-drupal-contrib`.
 
 ## Eligibility
 
@@ -85,3 +111,41 @@ public issue queue.
 
 A security release is a normal release with the next version number; nothing in
 the version marks it as a security release.
+
+## Finding the work items
+
+A maintainer works on the work items they were granted access to. List the
+open ones with:
+
+```
+glab api --hostname git.drupalcode.org "groups/security/issues?state=opened"
+```
+
+## Labels
+
+The labels of the `security` group on git.drupalcode.org, as listed by
+`glab api --hostname git.drupalcode.org "groups/security/labels"`. A label is
+set or removed with a comment line such as
+`/label ~"Security status::validated"`.
+
+The stages that set each label are inferred from the label names and not yet
+confirmed in the documentation.
+
+| Label | Set at |
+|---|---|
+| `Security status::unvalidated` | Report |
+| `Security status::validated`, `Security risk::<level>`, `Security advisory::needed` | Validate |
+| `Security status::needs review`, `::needs work`, `::reviewed & tested` | Fix |
+| `Security advisory::drafted` (set by saving the SA draft), `Security status::ready to be published` | Advisory |
+| `Security release made` | Release |
+| `Security advisory::published` | Publish |
+| `Needs maintainer response`, `Needs reporter response`, `Needs security team response`, `Needs attention` | Whenever the issue waits on someone |
+| `Security status::not in advisory policy`, `::can be public`, `::evaluating to be public`, `Closed::public` | The issue moves to the public issue queue |
+| `Closed::duplicate`, `Closed::invalid` | The report is rejected |
+| `Security status::postponed` | The fix is put on hold |
+| `Project to be unsupported`, `Closed::unsupported` | The maintainer misses the deadline |
+| `D7::affected`, `D7::n/a`, `D7::needs evaluation`, `D7::only` | Drupal 7 branches are evaluated |
+
+`Security risk::<level>` is one of `Not critical`, `Less critical`,
+`Moderately critical`, `Critical` and `Highly critical`; see
+[`risk-levels.md`](risk-levels.md).

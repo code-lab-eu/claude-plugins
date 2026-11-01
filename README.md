@@ -125,4 +125,5 @@ covered. The skills are placeholders still to be worked out.
 
 Requires `glab` authenticated for git.drupalcode.org. Works best with the
 drupal-contrib plugin installed: the skills use its local site and code skills
-when they are present.
+when they are present. With the chrome-devtools-mcp plugin installed,
+`draft-advisory` offers to fill the advisory form in the browser.
