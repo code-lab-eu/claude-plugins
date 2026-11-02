@@ -13,8 +13,8 @@
 
 ## drupal-security
 
-- **Skill bodies.** Work out the three placeholder skills: validate-report,
-  fix-vulnerability and draft-advisory.
+- **Skill bodies.** Work out the placeholder skills fix-vulnerability and
+  draft-advisory.
 - **Release skill.** Guide the coordinated release: apply each merge request
   diff to the canonical repository with a neutral commit message, tag, and
   create the unpublished "Security update" release node.

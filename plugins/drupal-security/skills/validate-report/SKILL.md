@@ -5,8 +5,6 @@ description: Validates a vulnerability report in a confidential Drupal security 
 
 # Validate a security report
 
-> Placeholder. The steps below are an outline to be worked out.
-
 The process and its rules:
 [`../../reference/workflow.md`](../../reference/workflow.md). The scoring:
 [`../../reference/risk-levels.md`](../../reference/risk-levels.md).

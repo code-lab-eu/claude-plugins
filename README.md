@@ -114,7 +114,8 @@ Adapted from the MIT-licensed skills of Matt Pocock; see
 Helps maintainers resolve vulnerabilities in their drupal.org contrib projects
 that the [Drupal Security Team](https://www.drupal.org/drupal-security-team)
 manages in confidential work items on git.drupalcode.org. Drupal core is not
-covered. The skills are placeholders still to be worked out.
+covered. fix-vulnerability and draft-advisory are placeholders still to be
+worked out.
 
 | Component | Purpose |
 |---|---|
