@@ -16,15 +16,15 @@ project tracks is changed.
 - If the project tracks a `.ddev/` directory, its maintainers use DDEV: keep
   their configuration, skip step 1 and leave `/.ddev/` out of step 2. Put local
   changes in `.ddev/config.local.yaml`, which DDEV ignores.
-- Name the DDEV project after the module's machine name: `symlink-project`
-  names the module's directory under `web/modules/custom/` after it.
+- Name the DDEV project after the module's machine name, with hyphens for
+  underscores: the project name becomes the site's hostname.
 
 ## Steps
 
 1. Configure DDEV and add the add-on:
 
    ```sh
-   ddev config --project-type=drupal11 --docroot=web --project-name=<machine_name>
+   ddev config --project-type=drupal11 --docroot=web --project-name=<machine-name>
    ddev add-on get ddev/ddev-drupal-contrib
    ```
 
@@ -66,6 +66,6 @@ project tracks is changed.
 ## Never
 
 - Commit or push a setup file, or add one to the project's `.gitignore`.
-- Add dependencies to the project's `composer.json` for the local site.
+- Leave a dependency for the local site in the project's `composer.json`.
 - Change the project's CI, PHPUnit, PHPCS or PHPStan configuration to suit the
   local site.

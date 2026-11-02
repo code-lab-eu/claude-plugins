@@ -88,6 +88,7 @@ core uses.
 | Component | Purpose |
 |---|---|
 | `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout, such as a drupal.org issue fork, with the ddev-drupal-contrib add-on, and keeps its files out of git through `.git/info/exclude`. |
+| `drupal-contrib:install-site` skill | Installs Drupal and Drush in a ddev-drupal-contrib setup and enables the project, leaving the project's `composer.json` unchanged. |
 | `drupal-contrib:drupal-upstream-code` skill | Writes code for Drupal core or a contrib project in the form core uses: finds the core precedent for each construct, and lists the comment forms most often missed. |
 
 Requires DDEV.

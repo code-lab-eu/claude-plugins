@@ -53,7 +53,8 @@ Drupal project that has it installed. The developer decides how the project is
 set up, and tests run with its own tooling. A module checkout has the module's
 `<machine_name>.info.yml` at its root; when it has no local site yet and the
 drupal-contrib plugin is installed, set one up with
-`drupal-contrib:ddev-drupal-contrib`.
+`drupal-contrib:ddev-drupal-contrib`, and install Drupal in it with
+`drupal-contrib:install-site` when a step needs the site in a browser.
 
 ## Eligibility
 
