@@ -31,8 +31,8 @@ The process and its rules:
    definition in `risk-levels.md` that it meets, and the value is the one
    whose definition matches. A report with no eligible path gets no score.
 6. Check that the validation is complete: every effect in the report and
-   every occurrence from step 4 was observed, in a failing test or in the
-   browser, or a complete attempt showed that it does not reproduce. This
+   every occurrence from step 4 was observed, in a failing test or on the
+   local site, or a complete attempt showed that it does not reproduce. This
    holds for each occurrence found, also one that shares code with a reproduced
    one or is left out of the comment. When a step is blocked, for example
    because the local site, the browser or the chrome-devtools-mcp plugin is
@@ -55,7 +55,7 @@ blocks it. Posting waits for their approval.
 
 The readers are the security team and the reporter. The comment holds only
 what they can see or repeat themselves, and claims only what this run
-observed, in a failing test or in the browser:
+observed, in a failing test or on the local site:
 
 - Eligibility, point by point. For a report that is not eligible, the
   criterion that rules it out, and the question to the security team whether

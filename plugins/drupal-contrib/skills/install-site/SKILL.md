@@ -44,7 +44,8 @@ Drush and any contrib module the local site needs, such as one the project
 integrates with, go in as development dependencies:
 
 ```sh
-ddev composer require --dev --no-update --no-plugins drush/drush <package>...
+ddev composer require --dev --no-update --no-plugins \
+  'drush/drush:^13' '<package>:<constraint>'...
 ddev poser
 git checkout -- composer.json
 ddev drush pm:install <module>... --yes
@@ -54,7 +55,9 @@ The ddev-drupal-contrib README puts such packages in the project's
 `require-dev`. `ddev poser` builds its temporary `composer.contrib.json` from
 `composer.json`, so `composer.json` needs them only while `ddev poser` runs.
 `--no-plugins` keeps Composer from failing on the plugins in `vendor/`, which
-the project's `composer.json` does not allow.
+the project's `composer.json` does not allow. With `--no-update`, a package
+without a version constraint can resolve to a development release: give each
+one the constraint of its latest stable release.
 
 Each `ddev poser` installs only what `composer.json` lists at that moment, and
 removes every package added before. Name Drush and every package added
