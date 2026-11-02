@@ -27,11 +27,11 @@ The process and its rules:
    does not reproduce the report, that is the finding.
 4. Search the project for the same pattern elsewhere, and reproduce each
    occurrence the same way.
-5. Score the risk of the reproduced vulnerabilities on all six metrics, with a
-   reason for each value: one score for the work item, for the most severe
-   path that was reproduced. Each reason names the definition in
-   `risk-levels.md` that it meets, and the value is the one whose definition
-   matches.
+5. When a reproduced vulnerability is eligible, score the risk on all six
+   metrics, with a reason for each value: one score for the work item, for the
+   most severe eligible path that was reproduced. Each reason names the
+   definition in `risk-levels.md` that it meets, and the value is the one
+   whose definition matches. A report with no eligible path gets no score.
 6. Check that the validation is complete: every effect in the report and
    every occurrence from step 4 was observed, in a failing test or in the
    browser, or a complete attempt showed that it does not reproduce. This
@@ -43,9 +43,12 @@ The process and its rules:
 7. Draft the findings as a comment on the work item, as described under
    [The comment](#the-comment), and give the maintainer the draft to review.
 8. Once the maintainer has replaced the AI disclosure placeholder and approves
-   the draft, post the comment, add the labels `Security advisory::needed`
-   and `Security status::validated`, and remove `Needs maintainer response`
-   when it is set: the comment is the response it asks for.
+   the draft, post the comment and set the labels. An eligible report gets
+   `Security advisory::needed` and `Security status::validated`. A report
+   that reproduces but is not eligible gets `Needs security team response`,
+   for the team to decide on handling it in public. Either way, remove
+   `Needs maintainer response` when it is set: the comment is the response it
+   asks for.
 
 Done when the maintainer has the draft of a complete validation, or knows what
 blocks it. Posting waits for their approval.
@@ -56,10 +59,13 @@ The readers are the security team and the reporter. The comment holds only
 what they can see or repeat themselves, and claims only what this run
 observed, in a failing test or in the browser:
 
-- Eligibility, point by point.
+- Eligibility, point by point. For a report that is not eligible, the
+  criterion that rules it out, and the question to the security team whether
+  to handle it in the public issue queue.
 - Whether the report reproduces, with steps they can follow on a site, and the
   vulnerable code by file and function.
-- The score in the notation of `risk-levels.md`, with the reason per metric.
+- For an eligible report, the score in the notation of `risk-levels.md`, with
+  the reason per metric.
 - The same pattern elsewhere: each reproduced occurrence with its steps and
   its code location.
 - The maintainer's AI disclosure placeholder as the last line.

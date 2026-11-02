@@ -88,7 +88,7 @@ core uses.
 | Component | Purpose |
 |---|---|
 | `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout, such as a drupal.org issue fork, with the ddev-drupal-contrib add-on, and keeps its files out of git through `.git/info/exclude`. |
-| `drupal-contrib:install-site` skill | Installs Drupal and Drush in a ddev-drupal-contrib setup, enables the project, and adds the contrib modules a task needs, leaving the project's `composer.json` unchanged. |
+| `drupal-contrib:install-site` skill | Installs Drupal, Drush and the modules a task needs in a ddev-drupal-contrib setup. |
 | `drupal-contrib:drupal-upstream-code` skill | Writes code for Drupal core or a contrib project in the form core uses: finds the core precedent for each construct, and lists the comment forms most often missed. |
 
 Requires DDEV.
@@ -118,7 +118,7 @@ covered. The skills are placeholders still to be worked out.
 
 | Component | Purpose |
 |---|---|
-| `drupal-security:validate-report` skill | Confirms the vulnerability, scores its risk, and drafts the assessment with an AI disclosure; after the maintainer's review, posts it, adds the `Security advisory::needed` and `Security status::validated` labels, and removes `Needs maintainer response`. |
+| `drupal-security:validate-report` skill | Reproduces the reported vulnerability, scores its risk, and posts the assessment once the maintainer approves it. |
 | `drupal-security:fix-vulnerability` skill | Fixes the highest supported branch in the private fork and backports the fix, one merge request per branch. |
 | `drupal-security:draft-advisory` skill | Drafts the security advisory from the form link drupalbot posts. |
 | `reference/workflow.md` | The security issue process, from report to published advisory. |
