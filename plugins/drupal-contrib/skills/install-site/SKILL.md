@@ -1,6 +1,6 @@
 ---
 name: install-site
-description: Installs Drupal, with Drush, in a contrib checkout that has a ddev-drupal-contrib setup, and enables the project. Use when a task needs the local site in a browser or needs Drush, and the site is not installed yet.
+description: Installs Drupal, with Drush, in a contrib checkout that has a ddev-drupal-contrib setup, enables the project, and adds the contrib modules a task needs. Use when a task needs the local site in a browser, Drush, or another module on the local site.
 ---
 
 # Install the site in a ddev-drupal-contrib checkout
@@ -12,28 +12,15 @@ changes in the end.
 
 ## Before you start
 
-- `git diff --quiet composer.json` succeeds: step 1 restores `composer.json`
-  from git, which would discard local changes to it.
+- `git diff --quiet composer.json` succeeds: adding a package restores
+  `composer.json` from git, which would discard local changes to it.
 - When `ddev drush status --field=bootstrap` prints `Successful`, the site is
   already installed. Keep it and skip step 2: a new install wipes the site.
 
 ## Steps
 
-1. Add Drush, when `ddev drush version` fails:
-
-   ```sh
-   ddev composer require --dev --no-update --no-plugins drush/drush
-   ddev poser
-   git checkout -- composer.json
-   ```
-
-   The ddev-drupal-contrib README puts Drush in the project's `require-dev`.
-   `--no-plugins` keeps Composer from failing on the plugins in `vendor/`,
-   which the project's `composer.json` does not allow. `ddev poser` builds its
-   temporary `composer.contrib.json` from `composer.json`, so `composer.json`
-   needs Drush only while `ddev poser` runs. Every later `ddev poser` removes
-   Drush again: repeat this step after it.
-
+1. Add Drush, when `ddev drush version` fails, as described under
+   [Add packages](#add-packages).
 2. Install Drupal with the standard profile, and enable the project (a theme
    with `theme:install`):
 
@@ -50,3 +37,29 @@ changes in the end.
 
 Done when all three checks pass. `ddev drush user:login` prints a one-time
 login link for the browser, and `ddev describe` the site's URL.
+
+## Add packages
+
+Drush and any contrib module the local site needs, such as one the project
+integrates with, go in as development dependencies:
+
+```sh
+ddev composer require --dev --no-update --no-plugins drush/drush <package>...
+ddev poser
+git checkout -- composer.json
+ddev drush pm:install <module>... --yes
+```
+
+The ddev-drupal-contrib README puts such packages in the project's
+`require-dev`. `ddev poser` builds its temporary `composer.contrib.json` from
+`composer.json`, so `composer.json` needs them only while `ddev poser` runs.
+`--no-plugins` keeps Composer from failing on the plugins in `vendor/`, which
+the project's `composer.json` does not allow.
+
+Each `ddev poser` installs only what `composer.json` lists at that moment, and
+removes every package added before. Name Drush and every package added
+earlier in each `ddev composer require`.
+
+Verify with `git status --porcelain`, which prints nothing, and
+`ddev drush pm:list --status=enabled --filter=<module>`, which lists each
+module.
