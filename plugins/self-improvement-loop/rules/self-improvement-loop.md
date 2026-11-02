@@ -37,7 +37,8 @@ deliberation or reconstruct unspoken intermediate thoughts.
 - **Non-trivial discovery** — the finding, its supporting file or source, and
   any commands or results needed to reproduce or verify it.
 - **Skill gaps** — a task that should have a skill/rule but doesn't.
-- **Repeated attempts** — anything that took several tries to get right, and why.
+- **Repeated attempts** — anything that took several tries to get right, and
+  why.
 - **Inconsistencies & conflicts** — contradictions between docs, rules, memory,
   code, or developer instructions.
 - **Automatable repetition** — actions repeated often enough to become a skill,

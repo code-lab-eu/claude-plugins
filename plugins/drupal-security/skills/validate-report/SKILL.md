@@ -7,8 +7,9 @@ description: Validates a vulnerability report in a confidential Drupal security 
 
 > Placeholder. The steps below are an outline to be worked out.
 
-The process and its rules: [`../../reference/workflow.md`](../../reference/workflow.md).
-The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
+The process and its rules:
+[`../../reference/workflow.md`](../../reference/workflow.md). The scoring:
+[`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 
 ## Steps
 
@@ -27,15 +28,18 @@ The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 4. Search the project for the same pattern elsewhere, and reproduce each
    occurrence the same way.
 5. Score the risk of the reproduced vulnerabilities on all six metrics, with a
-   reason for each value: one score for the work item. Each reason names the
-   definition in `risk-levels.md` that it meets, and the value is the one
-   whose definition matches.
+   reason for each value: one score for the work item, for the most severe
+   path that was reproduced. Each reason names the definition in
+   `risk-levels.md` that it meets, and the value is the one whose definition
+   matches.
 6. Check that the validation is complete: every effect in the report and
    every occurrence from step 4 was observed, in a failing test or in the
-   browser, or a complete attempt showed that it does not reproduce. When a
-   step is blocked, for example because the local site, the browser or the
-   chrome-devtools-mcp plugin is missing, stop here: tell the maintainer what
-   blocks it, and leave the comment undrafted.
+   browser, or a complete attempt showed that it does not reproduce. This
+   holds for each occurrence found, also one that shares code with a reproduced
+   one or is left out of the comment. When a step is blocked, for example
+   because the local site, the browser or the chrome-devtools-mcp plugin is
+   missing, stop here: tell the maintainer what blocks it, and leave the comment
+   undrafted.
 7. Draft the findings as a comment on the work item, as described under
    [The comment](#the-comment), and give the maintainer the draft to review.
 8. Once the maintainer has replaced the AI disclosure placeholder and approves

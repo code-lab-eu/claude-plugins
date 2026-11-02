@@ -35,10 +35,11 @@ preserve it.
 
 ## Where promoted knowledge lives
 
-Durable knowledge goes into **version-controlled repo homes**, so it is available
-on every machine and to every contributor. Use the homes the project already
-has; determine them from `CLAUDE.md`, `AGENTS.md`, and the existing directory
-layout rather than introducing a new layout. Projects have up to three kinds:
+Durable knowledge goes into **version-controlled repo homes**, so it is
+available on every machine and to every contributor. Use the homes the project
+already has; determine them from `CLAUDE.md`, `AGENTS.md`, and the existing
+directory layout rather than introducing a new layout. Projects have up to
+three kinds:
 
 - **Rules** — agent conventions and working practices that are always in
   context (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by

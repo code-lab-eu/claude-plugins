@@ -7,8 +7,9 @@ description: Drafts the Drupal security advisory for a confidential security wor
 
 > Placeholder. The steps below are an outline to be worked out.
 
-The process and its rules: [`../../reference/workflow.md`](../../reference/workflow.md).
-The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
+The process and its rules:
+[`../../reference/workflow.md`](../../reference/workflow.md). The scoring:
+[`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 The form:
 https://www.drupal.org/drupal-security-team/security-team-procedures/drafting-a-security-advisory
 
