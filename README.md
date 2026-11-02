@@ -117,7 +117,7 @@ covered. The skills are placeholders still to be worked out.
 
 | Component | Purpose |
 |---|---|
-| `drupal-security:validate-report` skill | Confirms the vulnerability, scores its risk, comments the assessment with an AI disclosure, and adds the `Security advisory::needed` label. |
+| `drupal-security:validate-report` skill | Confirms the vulnerability, scores its risk, and drafts the assessment with an AI disclosure; after the maintainer's review, posts it and adds the `Security advisory::needed` label. |
 | `drupal-security:fix-vulnerability` skill | Fixes the highest supported branch in the private fork and backports the fix, one merge request per branch. |
 | `drupal-security:draft-advisory` skill | Drafts the security advisory from the form link drupalbot posts. |
 | `reference/workflow.md` | The security issue process, from report to published advisory. |
