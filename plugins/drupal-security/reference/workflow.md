@@ -128,15 +128,17 @@ The labels of the `security` group on git.drupalcode.org, as listed by
 set or removed with a comment line such as
 `/label ~"Security status::validated"`.
 
-The stages that set each label are inferred from the label names and not yet
-confirmed in the documentation.
+The stages follow the label descriptions in that listing and the label history
+of work items (`projects/<id>/issues/1/resource_label_events`). The labels in
+Validate are set by the maintainer; a security team member replaces
+`Security status::validated` during review.
 
 | Label | Set at |
 |---|---|
 | `Security status::unvalidated` | Report |
-| `Security status::validated`, `Security risk::<level>`, `Security advisory::needed` | Validate |
+| `Security status::validated`, `Security advisory::needed` | Validate |
 | `Security status::needs review`, `::needs work`, `::reviewed & tested` | Fix |
-| `Security advisory::drafted` (set by saving the SA draft), `Security status::ready to be published` | Advisory |
+| `Security advisory::drafted` and `Security risk::<level>` (both set by saving the SA draft), `Security status::ready to be published` | Advisory |
 | `Security release made` | Release |
 | `Security advisory::published` | Publish |
 | `Needs maintainer response`, `Needs reporter response`, `Needs security team response`, `Needs attention` | Whenever the issue waits on someone |

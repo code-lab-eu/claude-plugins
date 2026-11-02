@@ -27,7 +27,9 @@ The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 4. Search the project for the same pattern elsewhere, and reproduce each
    occurrence the same way.
 5. Score the risk of the reproduced vulnerabilities on all six metrics, with a
-   reason for each value: one score for the work item.
+   reason for each value: one score for the work item. Each reason names the
+   definition in `risk-levels.md` that it meets, and the value is the one
+   whose definition matches.
 6. Check that the validation is complete: every effect in the report and
    every occurrence from step 4 was observed, in a failing test or in the
    browser, or a complete attempt showed that it does not reproduce. When a
@@ -37,7 +39,9 @@ The scoring: [`../../reference/risk-levels.md`](../../reference/risk-levels.md).
 7. Draft the findings as a comment on the work item, as described under
    [The comment](#the-comment), and give the maintainer the draft to review.
 8. Once the maintainer has replaced the AI disclosure placeholder and approves
-   the draft, post the comment and add the label `Security advisory::needed`.
+   the draft, post the comment, add the labels `Security advisory::needed`
+   and `Security status::validated`, and remove `Needs maintainer response`
+   when it is set: the comment is the response it asks for.
 
 Done when the maintainer has the draft of a complete validation, or knows what
 blocks it. Posting waits for their approval.
