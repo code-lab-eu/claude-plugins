@@ -11,5 +11,6 @@ A plugin marketplace: `.claude-plugin/marketplace.json` lists the plugins under
   completed piece of work, such as a pull request or a finished task on
   `master`, not per commit; installed copies only update on a new version.
 - Keep `README.md` in step with each plugin's components (hooks, skills,
-  rules).
+  rules): one short sentence of purpose per component; the details live in
+  the component.
 - Future work goes in `docs/roadmap.md`.

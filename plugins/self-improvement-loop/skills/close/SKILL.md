@@ -25,9 +25,9 @@ description: Close the self-improvement loop by promoting findings from the sess
 
 Every added instruction costs context on each use and makes the others less
 likely to be followed. A finding earns a place only when it is likely to recur
-and nothing else covers it. Prefer sharpening or replacing an existing sentence
-over adding a new one. Findings that are not actionable (one-offs,
-already-covered ground) produce no change.
+and nothing else covers it. Once the home is chosen, prefer sharpening or
+replacing a sentence in it over adding a new one. Findings that are not
+actionable (one-offs, already-covered ground) produce no change.
 
 Because the note is ephemeral, anything that must survive the next purge has to
 be promoted out of the note in step 5 — don't rely on the note itself to
@@ -36,10 +36,12 @@ preserve it.
 ## Where promoted knowledge lives
 
 Durable knowledge goes into **version-controlled repo homes**, so it is
-available on every machine and to every contributor. Use the homes the project
-already has; determine them from `CLAUDE.md`, `AGENTS.md`, and the existing
-directory layout rather than introducing a new layout. Projects have up to
-three kinds:
+available on every machine and to every contributor. Use the kinds of home the
+project already has; determine them from `CLAUDE.md`, `AGENTS.md`, and the
+existing directory layout rather than introducing a new layout. Within those
+kinds, a new file, such as a new skill or doc, is as valid a home as an
+existing one: choose the file whose trigger and readers match the finding, not
+the nearest file that already exists. Projects have up to three kinds:
 
 - **Rules** — agent conventions and working practices that are always in
   context (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by
