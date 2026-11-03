@@ -11,8 +11,10 @@ The process and its rules:
 
 ## Steps
 
-1. Read the work item and its comments.
-2. Check eligibility: covered project, affected stable release of a supported
+1. Check that the session runs in a clone of the work item's private fork, as
+   described under Environment in `workflow.md`.
+2. Read the work item and its comments.
+3. Check eligibility: covered project, affected stable release of a supported
    branch, code hosted on drupal.org, no advanced permission needed. The
    release history at
    `https://updates.drupal.org/release-history/<machine_name>/current` lists
@@ -31,7 +33,7 @@ The process and its rules:
    definition in `risk-levels.md` that it meets, and the value is the one
    whose definition matches. A report with no eligible path gets no score.
 6. Check that the validation is complete: every effect in the report and
-   every occurrence from step 4 was observed, in a failing test or on the
+   every occurrence from step 5 was observed, in a failing test or on the
    local site, or a complete attempt showed that it does not reproduce. This
    holds for each occurrence found, also one that shares code with a reproduced
    one or is left out of the comment. When a step is blocked, for example

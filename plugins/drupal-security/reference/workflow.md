@@ -48,11 +48,20 @@ AI disclosure: <write what AI was used for>
 
 ## Environment
 
-The skills run inside the developer's project: a checkout of the module, or a
-Drupal project that has it installed. The developer decides how the project is
-set up, and tests run with its own tooling. A module checkout has the module's
-`<machine_name>.info.yml` at its root; when it has no local site yet and the
-drupal-contrib plugin is installed, set one up with
+The skills that work on code run in a clone of the work item's private fork
+that has the fork as its only git remote, so that nothing can be pushed to the
+public project or its issue forks by mistake. The developer makes the clone, as
+drupalbot's first comment in the work item instructs:
+
+```
+git clone git@git.drupal.org:security/<nid>-<machine_name>-security.git
+```
+
+Before working on code, check with `git remote -v` that the private fork is the
+only remote. When it is not, stop and give the developer the clone command.
+
+Tests run with the project's own tooling. When the clone has no local site yet
+and the drupal-contrib plugin is installed, set one up with
 `drupal-contrib:ddev-drupal-contrib`, and install Drupal in it with
 `drupal-contrib:install-site` when a step needs the site in a browser.
 
@@ -85,14 +94,14 @@ public issue queue.
    contact, or the team may mark the project unsupported and publish an SA
    telling users to uninstall it.
 3. **Fix.** One branch and merge request per vulnerable supported branch, all
-   in the private fork:
+   in the private fork, worked on in the clone described under
+   [Environment](#environment):
    ```
-   git remote add security <private-fork-url>
    git checkout -b 2.x-security origin/2.x
-   git push security 2.x-security
+   git push origin 2.x-security
    ```
-   Each merge request targets the private fork, never the public project, and
-   references the work item. The security team reviews it.
+   Each merge request targets a branch of the private fork, never the public
+   project, and references the work item. The security team reviews it.
 4. **Advisory.** The comment `/label ~"Security advisory::needed"` makes
    drupalbot post a link to a prefilled SA draft form. Saving the draft adds
    the `Security advisory::drafted` label. The maintainer posts the SA link in
