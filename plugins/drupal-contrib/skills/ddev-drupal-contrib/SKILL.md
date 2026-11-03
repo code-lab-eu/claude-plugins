@@ -17,7 +17,10 @@ project tracks is changed.
   their configuration, skip step 1 and leave `/.ddev/` out of step 2. Put local
   changes in `.ddev/config.local.yaml`, which DDEV ignores.
 - Name the DDEV project after the module's machine name, with hyphens for
-  underscores: the project name becomes the site's hostname.
+  underscores: the project name becomes the site's hostname. When `ddev list`
+  already shows a project of that name, such as another checkout of the same
+  module, add a suffix, as in `<machine-name>-security`. In a project that
+  tracks `.ddev/`, set the name with `name:` in `.ddev/config.local.yaml`.
 
 ## Steps
 
