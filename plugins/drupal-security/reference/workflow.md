@@ -30,8 +30,13 @@ co-maintainers.
 - Commit messages are neutral: they describe the change without naming
   security, a vulnerability or an exploit, as in "Fixed sanitization of output
   in overview table."
-- Tests that would reveal how to exploit the issue are committed later, after
-  the SA (core waits two months). Ask the security team when unsure.
+- Tests are committed with the fix, so that the vulnerability does not come
+  back. The security team's guidance,
+  [Contacted by the security team, now what?](https://www.drupal.org/drupal-security-team/contacted-by-the-security-team-now-what),
+  is to commit a test a few weeks after the release when it gives away how to
+  develop an exploit. The fix itself usually shows that, so this applies only
+  when the test reveals what the fix does not, such as a crafted payload or a
+  hard-to-find precondition. When in doubt, ask in the work item.
 
 ## AI disclosure
 

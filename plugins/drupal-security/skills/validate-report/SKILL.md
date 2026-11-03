@@ -19,20 +19,20 @@ The process and its rules:
    release history at
    `https://updates.drupal.org/release-history/<machine_name>/current` lists
    the supported branches, the releases and their security coverage.
-3. Reproduce the vulnerability with a failing test on the highest supported
-   branch, in the project's environment. The test stays uncommitted, since it
-   shows how to exploit the issue. An effect that shows only in a browser,
-   such as a script running, is observed by following the steps on the local
-   site with the chrome-devtools-mcp plugin's tools. When a complete attempt
-   does not reproduce the report, that is the finding.
-4. Search the project for the same pattern elsewhere, and reproduce each
+4. Reproduce the vulnerability with a failing test on the highest supported
+   branch, in the project's environment. The test stays uncommitted until the
+   fix, which commits it with the code. An effect that shows only in a
+   browser, such as a script running, is observed by following the steps on
+   the local site with the chrome-devtools-mcp plugin's tools. When a
+   complete attempt does not reproduce the report, that is the finding.
+5. Search the project for the same pattern elsewhere, and reproduce each
    occurrence the same way.
-5. When a reproduced vulnerability is eligible, score the risk on all six
+6. When a reproduced vulnerability is eligible, score the risk on all six
    metrics, with a reason for each value: one score for the work item, for the
    most severe eligible path that was reproduced. Each reason names the
    definition in `risk-levels.md` that it meets, and the value is the one
    whose definition matches. A report with no eligible path gets no score.
-6. Check that the validation is complete: every effect in the report and
+7. Check that the validation is complete: every effect in the report and
    every occurrence from step 5 was observed, in a failing test or on the
    local site, or a complete attempt showed that it does not reproduce. This
    holds for each occurrence found, also one that shares code with a reproduced
@@ -40,9 +40,9 @@ The process and its rules:
    because the local site, the browser or the chrome-devtools-mcp plugin is
    missing, stop here: tell the maintainer what blocks it, and leave the comment
    undrafted.
-7. Draft the findings as a comment on the work item, as described under
+8. Draft the findings as a comment on the work item, as described under
    [The comment](#the-comment), and give the maintainer the draft to review.
-8. Once the maintainer has replaced the AI disclosure placeholder and approves
+9. Once the maintainer has replaced the AI disclosure placeholder and approves
    the draft, post the comment and set the labels. An eligible report gets
    `Security advisory::needed` and `Security status::validated`. A report
    that reproduces but is not eligible gets `Needs security team response`,
