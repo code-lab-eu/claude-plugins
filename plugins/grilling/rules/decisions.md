@@ -42,9 +42,9 @@ does not settle it.
 **Recommendation: <option>.** <One short paragraph with the reason.>
 ```
 
-List only the options that are worth considering: those that fit what is
-already settled, including approaches the developer already uses or described,
-and that the facts found do not rule out. Never add options for balance or
+List only the options that are worth considering: those that fit what is already
+settled, including approaches the developer already uses or described, and that
+the facts found do not rule out. Never add an option, pro or con for balance or
 completeness. Name an alternative that is ruled out in one line of the decision
 text, with the reason, not as an option. When the facts leave one option,
 present that one and ask for confirmation. Variants of one option that differ
