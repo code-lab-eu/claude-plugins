@@ -49,8 +49,9 @@ drupal.org or GitLab.
    GITLAB_HOST=git.drupalcode.org glab mr view <iid> -R project/<project> --comments
    ```
 
-   When the issue has no fork or no merge request, stop: the developer creates
-   them. When several merge requests are open, ask which one.
+   When the issue has no fork, stop: the developer creates it. When the fork
+   has no merge request yet, use its branch that starts with `<number>-`. When
+   several merge requests are open, ask which one.
 2. Add the fork as a remote named `<project>-<number>`, unless `git remote`
    already lists it, fetch it, and switch to the branch:
 
@@ -82,6 +83,15 @@ drupal.org or GitLab.
    fork moved: repeat step 5. "You are not allowed to push code to this
    project" means the developer has no push access yet; see
    [Before you start](#before-you-start).
+7. When the developer asks for the merge request, create it from the fork's
+   branch into the target branch, with drupal.org's default title and
+   description:
+
+   ```sh
+   GITLAB_HOST=git.drupalcode.org glab mr create -R project/<project> \
+     --head issue/<project>-<number> -s <branch> -b <target> \
+     -t 'Resolve #<number> "<issue title>"' -d 'Closes #<number>' --yes
+   ```
 
 ## Never
 
