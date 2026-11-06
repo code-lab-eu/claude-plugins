@@ -64,7 +64,9 @@ project tracks is changed.
      was overwritten by core scaffolding: restore it with
      `git checkout -- <file>`.
    - A test of the project passes, e.g. `ddev phpunit tests/src/Kernel`, with
-     the path relative to the checkout root.
+     the path relative to the checkout root. When the project has no
+     `phpunit.xml(.dist)`, add `-c web/core/phpunit.xml.dist`: CI then uses
+     core's configuration, which fails on warnings and risky tests.
 
 ## Never
 

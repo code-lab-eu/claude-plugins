@@ -10,8 +10,8 @@ who worked on the issue, and many contributors may be working from it. Every
 commit already on the fork's branch stays as it is. New commits go on top of
 the fork's remote head, so each push is a fast-forward.
 
-The developer creates forks and merge requests and comments on the issue, on
-drupal.org or GitLab.
+The developer creates forks. Comments are posted under the developer's
+account; see [Comments](#comments).
 
 ## Before you start
 
@@ -92,6 +92,28 @@ drupal.org or GitLab.
      --head issue/<project>-<number> -s <branch> -b <target> \
      -t 'Resolve #<number> "<issue title>"' -d 'Closes #<number>' --yes
    ```
+
+## Comments
+
+drupal.org's
+[AI policy](https://www.drupal.org/docs/develop/issues/issue-procedures-and-etiquette/policy-on-the-use-of-ai-when-contributing-to-drupal)
+requires a human-written statement at the end of every comment that AI helped
+write. Draft each comment in Markdown and end it with this placeholder:
+
+```
+AI disclosure: <write what AI was used for>
+```
+
+Post it only after the developer has replaced the placeholder with their own
+words and asks for it. On a work item:
+
+```sh
+GITLAB_HOST=git.drupalcode.org glab issue note <number> -R project/<project> \
+  -m "$(cat <draft file>)"
+```
+
+The command prints the comment's URL. Report it. On an issue on drupal.org,
+the developer posts it.
 
 ## Never
 

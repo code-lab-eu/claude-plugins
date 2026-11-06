@@ -93,6 +93,7 @@ core uses.
 | `drupal-contrib:drupal-upstream-code` skill | Writes code for Drupal core or a contrib project in the form core uses: finds the core precedent for each construct, and lists the comment forms most often missed. |
 | `drupal-contrib:issue-queue` skill | Searches a project's issue queue for an existing issue, drafts a new one in Drupal's issue summary template, files it as a git.drupalcode.org work item, and relabels it after the merge. Requires `glab`. |
 | `drupal-contrib:issue-fork` skill | Iterates on a drupal.org issue in its public issue fork: reads the reviewers' remarks and pushes new commits on top of other contributors' work as a fast-forward. Requires `glab` and SSH push access to the fork. |
+| `drupal-contrib:issue-review` skill | Reviews the merge request of a drupal.org issue: checks each finding on the local site and drafts the review for the work item before any change is pushed. Requires `glab`. |
 
 Requires DDEV.
 
