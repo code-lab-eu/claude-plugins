@@ -71,7 +71,8 @@ skills, and docs when the session ends.
 | Component | Purpose |
 |---|---|
 | `SessionStart` hook | Adds `rules/self-improvement-loop.md` to the context on startup, `/clear`, and compaction. |
-| `Stop` hook | Blocks the first stop of each turn with a reminder to update the session note. |
+| `UserPromptSubmit` hook | Marks the start of each turn and reminds Claude to update the session note before replying. |
+| `Stop` hook | Blocks the first stop of a turn in which no note under `docs/notes/` changed, with a reminder to update it. |
 | `self-improvement-loop:close` skill | Promotes findings from the note into durable homes. Triggered by "wrap up", "end the session", or "run the self-improvement loop". |
 
 Session notes are per developer and are never committed. The rule adds

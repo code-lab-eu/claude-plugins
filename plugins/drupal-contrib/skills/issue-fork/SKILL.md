@@ -64,7 +64,8 @@ drupal.org or GitLab.
    not exist yet.
 3. Make the change. The code follows `drupal-contrib:drupal-upstream-code`,
    and checks run on the local site from `drupal-contrib:ddev-drupal-contrib`.
-4. Commit, with a message in the form of the branch's earlier commits.
+4. Commit with a plain message that says what the commit does, such as
+   `Address PHPStan warnings`, with no prefix and no issue number.
 5. Bring in commits pushed to the fork in the meantime, check that only your
    commits are new, and push:
 
