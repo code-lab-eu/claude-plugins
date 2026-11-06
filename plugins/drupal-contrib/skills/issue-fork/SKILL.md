@@ -25,7 +25,8 @@ drupal.org or GitLab.
   clicked "Get push access" on the issue, or commented `/do:access` on a
   GitLab work item.
 - The checkout is a clone of the project or of the issue fork, and
-  `git status` shows no changes to tracked files.
+  `git status --porcelain` prints nothing. When it lists a file, stop and show
+  the list to the developer. Personal files belong in `.git/info/exclude`.
 - The issue shows its fork as `<project>-<number>`. The fork's SSH URL is
   `git@git.drupal.org:issue/<project>-<number>.git`, and its branches start
   with `<number>-`. When the fork is already a remote, such as `origin`, use
