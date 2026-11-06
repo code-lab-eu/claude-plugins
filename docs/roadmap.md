@@ -18,3 +18,10 @@
 - **Release skill.** Guide the coordinated release: apply each merge request
   diff to the canonical repository with a neutral commit message, tag, and
   create the unpublished "Security update" release node.
+
+## drupal-contrib
+
+- **CI failure summary.** Give a script or an `issue-fork` step that lists the
+  failed jobs of a merge request's pipeline on git.drupalcode.org and extracts
+  the PHPStan errors and PHPUnit failures from each job's trace, without the
+  ANSI colour codes.
