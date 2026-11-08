@@ -9,7 +9,8 @@ Settle the facts from the code and the documentation first. Ask the developer
 only about choices that belong to the developer.
 
 Read the official documentation of the tool, and search the codebase for an
-existing solution. An existing solution is the first option.
+existing solution. An existing solution, or a fix within the design's existing
+mechanism, is the first option.
 
 ## Format
 
@@ -19,7 +20,7 @@ stays open until the developer picks an option; a question or remark about it
 does not settle it.
 
 ```
-<The decision and why it matters now: what depends on it, what is already settled that leads to it, and the facts found that bear on it.>
+<The decision and why it matters now: what depends on it, what is already settled that leads to it, and the facts found that bear on it. When the decision fixes a defect, the failing sequence step by step.>
 
 **Option A: <short name>.** <What the option is and how it works.>
 
