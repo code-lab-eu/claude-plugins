@@ -20,8 +20,10 @@ description: Close the self-improvement loop by promoting findings from the sess
    finding's evidence covers: a finding seen in one project goes into that
    project, not into a shared or global home, and one developer's working
    preference does not become a rule for every contributor to a shared repo.
-   Where only one reading exists, it offers that one. The developer picks one
-   or provides guidance.
+   Where only one reading exists, it offers that one. When a decision format
+   is loaded, such as the grilling plugin's `decisions.md`, the question uses
+   it: the quoted observation opens the context and the encodings are the
+   options. The developer picks one or provides guidance.
 5. **Apply the encodings the developer chose.** The developer reviews the
    resulting diff and stages what they approve, **before committing**.
 
