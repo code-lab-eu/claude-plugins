@@ -33,7 +33,8 @@ changes in the end.
    - `ddev drush status --field=bootstrap` prints `Successful`.
    - `ddev drush pm:list --status=enabled --filter=<machine_name>` lists the
      project.
-   - `git status --porcelain` prints nothing.
+   - `git status --porcelain` lists no file that it did not list before the
+     install.
 
 Done when all three checks pass. `ddev drush user:login` prints a one-time
 login link for the browser, and `ddev describe` the site's URL.
@@ -63,6 +64,6 @@ Each `ddev poser` installs only what `composer.json` lists at that moment, and
 removes every package added before. Name Drush and every package added
 earlier in each `ddev composer require`.
 
-Verify with `git status --porcelain`, which prints nothing, and
-`ddev drush pm:list --status=enabled --filter=<module>`, which lists each
-module.
+Verify with `git status --porcelain`, which lists no file that it did not list
+before, and `ddev drush pm:list --status=enabled --filter=<module>`, which
+lists each module.

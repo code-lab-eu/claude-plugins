@@ -65,6 +65,26 @@ git clone git@git.drupal.org:security/<nid>-<machine_name>-security.git
 Before working on code, check with `git remote -v` that the private fork is the
 only remote. When it is not, stop and give the developer the clone command.
 
+The fork's branches are copies from when the report came in, and the public
+project moves on. Before working on a branch, compare it with the public one,
+after `git fetch origin`:
+
+```
+git ls-remote git@git.drupal.org:project/<machine_name>.git refs/heads/<branch>
+git rev-parse origin/<branch>
+```
+
+When they differ, bring the fork's branch up to date, asking the developer
+before the push:
+
+```
+git fetch git@git.drupal.org:project/<machine_name>.git <branch>
+git push origin FETCH_HEAD:refs/heads/<branch>
+```
+
+When the push is refused, the fork's branch has commits of its own: stop and
+ask the developer.
+
 Tests run with the project's own tooling. When the clone has no local site yet
 and the drupal-contrib plugin is installed, set one up with
 `drupal-contrib:ddev-drupal-contrib`, and install Drupal in it with

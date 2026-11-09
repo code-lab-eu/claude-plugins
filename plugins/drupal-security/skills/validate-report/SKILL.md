@@ -18,13 +18,16 @@ The process and its rules:
    branch, code hosted on drupal.org, no advanced permission needed. The
    release history at
    `https://updates.drupal.org/release-history/<machine_name>/current` lists
-   the supported branches, the releases and their security coverage.
+   the supported branches, the releases and their security coverage. The
+   label `Security status::not in advisory policy`, which drupalbot sets,
+   already settles that the report is not eligible.
 4. Reproduce the vulnerability with a failing test on the highest supported
-   branch, in the project's environment. The test stays uncommitted until the
-   fix, which commits it with the code. An effect that shows only in a
-   browser, such as a script running, is observed by following the steps on
-   the local site with the chrome-devtools-mcp plugin's tools. When a
-   complete attempt does not reproduce the report, that is the finding.
+   branch, brought up to date as described under Environment in
+   `workflow.md`, in the project's environment. The test stays uncommitted
+   until the fix, which commits it with the code. An effect that shows only
+   in a browser, such as a script running, is observed by following the
+   steps on the local site with the chrome-devtools-mcp plugin's tools. When
+   a complete attempt does not reproduce the report, that is the finding.
 5. Search the project for the same pattern elsewhere, and reproduce each
    occurrence the same way.
 6. When a reproduced vulnerability is eligible, score the risk on all six
@@ -46,7 +49,8 @@ The process and its rules:
    the draft, post the comment and set the labels. An eligible report gets
    `Security advisory::needed` and `Security status::validated`. A report
    that reproduces but is not eligible gets `Needs security team response`,
-   for the team to decide on handling it in public. Either way, remove
+   for the team to decide on handling it in public, unless the work item has
+   `Security status::not in advisory policy`. Either way, remove
    `Needs maintainer response` when it is set: the comment is the response it
    asks for.
 
@@ -60,8 +64,9 @@ what they can see or repeat themselves, and claims only what this run
 observed, in a failing test or on the local site:
 
 - Eligibility, point by point. For a report that is not eligible, the
-  criterion that rules it out, and the question to the security team whether
-  to handle it in the public issue queue.
+  criterion that rules it out and, unless the work item has
+  `Security status::not in advisory policy`, the question to the security
+  team whether to handle it in the public issue queue.
 - Whether the report reproduces, with steps they can follow on a site, and the
   vulnerable code by file and function.
 - For an eligible report, the score in the notation of `risk-levels.md`, with
