@@ -5,8 +5,10 @@ or not.
 
 ## Before presenting options
 
-Settle the facts from the code and the documentation first. Ask the developer
-only about choices that belong to the developer.
+Settle the facts from the code and the documentation first, including whether
+anything needs the decision now; when nothing does, say so and propose dropping
+or deferring it. Ask the developer only about choices that belong to the
+developer.
 
 Read the official documentation of the tool, and search the codebase for an
 existing solution. An existing solution, or a fix within the design's existing
