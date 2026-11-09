@@ -12,10 +12,12 @@ own sites, does not apply here.
 
 ## Find the precedent
 
-For each comment, docblock, tag and code idiom you write, find the same
-construct in core (`web/core` in a ddev-drupal-contrib site) and copy its form.
-Report the precedent (file and line) with the change. When core has no
-precedent, ask the developer.
+For each comment, docblock, tag, code idiom and design you write, find how core
+(`web/core` in a ddev-drupal-contrib site) solves the same problem and copy the
+form core uses most. Start from the problem, not from a construct already
+chosen: a form found once, or only in `@internal` or test code, is not core
+practice. Report the precedent (file and line) with the change. When core has
+no precedent, ask the developer.
 
 The written standards:
 https://www.drupal.org/docs/develop/standards/php/api-documentation-and-comment-standards
