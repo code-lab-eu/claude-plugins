@@ -24,5 +24,6 @@ chained commands it cannot verify stay inside it.
 If you cannot finish a step, stop there and report why; do not push failing
 code and do not change the labels.
 
-End with a report: each finding and what you did about it, the test result,
-and the pushed commit hash.
+Before you end, write a report with the Write tool to `{{REPORT}}`: each
+finding and what you did about it, the test result, and the pushed commit
+hash. Then end with the same text.

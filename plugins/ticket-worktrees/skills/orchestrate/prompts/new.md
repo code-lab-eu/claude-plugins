@@ -13,5 +13,6 @@ nobody watches this session until you report.
 If the ticket is unclear or you cannot finish, stop and report what is
 missing.
 
-End with a report: what you changed and why, the test result, open points,
-and a proposed commit message.
+Before you end, write a report with the Write tool to `{{REPORT}}`: what you
+changed and why, the test result, open points, and a proposed commit message.
+Then end with the same text.

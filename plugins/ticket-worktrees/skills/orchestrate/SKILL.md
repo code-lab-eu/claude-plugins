@@ -68,14 +68,15 @@ the ids that have not reached `done`, `failed`, `stopped` or `missing`.
 
 ## 5. Handle each event
 
-- `done`: read the session's report with `claude logs <id>`. For a review fix,
-  run `gh pr view <pr> --json headRefOid,labels` and confirm that the head
-  commit differs from the one in the table and that the labels include
-  `gilfoyle:review-requested`. Report the result, and any check that failed,
-  to the developer. For a greenfield ticket, report the summary and the
-  proposed commit message. The developer commits, either by telling the
-  session to (`claude attach <id>`; each commit and push asks the developer
-  for approval) or in `.claude/worktrees/<ticket>`.
+- `done`: read the session's report, `.claude/worktrees/<ticket>.report.md`
+  of the main checkout; only when that file is missing, read the end of
+  `claude logs <id>` instead. For a review fix, run `gh pr view <pr> --json
+  headRefOid,labels` and confirm that the head commit differs from the one in
+  the table and that the labels include `gilfoyle:review-requested`. Report
+  the result, and any check that failed, to the developer. For a greenfield
+  ticket, report the summary and the proposed commit message. The developer
+  commits, either by telling the session to (`claude attach <id>`; each commit
+  and push asks the developer for approval) or in `.claude/worktrees/<ticket>`.
 - `blocked`: tell the developer the session waits for them:
   `claude attach <id>`.
 - `failed`, `stopped` or `missing`: report it with the end of
