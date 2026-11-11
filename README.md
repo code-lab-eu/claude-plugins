@@ -12,6 +12,7 @@ claude plugin install drupal-contrib@code-lab
 claude plugin install drupal-security@code-lab
 claude plugin install grilling@code-lab
 claude plugin install self-improvement-loop@code-lab
+claude plugin install ticket-worktrees@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -133,3 +134,31 @@ Requires `glab` authenticated for git.drupalcode.org. Works best with the
 drupal-contrib plugin installed: the skills use its local site and code skills
 when they are present. With the chrome-devtools-mcp plugin installed,
 `draft-advisory` offers to fill the advisory form in the browser.
+
+### ticket-worktrees
+
+Runs one background Claude Code session per ticket, each in its own git
+worktree under `.claude/worktrees/<ticket>` on branch `<ticket>`. Open PRs
+labelled `gilfoyle:changes-requested` get a review session that commits,
+pushes, and requests a new review; tickets the developer names get a
+greenfield session that leaves its changes uncommitted, and commits or pushes
+only on the developer's instruction and approval.
+
+| Component | Purpose |
+|---|---|
+| `ticket-worktrees:orchestrate` skill | User-invoked, `/ticket-worktrees:orchestrate [new T1234 ...]`: prunes merged worktrees, starts the ticket sessions, and reports each one's result. |
+| `scripts/create-worktree.sh` | Creates or fast-forwards a ticket's worktree and runs the main checkout's `scripts/worktree-setup.sh` in it. |
+| `scripts/launch-session.sh` | Starts the ticket session with the mode's model, effort, and prompt. |
+| `scripts/poll-sessions.sh` | Prints one line per ticket session that finishes or waits for the developer, for the Monitor tool. |
+| `scripts/prune-worktrees.sh` | Removes clean worktrees whose branch is merged into `origin/master`. |
+| `prompts/fix.md`, `prompts/new.md` | The session prompts for review fixes and greenfield tickets. |
+
+Each repository adds `/.claude/worktrees/` to its `.gitignore`, and may
+provide an executable `scripts/worktree-setup.sh <main-checkout>` that prepares
+the worktree in its working directory, such as a virtualenv and local
+settings. The main checkout's copy runs, so branches without the script are
+set up too. Start the orchestrator session with `claude --model sonnet
+--effort low`.
+
+Requires `gh` authenticated for the repository, `jq`, and the Phorge Conduit
+MCP server for greenfield tickets.

@@ -1,0 +1,9 @@
+{
+  "name": "ticket-worktrees",
+  "version": "1.0.0",
+  "description": "Runs one background Claude Code session per ticket, each in its own git worktree: review fixes for PRs with requested changes, and greenfield tickets the developer names.",
+  "author": {
+    "name": "Code Lab"
+  },
+  "license": "MIT"
+}
