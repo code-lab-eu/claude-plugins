@@ -7,11 +7,11 @@ Claude Code plugin marketplace for Code Lab.
 Per developer, for all projects:
 
 ```
-/plugin marketplace add https://github.com/code-lab-eu/claude-plugins.git
-/plugin install drupal-contrib@code-lab
-/plugin install drupal-security@code-lab
-/plugin install grilling@code-lab
-/plugin install self-improvement-loop@code-lab
+claude plugin marketplace add https://github.com/code-lab-eu/claude-plugins.git
+claude plugin install drupal-contrib@code-lab
+claude plugin install drupal-security@code-lab
+claude plugin install grilling@code-lab
+claude plugin install self-improvement-loop@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -41,7 +41,7 @@ claude plugin install self-improvement-loop@code-lab --scope local
 ```
 
 or add the `enabledPlugins` entry shown above to `.claude/settings.local.json`.
-The marketplace must already be registered with `/plugin marketplace add`.
+The marketplace must already be registered with `claude plugin marketplace add`.
 Check that the file is not tracked before relying on it:
 
 ```
