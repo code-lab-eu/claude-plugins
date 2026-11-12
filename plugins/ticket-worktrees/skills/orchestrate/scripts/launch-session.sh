@@ -8,11 +8,11 @@
 # The prompt is `prompts/<mode>.md` of this skill, with `{{TICKET}}`, `{{PR}}`
 # and `{{REPORT}}` replaced.
 #
-# The session writes its report to `.claude/worktrees/<ticket>.report.md` of
-# the main checkout: next to the worktree, not in it, so it is never committed.
-# An `Edit` allow rule for that absolute path approves the write; Claude Code
-# does not match `Write(path)` rules. A report of an earlier run is removed
-# before the launch.
+# The session writes its report to `.ticket-report.md` at the root of its
+# worktree, because Claude Code confines the session's writes to that
+# worktree. The entry create-worktree.sh adds to the repository's
+# `info/exclude` keeps the report out of commits. A report of an earlier run
+# is removed before the launch.
 #
 # - `fix`: review fix of PR <pr>; Sonnet at medium effort; the session
 #   commits, pushes and swaps the PR labels. Allow rules scoped to the
@@ -54,21 +54,19 @@ cd "$main"
 
 prompt=$(<"$skill_dir/prompts/$mode.md")
 prompt=${prompt//\{\{TICKET\}\}/$ticket}
-report="$main/.claude/worktrees/$ticket.report.md"
+report="$main/.claude/worktrees/$ticket/.ticket-report.md"
 prompt=${prompt//\{\{PR\}\}/$pr}
 prompt=${prompt//\{\{REPORT\}\}/$report}
 rm -f "$report"
 
-# `//` anchors a permission rule path at the filesystem root.
 args=(--bg --worktree "$ticket" --name "$ticket")
 if [ "$mode" = fix ]; then
   args+=(--model sonnet --effort medium
     --allowedTools "Bash(git add:*)" "Bash(git commit:*)"
-    "Bash(git push origin $ticket)" "Bash(gh pr edit $pr *)"
-    "Edit(/$report)")
+    "Bash(git push origin $ticket)" "Bash(gh pr edit $pr *)")
 else
   args+=(--model opus --effort xhigh --settings
-    "{\"permissions\":{\"allow\":[\"Edit(/$report)\"],\"ask\":[\"Bash(git commit:*)\",\"Bash(git push:*)\"]}}")
+    "{\"permissions\":{\"ask\":[\"Bash(git commit:*)\",\"Bash(git push:*)\"]}}")
 fi
 
 # `--allowedTools` takes a variable number of values; `--` ends them so the

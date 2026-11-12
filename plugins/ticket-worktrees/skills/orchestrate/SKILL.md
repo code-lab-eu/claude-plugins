@@ -68,9 +68,10 @@ the ids that have not reached `done`, `failed`, `stopped` or `missing`.
 
 ## 5. Handle each event
 
-- `done`: read the session's report, `.claude/worktrees/<ticket>.report.md`
-  of the main checkout; only when that file is missing, read the end of
-  `claude logs <id>` instead. For a review fix, run `gh pr view <pr> --json
+- `done`: read the session's report,
+  `.claude/worktrees/<ticket>/.ticket-report.md` of the main checkout; only
+  when that file is missing, read the end of `claude logs <id>` instead. For
+  a review fix, run `gh pr view <pr> --json
   headRefOid,labels` and confirm that the head commit differs from the one in
   the table and that the labels include `gilfoyle:review-requested`. Report
   the result, and any check that failed, to the developer. For a greenfield
