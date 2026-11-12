@@ -26,6 +26,10 @@ https://www.drupal.org/docs/develop/standards/php/api-documentation-and-comment-
 
 - An explanation of a code block sits on the lines directly before that block;
   the method docblock describes the method as a whole.
+- A comment on a code block opens with what the block does, in the imperative,
+  and the reason follows, such as "Check that the URL is well formed, starting
+  with 'scheme://', where 'scheme' is a database driver name." in
+  `core/lib/Drupal/Core/Database/Database.php`.
 - A class or method reference is an `@see` line with the fully qualified name,
   on its own line below the comment it supports, as in
   `core/modules/dynamic_page_cache/src/EventSubscriber/DynamicPageCacheSubscriber.php`.
