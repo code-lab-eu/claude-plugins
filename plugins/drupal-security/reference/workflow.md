@@ -65,6 +65,11 @@ git clone git@git.drupal.org:security/<nid>-<machine_name>-security.git
 Before working on code, check with `git remote -v` that the private fork is the
 only remote. When it is not, stop and give the developer the clone command.
 
+Before working on code, `git status --porcelain` prints nothing, so that every
+change belongs to the work. When it lists a file, stop and show the list to the
+developer; personal files belong in `.git/info/exclude`. The failing test that
+validation leaves for the fix is the one exception.
+
 The fork's branches are copies from when the report came in, and the public
 project moves on. Before working on a branch, compare it with the public one,
 after `git fetch origin`:
