@@ -28,6 +28,7 @@ and show both as drafts first.
 2. File the issue once the maintainer approves the draft.
 3. Comment in the work item with the link to the public issue, thank the
    reporter and the security team members who took part, and close the work
-   item with a `/close` line in the comment.
+   item with the lines `/label ~"Closed::public"` and `/close` in the
+   comment.
 
 Done when the public issue is filed and the closed work item links to it.
