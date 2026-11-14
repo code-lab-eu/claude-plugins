@@ -13,17 +13,19 @@ description: Close the self-improvement loop by promoting findings from the sess
    into and the files that file refers to, and drop the finding when they
    already state it. A note entry can be outdated: work later in the session
    may have documented or fixed what it describes.
-4. **Vet each remaining finding with the developer before anything is
-   applied**, one finding per message. The question quotes the correction or
-   observation as it was made and offers the plausible ways to encode it, each
-   a different reading of what was meant, and each in a home whose readers the
-   finding's evidence covers: a finding seen in one project goes into that
-   project, not into a shared or global home, and one developer's working
-   preference does not become a rule for every contributor to a shared repo.
-   Where only one reading exists, it offers that one. When a decision format
-   is loaded, such as the grilling plugin's `decisions.md`, the question uses
-   it: the quoted observation opens the context and the encodings are the
-   options. The developer picks one or provides guidance.
+4. **Vet each remaining finding with the developer before anything is applied**,
+   one finding per message. The question quotes the correction or observation as
+   it was made and offers the plausible ways to encode it, each a different
+   reading of what was meant, and each in a home whose readers the finding's
+   evidence covers: a finding seen in one project goes into that project, not
+   into a shared or global home, and one developer's working preference does not
+   become a rule for every contributor to a shared repo. An option that edits an
+   existing skill quotes that skill's `description` and names the task during
+   which the finding arose. Where only one reading exists, it offers that one.
+   When a decision format is loaded, such as the grilling plugin's
+   `decisions.md`, the question uses it: the quoted observation opens the
+   context and the encodings are the options. The developer picks one or
+   provides guidance.
 5. **Apply the encodings the developer chose.** The developer reviews the
    resulting diff and stages what they approve, **before committing**.
 
@@ -43,9 +45,11 @@ Durable knowledge goes into **version-controlled repo homes**, so it is
 available on every machine and to every contributor. Use the kinds of home the
 project already has; determine them from `CLAUDE.md`, `AGENTS.md`, and the
 existing directory layout rather than introducing a new layout. Within those
-kinds, a new file, such as a new skill or doc, is as valid a home as an
-existing one: choose the file whose trigger and readers match the finding, not
-the nearest file that already exists. Projects have up to three kinds:
+kinds, choose the file by when it is read, not by its subject. A skill is read
+only when its `description` matches the task at hand, so an existing skill is a
+home only when its description matches the task during which the finding arose;
+a shared tool or topic is not a match. When no existing file passes, the home is
+a new file. Projects have up to three kinds:
 
 - **Rules** — agent conventions and working practices that are always in
   context (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by
