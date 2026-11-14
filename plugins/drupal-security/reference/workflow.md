@@ -98,8 +98,11 @@ and the drupal-contrib plugin is installed, set one up with
 
 ## Eligibility
 
-An SA is only issued when all of these hold. Otherwise the issue is fixed in the
-public issue queue.
+An SA is only issued when all of these hold. Otherwise the maintainer fixes the
+issue in the private fork or in the public issue queue. The public queue is the
+maintainer's choice when the work item has
+`Security status::not in advisory policy`, and needs the security team's
+agreement in the work item otherwise.
 
 - The project is opted into security advisory coverage.
 - A stable release of a supported branch is affected. Dev, alpha, beta and RC

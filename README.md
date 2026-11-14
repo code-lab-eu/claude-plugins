@@ -127,6 +127,7 @@ worked out.
 | `drupal-security:validate-report` skill | Reproduces the reported vulnerability, scores its risk, and posts the assessment once the maintainer approves it. |
 | `drupal-security:fix-vulnerability` skill | Fixes the highest supported branch in the private fork and backports the fix, one merge request per branch. |
 | `drupal-security:draft-advisory` skill | Drafts the security advisory from the form link drupalbot posts. |
+| `drupal-security:move-to-public` skill | Moves a report that gets no advisory to the public issue queue and closes the work item. |
 | `reference/workflow.md` | The security issue process, from report to published advisory. |
 | `reference/risk-levels.md` | The risk score metrics, levels and conventions. |
 
