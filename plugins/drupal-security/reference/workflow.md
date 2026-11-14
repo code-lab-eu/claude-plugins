@@ -79,8 +79,9 @@ git ls-remote git@git.drupal.org:project/<machine_name>.git refs/heads/<branch>
 git rev-parse origin/<branch>
 ```
 
-When they differ, bring the fork's branch up to date, asking the developer
-before the push:
+When they differ, fast-forward the fork's branch to the public one, and tell
+the developer. The push adds only public commits and cannot lose any, so it
+needs no approval:
 
 ```
 git fetch git@git.drupal.org:project/<machine_name>.git <branch>

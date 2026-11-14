@@ -36,7 +36,7 @@ The process and its rules:
    definition in `risk-levels.md` that it meets, and the value is the one
    whose definition matches. A report with no eligible path gets no score.
 7. Check that the validation is complete: every effect in the report and
-   every occurrence from step 5 was observed, in a failing test or on the
+   every occurrence from step 5 was observed by following its steps on the
    local site, or a complete attempt showed that it does not reproduce. This
    holds for each occurrence found, also one that shares code with a reproduced
    one or is left out of the comment. When a step is blocked, for example
@@ -59,9 +59,9 @@ blocks it. Posting waits for their approval.
 
 ## The comment
 
-The readers are the security team and the reporter. The comment holds only
-what they can see or repeat themselves, and claims only what this run
-observed, in a failing test or on the local site:
+The readers are the security team and the reporter. The comment claims only
+what this run observed, and gives only steps that this run followed on the
+local site. It holds only what they can see or repeat themselves:
 
 - Eligibility, point by point. For a report that is not eligible, the
   criterion that rules it out and, unless the work item has
