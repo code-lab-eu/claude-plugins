@@ -24,9 +24,10 @@ instead of writing a second solution next to it. The end state has one mechanism
 per purpose. An option that replaces a mechanism migrates every dependent and
 removes it; keeping a mechanism that the end state does not need is not reuse.
 
-When the decision is about a failure, look for an option that removes the step
-where the failure happens, such as automating it, next to the options that
-detect or document the failure.
+When the decision is about a failure or a constraint, such as a pinned version,
+look for an option that removes the step or the constraint, such as automating
+the step or changing what imposes the pin, next to the options that detect,
+document or work around it.
 
 ## Format
 
