@@ -67,9 +67,10 @@ outweighs it.
 List only the options that are worth considering: those that fit what is already
 settled or that the developer described, and that the facts found do not rule
 out. Never add an option, pro or con for balance or completeness. Check every
-pro and con against the code before listing it. Weigh every option, pro and con
-by one measure: the highest possible quality of the result. Implementation
-effort counts only where it affects that quality.
+pro and con against the code, and against the tools that implement the option,
+before listing it. Weigh every option, pro and con by one measure: the highest
+possible quality of the result. Implementation effort counts only where it
+affects that quality.
 
 Judge the result in its end state: after the planned work, such as the entries
 of the roadmap or the backlog, is done, and over the years it is maintained. A
