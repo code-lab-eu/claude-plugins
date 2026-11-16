@@ -6,7 +6,9 @@
 # The worktree is `.claude/worktrees/<ticket>` in the main checkout, on branch
 # <ticket>. `fix` checks out the existing branch `origin/<ticket>` of a PR
 # under review, or fast-forwards a worktree that already exists. `new` starts
-# the branch from `origin/master`. Afterwards the main checkout's
+# the branch from `origin/master`. The repository's `info/exclude` gets the
+# entry that keeps the session report, `.ticket-report.md` in the worktree,
+# out of git. Afterwards the main checkout's
 # `scripts/worktree-setup.sh <main-checkout>`, when present and executable,
 # runs with the worktree as the working directory. The main checkout's copy
 # is used because branches made before the script was added do not have it.
@@ -88,6 +90,14 @@ else
   git worktree add --quiet --no-track -b "$ticket" "$worktree" \
     origin/master >&2 || die "$ticket: git worktree add failed"
 fi
+
+# The ticket session writes its report to `.ticket-report.md` at the root of
+# its worktree. The repository's `info/exclude`, which all its worktrees
+# share, keeps the report out of `git status` and out of commits.
+exclude="$common_dir/info/exclude"
+mkdir -p "$common_dir/info"
+grep -qxF "/.ticket-report.md" "$exclude" 2>/dev/null ||
+  echo "/.ticket-report.md" >>"$exclude"
 
 setup="$main/scripts/worktree-setup.sh"
 if [ -x "$setup" ]; then

@@ -4,10 +4,11 @@
 # Usage: prune-worktrees.sh
 #
 # For each worktree under `.claude/worktrees/` of the main checkout: removes
-# the worktree, its session report and its local branch when the branch is
-# merged into `origin/master` and the worktree has no uncommitted changes. A
-# finished Claude Code session in the worktree is stopped first, and its
-# worktree lock released. A worktree with a working or blocked session is kept.
+# the worktree, with the session report inside it, and its local branch when
+# the branch is merged into `origin/master` and the worktree has no
+# uncommitted changes. A finished Claude Code session in the worktree is
+# stopped first, and its worktree lock released. A worktree with a working or
+# blocked session is kept.
 #
 # Prints one line per worktree: `removed <path> <branch>` or
 # `kept <path> <reason>`. Exits non-zero with a one-line reason on stderr when
@@ -81,8 +82,6 @@ for i in "${!paths[@]}"; do
       and .pid != null) | .id' <<<"$sessions")
   git worktree unlock "$path" 2>/dev/null || true
   git worktree remove "$path" || die "git worktree remove $path failed"
-  # The session's report, written next to the worktree by launch-session.sh.
-  rm -f "$path.report.md"
   # `-D`: the merge into `origin/master` is checked above. `-d` compares with
   # the branch's upstream or the local HEAD instead, which lag behind after a
   # merged PR branch is deleted on GitHub.
