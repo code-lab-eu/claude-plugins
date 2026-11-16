@@ -13,6 +13,7 @@ claude plugin install drupal-security@code-lab
 claude plugin install grilling@code-lab
 claude plugin install self-improvement-loop@code-lab
 claude plugin install ticket-worktrees@code-lab
+claude plugin install writing-for-agents@code-lab
 ```
 
 Per project, for every contributor, in the committed `.claude/settings.json`:
@@ -163,3 +164,15 @@ set up too. Start the orchestrator session with `claude --model sonnet
 
 Requires `gh` authenticated for the repository, `jq`, and the Phorge Conduit
 MCP server for greenfield tickets.
+
+### writing-for-agents
+
+Reference for writing documents an agent consumes: skills, `AGENTS.md`, and
+`CLAUDE.md`.
+
+| Component | Purpose |
+|---|---|
+| `writing-for-agents:writing-for-agents` skill | Context pointers, the information hierarchy, completion criteria, leading words, and pruning. Triggered when creating or editing a skill, `AGENTS.md`, or `CLAUDE.md`. |
+
+Adapted from the MIT-licensed skills of Matt Pocock; see
+`plugins/writing-for-agents/LICENSE`.

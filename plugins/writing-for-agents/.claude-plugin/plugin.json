@@ -1,0 +1,9 @@
+{
+  "name": "writing-for-agents",
+  "version": "1.0.0",
+  "description": "Reference for writing documents an agent consumes: skills, AGENTS.md and CLAUDE.md.",
+  "author": {
+    "name": "Code Lab"
+  },
+  "license": "MIT"
+}

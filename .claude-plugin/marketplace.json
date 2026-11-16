@@ -29,6 +29,11 @@
       "name": "ticket-worktrees",
       "description": "Runs one background Claude Code session per ticket, each in its own git worktree: review fixes for PRs with requested changes, and greenfield tickets the developer names.",
       "source": "./plugins/ticket-worktrees"
+    },
+    {
+      "name": "writing-for-agents",
+      "description": "Reference for writing documents an agent consumes: skills, AGENTS.md and CLAUDE.md.",
+      "source": "./plugins/writing-for-agents"
     }
   ]
 }
