@@ -63,8 +63,11 @@ account; see [Comments](#comments).
 
    `git switch` creates the local branch, tracking the fork's, when it does
    not exist yet.
-3. Make the change. The code follows `drupal-contrib:drupal-upstream-code`,
-   and checks run on the local site from `drupal-contrib:ddev-drupal-contrib`.
+3. Make the change with `drupal-contrib:drupal-upstream-code`: load it before
+   writing any code, comment or test. Checks run on the local site from
+   `drupal-contrib:ddev-drupal-contrib`. The step is done when the skill's
+   precedent report covers every construct in the diff, code and comments
+   alike.
 4. Commit with a plain message that says what the commit does, such as
    `Address PHPStan warnings`, with no prefix and no issue number.
 5. Bring in commits pushed to the fork in the meantime, check that only your
