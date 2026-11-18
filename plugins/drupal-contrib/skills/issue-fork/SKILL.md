@@ -1,6 +1,6 @@
 ---
 name: issue-fork
-description: Iterates on a drupal.org issue in its public issue fork, reads the issue and the reviewers' remarks, fetches the fork's merge request branch, adds commits on top of other contributors' work and pushes them as a fast-forward. Use when asked to do an iteration on an issue or work item, address a reviewer's remark, or commit, push or rebase on an issue fork.
+description: Iterates on a drupal.org issue in its public issue fork, reads the issue and the reviewers' remarks, fetches the fork's merge request branch, adds commits on top of other contributors' work and pushes them as a fast-forward. Use when asked to do an iteration on an issue or work item, address a reviewer's remark, backport a change to another branch, or commit, push or rebase on an issue fork.
 ---
 
 # Iterate on an issue in its issue fork
@@ -95,6 +95,32 @@ account; see [Comments](#comments).
      --head issue/<project>-<number> -s <branch> -b <target> \
      -t 'Resolve #<number> "<issue title>"' -d 'Closes #<number>' --yes
    ```
+8. When the branch has a merge request, wait for its pipeline:
+
+   ```sh
+   GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
+   ```
+
+   The step is done when `sha` is the pushed commit and
+   `head_pipeline.status` is `success`. The pipeline runs on the merge of the
+   branch into the target, so its own `sha` is not the pushed commit. When it
+   fails, read the failing job and fix it in a new commit.
+
+## Backport to another branch
+
+When the developer asks for the change on another branch, such as `2.x`,
+start a branch from the project's current target branch, named after the
+merge request branch with the target appended, and push it to the fork:
+
+```sh
+git fetch git@git.drupal.org:project/<project>.git <target>
+git switch -c <branch>-<target> FETCH_HEAD
+git push -u <project>-<number> <branch>-<target>
+```
+
+Cherry-pick the commits when they apply; otherwise write the change for
+that branch. Then follow steps 3 to 8 on the new branch, with
+`-b <target>` in step 7.
 
 ## Comments
 
