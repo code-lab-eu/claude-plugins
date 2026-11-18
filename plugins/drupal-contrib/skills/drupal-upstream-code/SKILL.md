@@ -12,12 +12,20 @@ own sites, does not apply here.
 
 ## Find the precedent
 
-For each comment, docblock, tag, code idiom and design you write, find how core
-(`web/core` in a ddev-drupal-contrib site) solves the same problem and copy the
-form core uses most. Start from the problem, not from a construct already
-chosen: a form found once, or only in `@internal` or test code, is not core
-practice. Report the precedent (file and line) with the change. When core has
-no precedent, ask the developer.
+Everything you write takes the form core uses most. Code idioms, designs,
+comments, docblocks, tags, labels, messages, terms and spelling (US English)
+are examples, not the full list. For each, find how core (`web/core` in a
+ddev-drupal-contrib site) solves the same problem, count the forms it uses, and
+copy the one in the majority. Core 11.4 declares 9565 methods `protected` and
+485 `private`: `private` exists in core, but it is the minority and not core's
+form, so methods and properties are `protected`. Start from the problem, not
+from a construct already chosen: a form found once, or only in `@internal` or
+test code, is not core practice. Report the precedent (file and line) with the
+change. When core has no precedent, ask the developer.
+
+Code for a contrib project serves any site: a rule, default or integration
+taken from the site that commissioned it becomes an option, off by default, or
+stays out.
 
 The written standards:
 https://www.drupal.org/docs/develop/standards/php/api-documentation-and-comment-standards
