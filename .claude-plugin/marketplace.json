@@ -34,6 +34,11 @@
       "name": "writing-for-agents",
       "description": "Reference for writing skills and agent instructions.",
       "source": "./plugins/writing-for-agents"
+    },
+    {
+      "name": "plan-execution",
+      "description": "Executes a phased plan unattended with worker and reviewer sub-agents.",
+      "source": "./plugins/plan-execution"
     }
   ]
 }

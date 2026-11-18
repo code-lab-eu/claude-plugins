@@ -1,0 +1,8 @@
+{
+  "name": "plan-execution",
+  "version": "1.0.0",
+  "description": "Executes the phases of a plan unattended, with a worker, fresh reviewers and a commit per phase, and lists the decisions taken.",
+  "author": {
+    "name": "Code Lab"
+  }
+}

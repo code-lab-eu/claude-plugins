@@ -11,6 +11,7 @@ claude plugin marketplace add https://github.com/code-lab-eu/claude-plugins.git
 claude plugin install drupal-contrib@code-lab
 claude plugin install drupal-security@code-lab
 claude plugin install grilling@code-lab
+claude plugin install plan-execution@code-lab
 claude plugin install self-improvement-loop@code-lab
 claude plugin install ticket-worktrees@code-lab
 claude plugin install writing-for-agents@code-lab
@@ -176,3 +177,19 @@ Reference for writing documents an agent consumes: skills, `AGENTS.md`, and
 
 Adapted from the MIT-licensed skills of Matt Pocock; see
 `plugins/writing-for-agents/LICENSE`.
+
+### plan-execution
+
+Executes the phases of a plan unattended. The session is the orchestrator: per
+phase it starts a worker sub-agent, fresh reviewer sub-agents until one
+approves, and a fresh agent that commits the phase. A decision that would go
+to the developer is taken on precedent or best practice and listed in the
+final report. The plan and the skills it names carry the rules of the stack.
+
+| Component | Purpose |
+|---|---|
+| `plan-execution:orchestrate` skill | User-invoked, `/plan-execution:orchestrate <plan file> [phases]`: writes the briefs, checks the verification commands, runs the worker, review and commit loop per phase, and reports the commits and decisions. |
+| `briefs/worker-common.md`, `briefs/reviewer-common.md` | Templates for the worker and reviewer briefs that every sub-agent prompt points to. |
+
+With the self-improvement-loop plugin installed, the decisions are recorded in
+its session note.
