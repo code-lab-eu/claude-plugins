@@ -1,6 +1,6 @@
 ---
 name: issue-queue
-description: Searches a drupal.org project's issue queue for an existing issue, drafts a new issue in Drupal's issue summary template, files it as a work item on git.drupalcode.org, and updates its labels after the merge. Use when asked whether an issue exists, to draft or file an issue, or to close or relabel one.
+description: Searches a drupal.org project's issue queue for an existing issue, drafts a new issue in Drupal's issue summary template, files it as a work item on git.drupalcode.org, waits for its merge request's auto-merge, and updates its labels after the merge. Use when asked whether an issue exists, to draft or file an issue, to wait for an auto-merge, or to close or relabel one.
 ---
 
 # Search, draft and file drupal.org issues
@@ -74,12 +74,27 @@ reviews every draft before it is filed.
 
 ## After the merge
 
-A merge request with `Closes #<number>` closes the work item when it is merged,
-but leaves its `state::` label. When the developer asks, replace it with the
-label the project's merged issues carry, such as `state::closed`:
+When the developer has set the merge request to auto-merge and asks to wait
+for it, poll it until `state` is `merged`:
 
 ```sh
+GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
+```
+
+Stop and report to the developer when `merge_when_pipeline_succeeds` is
+`false`, when `head_pipeline.status` is `failed` or `canceled`, or when
+`detailed_merge_status` is none of `mergeable`, `ci_must_pass`,
+`ci_still_running`, `checking`, `unchecked`, `preparing` and
+`approvals_syncing`. These only wait for checks; any other status needs
+someone to act, such as `requested_changes`.
+
+A merge request with `Closes #<number>` closes the work item when it is merged,
+but leaves its `state::` label. When the developer asks, replace that label,
+whichever it is, with `state::fixed`. Read the item's labels first:
+
+```sh
+GITLAB_HOST=git.drupalcode.org glab issue view <number> -R project/<project>
 GITLAB_HOST=git.drupalcode.org glab api -X PUT \
   "projects/project%2F<project>/issues/<number>" \
-  -f remove_labels='state::accepted' -f add_labels='state::closed'
+  -f remove_labels='<current state:: label>' -f add_labels='state::fixed'
 ```

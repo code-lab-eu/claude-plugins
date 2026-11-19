@@ -71,7 +71,8 @@ account; see [Comments](#comments).
 4. Commit with a plain message that says what the commit does, such as
    `Address PHPStan warnings`, with no prefix and no issue number.
 5. Bring in commits pushed to the fork in the meantime, check that only your
-   commits are new, and push:
+   commits are new, and push. When the branch has a merge request, first
+   record its `head_pipeline.id` with the command in step 8:
 
    ```sh
    git fetch <project>-<number>
@@ -101,10 +102,12 @@ account; see [Comments](#comments).
    GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
    ```
 
-   The step is done when `sha` is the pushed commit and
-   `head_pipeline.status` is `success`. The pipeline runs on the merge of the
-   branch into the target, so its own `sha` is not the pushed commit. When it
-   fails, read the failing job and fix it in a new commit.
+   The step is done when `sha` is the pushed commit, `head_pipeline.id`
+   differs from the id recorded in step 5, and `head_pipeline.status` is
+   `success`. Right after the push, `head_pipeline` can still be the previous
+   pipeline, and the new one runs on the merge of the branch into the target,
+   so its own `sha` is not the pushed commit. When it fails, read the failing
+   job and fix it in a new commit.
 
 ## Backport to another branch
 

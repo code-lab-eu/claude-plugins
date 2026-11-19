@@ -73,10 +73,10 @@ skills, and docs when the session ends.
 
 | Component | Purpose |
 |---|---|
-| `SessionStart` hook | Adds `rules/self-improvement-loop.md` to the context on startup, `/clear`, and compaction. |
-| `UserPromptSubmit` hook | Marks the start of each turn and reminds Claude to update the session note before replying. |
-| `Stop` hook | Blocks the first stop of a turn in which no note under `docs/notes/` changed, with a reminder to update it. |
-| `self-improvement-loop:close` skill | Promotes findings from the note into durable homes. Triggered by "wrap up", "end the session", or "run the self-improvement loop". |
+| `SessionStart` hook | Loads the self-improvement-loop rule into the context. |
+| `UserPromptSubmit` hook | Reminds Claude to update the session note. |
+| `Stop` hook | Holds back a turn that did not update the session note. |
+| `self-improvement-loop:close` skill | Promotes the session note's findings into the project. |
 
 Session notes are per developer and are never committed. The rule adds
 `docs/notes/` to `.git/info/exclude` when the directory is not already ignored.
@@ -91,14 +91,14 @@ core uses.
 
 | Component | Purpose |
 |---|---|
-| `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout, such as a drupal.org issue fork, with the ddev-drupal-contrib add-on, and keeps its files out of git through `.git/info/exclude`. |
-| `drupal-contrib:install-site` skill | Installs Drupal, Drush and the modules a task needs in a ddev-drupal-contrib setup. |
-| `drupal-contrib:drupal-upstream-code` skill | Writes code for Drupal core or a contrib project in the form core uses: finds the core precedent for each construct, and lists the comment forms most often missed. |
-| `drupal-contrib:issue-queue` skill | Searches a project's issue queue for an existing issue, drafts a new one in Drupal's issue summary template, files it as a git.drupalcode.org work item, and relabels it after the merge. Requires `glab`. |
-| `drupal-contrib:issue-fork` skill | Iterates on a drupal.org issue in its public issue fork: reads the reviewers' remarks and pushes new commits on top of other contributors' work as a fast-forward. Requires `glab` and SSH push access to the fork. |
-| `drupal-contrib:issue-review` skill | Reviews the merge request of a drupal.org issue: checks each finding on the local site and drafts the review for the work item before any change is pushed. Requires `glab`. |
+| `drupal-contrib:ddev-drupal-contrib` skill | Sets up a local DDEV site for a contrib checkout. |
+| `drupal-contrib:install-site` skill | Installs Drupal on the local site. |
+| `drupal-contrib:drupal-upstream-code` skill | Writes code in the form Drupal core uses. |
+| `drupal-contrib:issue-queue` skill | Manages a project's issues on git.drupalcode.org. |
+| `drupal-contrib:issue-fork` skill | Contributes to a drupal.org issue through its issue fork. |
+| `drupal-contrib:issue-review` skill | Reviews the merge request of a drupal.org issue. |
 
-Requires DDEV.
+Requires DDEV, and `glab` for the issue skills.
 
 ### grilling
 
@@ -109,9 +109,9 @@ understanding.
 
 | Component | Purpose |
 |---|---|
-| `SessionStart` hook | Adds `rules/decisions.md`, the decision format, to the context on startup, `/clear`, and compaction. |
-| `grilling:grilling` skill | The interview method. Triggered by "grill" phrases and by requests to stress-test a plan. |
-| `grilling:grill-me` skill | User-invoked entry point, `/grilling:grill-me`, that starts a grilling session. |
+| `SessionStart` hook | Loads the decision format rule into the context. |
+| `grilling:grilling` skill | Interviews the developer about a plan. |
+| `grilling:grill-me` skill | Starts a grilling session on the developer's request. |
 
 Adapted from the MIT-licensed skills of Matt Pocock; see
 `plugins/grilling/LICENSE`.
@@ -126,12 +126,12 @@ worked out.
 
 | Component | Purpose |
 |---|---|
-| `drupal-security:validate-report` skill | Reproduces the reported vulnerability, scores its risk, and posts the assessment once the maintainer approves it. |
-| `drupal-security:fix-vulnerability` skill | Fixes the highest supported branch in the private fork and backports the fix, one merge request per branch. |
-| `drupal-security:draft-advisory` skill | Drafts the security advisory from the form link drupalbot posts. |
-| `drupal-security:move-to-public` skill | Moves a report that gets no advisory to the public issue queue and closes the work item. |
-| `reference/workflow.md` | The security issue process, from report to published advisory. |
-| `reference/risk-levels.md` | The risk score metrics, levels and conventions. |
+| `drupal-security:validate-report` skill | Validates a vulnerability report. |
+| `drupal-security:fix-vulnerability` skill | Fixes a validated vulnerability. |
+| `drupal-security:draft-advisory` skill | Drafts the security advisory. |
+| `drupal-security:move-to-public` skill | Moves a report that gets no advisory to the public issue queue. |
+| `reference/workflow.md` | The security issue process. |
+| `reference/risk-levels.md` | The risk scoring reference. |
 
 Requires `glab` authenticated for git.drupalcode.org. Works best with the
 drupal-contrib plugin installed: the skills use its local site and code skills
@@ -149,12 +149,12 @@ only on the developer's instruction and approval.
 
 | Component | Purpose |
 |---|---|
-| `ticket-worktrees:orchestrate` skill | User-invoked, `/ticket-worktrees:orchestrate [new T1234 ...]`: prunes merged worktrees, starts the ticket sessions, and reports each one's result. |
-| `scripts/create-worktree.sh` | Creates or fast-forwards a ticket's worktree and runs the main checkout's `scripts/worktree-setup.sh` in it. |
-| `scripts/launch-session.sh` | Starts the ticket session with the mode's model, effort, and prompt. |
-| `scripts/poll-sessions.sh` | Prints one line per ticket session that finishes or waits for the developer, for the Monitor tool. |
-| `scripts/prune-worktrees.sh` | Removes clean worktrees whose branch is merged into `origin/master`. |
-| `prompts/fix.md`, `prompts/new.md` | The session prompts for review fixes and greenfield tickets. |
+| `ticket-worktrees:orchestrate` skill | Runs the ticket sessions and reports their results. |
+| `scripts/create-worktree.sh` | Prepares a ticket's worktree. |
+| `scripts/launch-session.sh` | Starts a ticket session. |
+| `scripts/poll-sessions.sh` | Watches the ticket sessions. |
+| `scripts/prune-worktrees.sh` | Removes the worktrees of merged tickets. |
+| `prompts/fix.md`, `prompts/new.md` | The ticket session prompts. |
 
 Each repository adds `/.claude/worktrees/` to its `.gitignore`, and may
 provide an executable `scripts/worktree-setup.sh <main-checkout>` that prepares
@@ -173,7 +173,7 @@ Reference for writing documents an agent consumes: skills, `AGENTS.md`, and
 
 | Component | Purpose |
 |---|---|
-| `writing-for-agents:writing-for-agents` skill | Context pointers, the information hierarchy, completion criteria, leading words, and pruning. Triggered when creating or editing a skill, `AGENTS.md`, or `CLAUDE.md`. |
+| `writing-for-agents:writing-for-agents` skill | Guidance for writing documents an agent consumes. |
 
 Adapted from the MIT-licensed skills of Matt Pocock; see
 `plugins/writing-for-agents/LICENSE`.
@@ -188,8 +188,8 @@ final report. The plan and the skills it names carry the rules of the stack.
 
 | Component | Purpose |
 |---|---|
-| `plan-execution:orchestrate` skill | User-invoked, `/plan-execution:orchestrate <plan file> [phases]`: writes the briefs, checks the verification commands, runs the worker, review and commit loop per phase, and reports the commits and decisions. |
-| `briefs/worker-common.md`, `briefs/reviewer-common.md` | Templates for the worker and reviewer briefs that every sub-agent prompt points to. |
+| `plan-execution:orchestrate` skill | Executes the phases of a plan. |
+| `briefs/worker-common.md`, `briefs/reviewer-common.md` | Templates for the sub-agent briefs. |
 
 With the self-improvement-loop plugin installed, the decisions are recorded in
 its session note.

@@ -13,7 +13,8 @@ the documents the phase names, then the work committed so far
   them for every line.
 - Implement the phase with its tests, and run the phase's verification
   commands.
-- Hand over only when all of them pass, with: the changed files; a summary of
+- Hand over only when all of them pass and every background command you
+  started has finished or is stopped, with: the changed files; a summary of
   the command output; for each file and test, the precedent it follows (file
   and line); the decisions you took.
 - Leave the commit to a separate agent, after the review.
