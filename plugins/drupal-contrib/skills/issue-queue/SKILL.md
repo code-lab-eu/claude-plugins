@@ -19,10 +19,13 @@ reviews every draft before it is filed.
 
   A 301 to `https://git.drupalcode.org/project/<project>/-/work_items` means
   the queue is migrated to GitLab work items: every step below applies. A 200
-  means it is still on drupal.org: search it on that page, with
-  `?text=<term>&status=All`, draft the issue, and the developer files it. That
-  search returns nothing for a term joined by `.` or `-`, such as
-  `toolbar-tray`: search the bare word, `tray`.
+  means it is still on drupal.org: search it there, draft the issue, and the
+  developer files it. Search with WebFetch on
+  `https://www.drupal.org/project/issues/<project>?text=<term>&status=All`, and
+  retry a 503 or a timeout. Do not use `curl` for the search: it gets a
+  "Client Challenge" page with HTTP 200 and no results. That search returns
+  nothing for a term joined by `.` or `-`, such as `toolbar-tray`: search the
+  bare word, `tray`.
 - The issues of a deprecated core module are moved to the contributed project
   that continues it, such as `toolbar`: search that queue as well as `drupal`.
 - For a migrated queue, `glab` is logged in to git.drupalcode.org:
