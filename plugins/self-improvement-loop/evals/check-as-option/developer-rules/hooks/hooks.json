@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/developer-instructions.md\" \"${CLAUDE_PLUGIN_ROOT}/../../../../grilling/rules/decisions.md\""
+          }
+        ]
+      }
+    ]
+  }
+}

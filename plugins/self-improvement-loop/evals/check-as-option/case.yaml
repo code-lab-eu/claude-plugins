@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: check-as-option
+plugins: [../.., developer-rules]
+context:
+  scaffold_script: scaffold.sh
