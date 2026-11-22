@@ -1,33 +1,31 @@
 ---
 name: close
-description: Close the self-improvement loop by promoting findings from the session note into durable project rules, skills, docs, and checks. Use when the developer says to end or wrap up the session, or asks to run the self-improvement loop.
+description: Close the self-improvement loop by promoting findings from the session note into durable project rules, skills, and docs. Use when the developer says to end or wrap up the session, or asks to run the self-improvement loop.
 ---
 
 # Closing the self-improvement loop
 
 1. **Review** the full session note in `docs/notes/`.
 2. **Identify actionable findings** — only those that yield a tangible
-   improvement to future work: new or updated rules, skills, docs, checks, or
-   memory.
+   improvement to future work: new or updated skills, rules, docs, scripts,
+   automations, or memory.
 3. **Check each finding against the current text.** Read the file it would go
    into and the files that file refers to, and drop the finding when they
    already state it. A note entry can be outdated: work later in the session
    may have documented or fixed what it describes.
 4. **Vet each remaining finding with the developer before anything is applied**,
    one finding per message. The question quotes the correction or observation as
-   it was made and offers the plausible ways to encode it. The options differ in
-   the reading of what was meant or in the encoding of one reading, and each
-   sits in a home whose readers the finding's evidence covers: a finding seen in
-   one project goes into that project, not into a shared or global home, and one
-   developer's working preference does not become a rule for every contributor
-   to a shared repo. The options include the encoding a practitioner uses for
-   the finding's category, such as a test for a regression that no check
-   caught. An option that edits an existing skill quotes that skill's
-   `description` and names the task during which the finding arose. Where only
-   one encoding fits, it offers that one. When a decision format is loaded, such
-   as the grilling plugin's `decisions.md`, the question uses it: the quoted
-   observation opens the context and the encodings are the options. The
-   developer picks one or provides guidance.
+   it was made and offers the plausible ways to encode it, each a different
+   reading of what was meant, and each in a home whose readers the finding's
+   evidence covers: a finding seen in one project goes into that project, not
+   into a shared or global home, and one developer's working preference does not
+   become a rule for every contributor to a shared repo. An option that edits an
+   existing skill quotes that skill's `description` and names the task during
+   which the finding arose. Where only one reading exists, it offers that one.
+   When a decision format is loaded, such as the grilling plugin's
+   `decisions.md`, the question uses it: the quoted observation opens the
+   context and the encodings are the options. The developer picks one or
+   provides guidance.
 5. **Apply the encodings the developer chose.** The developer reviews the
    resulting diff and stages what they approve, **before committing**.
 
@@ -65,12 +63,8 @@ a new file. Projects have up to four kinds:
   symlink); verify a new skill is reachable from there before trusting it to be
   found.
 - **Docs** — project facts and decisions (guides, ADRs).
-- **Checks** — tests, CI jobs, hooks, linters, and scripts that catch a
-  failure mechanically. A check enforces on every run what an instruction only
-  asks for, so when a check can catch the finding, prefer it over an
-  instruction. When the check needs functionality the project lacks, such as a
-  test framework, the home is an item in the project's backlog that specifies
-  the check.
+- **Scripts and automations** — tests, CI jobs, hooks, linters, and scripts.
+  Prefer one over an instruction when it can catch or do the work.
 
 If the project has no home of the required kind, ask the developer where the
 finding should go instead of choosing a location.

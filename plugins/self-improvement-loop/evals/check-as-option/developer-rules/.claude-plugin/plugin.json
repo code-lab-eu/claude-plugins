@@ -1,5 +1,0 @@
-{
-  "name": "developer-rules",
-  "version": "1.0.0",
-  "description": "Eval fixture: loads the developer's instructions and the grilling plugin's decision rule at session start. A case can load only plugins inside the plugin under test, and an eval run loads no CLAUDE.md."
-}

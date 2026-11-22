@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "self-improvement-loop",
-      "description": "Promotes what each session learns into the project's agent instructions and checks.",
+      "description": "Promotes what each session learns into the project's agent instructions.",
       "source": "./plugins/self-improvement-loop"
     },
     {

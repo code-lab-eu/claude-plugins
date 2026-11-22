@@ -68,7 +68,7 @@ claude plugin update <plugin>@code-lab --scope <user|project|local>
 
 Records what was learned during a session in an ephemeral note under
 `docs/notes/`, and promotes the actionable findings into the project's rules,
-skills, docs, and checks when the session ends.
+skills, and docs when the session ends.
 
 | Component | Purpose |
 |---|---|
@@ -81,13 +81,6 @@ Session notes are per developer and are never committed. The rule adds
 `docs/notes/` to `.git/info/exclude` when the directory is not already ignored.
 
 Requires `jq`.
-
-The eval cases under `evals/` create their project with a scaffold script, and
-the session-note updates need edit permission:
-
-```
-claude plugin eval plugins/self-improvement-loop --scaffold --allow-tools Edit Write
-```
 
 ### drupal-contrib
 
