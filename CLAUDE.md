@@ -10,9 +10,11 @@ A plugin marketplace: `.claude-plugin/marketplace.json` lists the plugins under
 - Bump `version` in a plugin's `.claude-plugin/plugin.json` once per
   completed piece of work, such as a pull request or a finished task on
   `master`, not per commit; installed copies only update on a new version.
-- Keep `README.md` in step with each plugin's components (hooks, skills,
-  rules): one short sentence of purpose per component; the details live in
-  the component.
+- The descriptions in `marketplace.json`, `plugin.json` and skill frontmatter,
+  and `README.md`, state the purpose of each plugin and component, one short
+  sentence per component. Change them only when a component is added or
+  removed or its purpose changes; details, such as what a skill's body
+  covers, live in the component.
 - Future work goes in `docs/roadmap.md`.
 
 ## Correct over easy

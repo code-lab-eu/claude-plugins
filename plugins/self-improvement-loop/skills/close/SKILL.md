@@ -49,7 +49,7 @@ kinds, choose the file by when it is read, not by its subject. A skill is read
 only when its `description` matches the task at hand, so an existing skill is a
 home only when its description matches the task during which the finding arose;
 a shared tool or topic is not a match. When no existing file passes, the home is
-a new file. Projects have up to three kinds:
+a new file. Projects have up to four kinds:
 
 - **Rules** — agent conventions and working practices that are always in
   context (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by
@@ -63,6 +63,8 @@ a new file. Projects have up to three kinds:
   symlink); verify a new skill is reachable from there before trusting it to be
   found.
 - **Docs** — project facts and decisions (guides, ADRs).
+- **Scripts and automations** — tests, CI jobs, hooks, linters, and scripts.
+  Prefer one over an instruction when it can catch or do the work.
 
 If the project has no home of the required kind, ask the developer where the
 finding should go instead of choosing a location.
