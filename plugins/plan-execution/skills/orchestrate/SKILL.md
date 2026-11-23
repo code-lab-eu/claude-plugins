@@ -30,13 +30,13 @@ taken by the orchestrator instead: the option with a precedent, or else the best
 practice. Record it with its reason in the session note under `docs/notes/`, or
 in `<scratchpad>/briefs/decisions.md` when the session keeps none, and go on.
 Workers decide in the same way and list their decisions in the handover; record
-those too.
+those too. In merge request review, also post each one as a decision thread.
 
 Hard-to-reverse and outward-facing actions, such as a push, a release, deleting
 data or a message to anyone, are not decisions the run takes: they wait for the
 developer, and the run goes on with the work that does not depend on them. The
-one exception is the pushes and the merge request that merge request review
-instructs.
+one exception is the pushes, the merge request and the decision threads that
+merge request review instructs.
 
 ## 1. Write the briefs
 
