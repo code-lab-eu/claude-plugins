@@ -95,7 +95,7 @@ core uses.
 | `drupal-contrib:install-site` skill | Installs Drupal on the local site. |
 | `drupal-contrib:drupal-upstream-code` skill | Writes code in the form Drupal core uses. |
 | `drupal-contrib:issue-queue` skill | Manages a project's issues on git.drupalcode.org. |
-| `drupal-contrib:issue-fork` skill | Contributes to a drupal.org issue through its issue fork. |
+| `drupal-contrib:issue-development` skill | Develops a change for a drupal.org issue in its issue fork. |
 | `drupal-contrib:issue-review` skill | Reviews the merge request of a drupal.org issue. |
 
 Requires DDEV, and `glab` for the issue skills.

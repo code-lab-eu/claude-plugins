@@ -41,7 +41,7 @@
 
 ## drupal-contrib
 
-- **CI failure summary.** Give a script or an `issue-fork` step that lists the
-  failed jobs of a merge request's pipeline on git.drupalcode.org and extracts
-  the PHPStan errors and PHPUnit failures from each job's trace, without the
-  ANSI colour codes.
+- **CI failure summary.** Give a script or an `issue-development` step that
+  lists the failed jobs of a merge request's pipeline on git.drupalcode.org and
+  extracts the PHPStan errors and PHPUnit failures from each job's trace,
+  without the ANSI colour codes.

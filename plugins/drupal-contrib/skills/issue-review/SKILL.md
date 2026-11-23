@@ -10,8 +10,8 @@ on the local site.
 
 ## Before you start
 
-- The checkout is on the merge request's branch: steps 1 and 2 of
-  `drupal-contrib:issue-fork` read the issue and fetch the branch.
+- The checkout is on the merge request's branch: steps 1 and 3 of
+  `drupal-contrib:issue-development` read the issue and fetch the branch.
 - The local site from `drupal-contrib:ddev-drupal-contrib` runs the project's
   tests.
 
@@ -33,8 +33,8 @@ on the local site.
 
    The step is done when every finding is confirmed by a test or a command.
    Delete `web/scratch/` once the review is posted.
-3. Draft the review, following [Comments](../issue-fork/SKILL.md#comments) in
-   issue-fork:
+3. Draft the review, following
+   [Comments](../issue-development/SKILL.md#comments) in issue-development:
    - Whether the merge request does what the issue summary asks, and any side
      effects.
    - Each problem with `path:line`, steps to reproduce and the result, and how
@@ -47,4 +47,4 @@ on the local site.
    (`state::needsWork` on a work item). The developer sets the status; on a work
    item it may need maintainer rights.
 5. Once the review is posted and the developer asks for the changes, make them
-   with `drupal-contrib:issue-fork`.
+   with `drupal-contrib:issue-development`.
