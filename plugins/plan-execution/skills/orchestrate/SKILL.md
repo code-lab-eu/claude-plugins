@@ -16,8 +16,12 @@ sub-agents, commits or decisions, this skill applies.
 
 Before the run, check that the plan gives each phase its scope and verification
 commands, and gives the branch and the commit message form: committing each
-approved phase in that form is the developer's instruction for this run. Ask the
-developer for what is missing; from then on, the run does not stop for them.
+approved phase in that form is the developer's instruction for this run. The
+plan's `Review:` entry selects the review mode: without one, the run pushes
+nothing and the developer reviews the branch locally; with
+`Review: merge request`, follow `${CLAUDE_SKILL_DIR}/merge-request-review.md` as
+well. Ask the developer for what is missing; from then on, the run does not stop
+for them.
 
 ## Decisions
 
@@ -30,7 +34,9 @@ those too.
 
 Hard-to-reverse and outward-facing actions, such as a push, a release, deleting
 data or a message to anyone, are not decisions the run takes: they wait for the
-developer, and the run goes on with the work that does not depend on them.
+developer, and the run goes on with the work that does not depend on them. The
+one exception is the pushes and the merge request that merge request review
+instructs.
 
 ## 1. Write the briefs
 
@@ -74,7 +80,9 @@ brings back its whole context, and a resumed agent's commit was blocked twice.
    checks with `git status` that nothing of the phase is left unstaged and
    nothing else is staged, and commits in the plan's message form with plain
    `git commit -m '<summary>' -m '<body>'`.
-5. Start the next phase.
+5. In merge request review, push and wait for the pipeline; a red pipeline
+   starts a pipeline round of the phase.
+6. Start the next phase.
 
 After each review, before the next sub-agent starts:
 
@@ -91,5 +99,6 @@ After each review, before the next sub-agent starts:
 ## 4. Report
 
 When every phase is committed, report to the developer: the commits, the results
-of the verification commands, each decision taken with its reason, and the
-actions that wait for the developer.
+of the verification commands, in merge request review the merge request's URL
+and the pipeline result of each push, each decision taken with its reason, and
+the actions that wait for the developer.
