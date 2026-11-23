@@ -8,19 +8,19 @@ allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/prune-worktrees.sh) Bash(${CLAUD
 
 # Orchestrate ticket sessions
 
-This session is the orchestrator; it starts one background session per
-ticket, in the ticket's worktree. Run every command from the main checkout of
-the repository. Each script exits non-zero with a one-line reason when it
-refuses; report that reason to the developer and go on with the next ticket.
-Do not change code yourself; the ticket sessions do.
+This session is the orchestrator; it starts one background session per ticket,
+in the ticket's worktree. Run every command from the main checkout of the
+repository. Each script exits non-zero with a one-line reason when it refuses;
+report that reason to the developer and go on with the next ticket. Do not
+change code yourself; the ticket sessions do.
 
 Arguments: `$ARGUMENTS`
 
 ## 1. Remove merged worktrees
 
-Run `${CLAUDE_SKILL_DIR}/scripts/prune-worktrees.sh`. Report the `removed`
-lines in one sentence; mention a `kept` line only when its reason is not "not
-merged into origin/master" or "uncommitted changes".
+Run `${CLAUDE_SKILL_DIR}/scripts/prune-worktrees.sh`. Report the `removed` lines
+in one sentence; mention a `kept` line only when its reason is not "not merged
+into origin/master" or "uncommitted changes".
 
 ## 2. Collect the tickets
 
@@ -61,23 +61,23 @@ Start the Monitor tool on
 ${CLAUDE_SKILL_DIR}/scripts/poll-sessions.sh <id> <id> ...
 ```
 
-with a timeout of 30 minutes. It prints `<id> <name> <state>` for each
-change to `blocked`, `done`, `failed` or `stopped`, and `<id> - missing` for a
-session that disappeared. When the Monitor expires, start it again with only
-the ids that have not reached `done`, `failed`, `stopped` or `missing`.
+with a timeout of 30 minutes. It prints `<id> <name> <state>` for each change to
+`blocked`, `done`, `failed` or `stopped`, and `<id> - missing` for a session
+that disappeared. When the Monitor expires, start it again with only the ids
+that have not reached `done`, `failed`, `stopped` or `missing`.
 
 ## 5. Handle each event
 
 - `done`: read the session's report,
-  `.claude/worktrees/<ticket>/.ticket-report.md` of the main checkout; only
-  when that file is missing, read the end of `claude logs <id>` instead. For
-  a review fix, run `gh pr view <pr> --json
-  headRefOid,labels` and confirm that the head commit differs from the one in
-  the table and that the labels include `gilfoyle:review-requested`. Report
-  the result, and any check that failed, to the developer. For a greenfield
-  ticket, report the summary and the proposed commit message. The developer
-  commits, either by telling the session to (`claude attach <id>`; each commit
-  and push asks the developer for approval) or in `.claude/worktrees/<ticket>`.
+  `.claude/worktrees/<ticket>/.ticket-report.md` of the main checkout; only when
+  that file is missing, read the end of `claude logs <id>` instead. For a review
+  fix, run `gh pr view <pr> --json headRefOid,labels` and confirm that the head
+  commit differs from the one in the table and that the labels include
+  `gilfoyle:review-requested`. Report the result, and any check that failed, to
+  the developer. For a greenfield ticket, report the summary and the proposed
+  commit message. The developer commits, either by telling the session to
+  (`claude attach <id>`; each commit and push asks the developer for approval)
+  or in `.claude/worktrees/<ticket>`.
 - `blocked`: tell the developer the session waits for them:
   `claude attach <id>`.
 - `failed`, `stopped` or `missing`: report it with the end of

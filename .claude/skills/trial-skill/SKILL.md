@@ -14,26 +14,26 @@ clean: it sees the skill and the task, never the evaluation.
 1. Agree the target with the developer: the task, and the project the worker
    runs in. Clear what an earlier run left in that project, such as untracked
    files and its session note, so the run starts clean.
-2. Give the developer the command that starts the worker in the target
-   project, with a `--plugin-dir` for each plugin of this working tree that
-   the skill uses, and the skill invocation:
+2. Give the developer the command that starts the worker in the target project,
+   with a `--plugin-dir` for each plugin of this working tree that the skill
+   uses, and the skill invocation:
 
    ```sh
    cd <project> && claude --plugin-dir <repo>/plugins/<plugin> --plugin-dir ...
    ```
 
    An installed copy only updates on a new version; `--plugin-dir` loads the
-   working tree. A running worker keeps the skill text it started with, so
-   start it after the last edit to the skill, or have the developer run
+   working tree. A running worker keeps the skill text it started with, so start
+   it after the last edit to the skill, or have the developer run
    `/reload-skills` in it. The developer answers the worker's questions and
    permission prompts.
 3. Find the worker with `ListAgents` and send it the task with `SendMessage`,
-   with `notify_when_idle`: the skill, its target, and a request to report
-   back by `SendMessage` when it is done or blocked, with what did not fit the
-   skill. The message holds the task only, never the evaluation.
+   with `notify_when_idle`: the skill, its target, and a request to report back
+   by `SendMessage` when it is done or blocked, with what did not fit the skill.
+   The message holds the task only, never the evaluation.
 4. When the worker reports, or the developer says the run is done, read the
-   worker's transcript, the newest `.jsonl` file in `~/.claude/projects/<project
-   path, with each character other than a letter or digit replaced by ->/`,
+   worker's transcript, the newest `.jsonl` file in
+   `~/.claude/projects/<project path, with each character other than a letter or digit replaced by ->/`,
    and the files the run produced:
 
    ```sh

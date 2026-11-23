@@ -1,7 +1,7 @@
 # Rule: presenting decisions
 
-Apply this whenever a decision is put to the developer, in a grilling session
-or not.
+Apply this whenever a decision is put to the developer, in a grilling session or
+not.
 
 ## Before presenting options
 

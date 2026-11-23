@@ -5,8 +5,8 @@ description: Installs Drupal, with Drush, in a contrib checkout that has a ddev-
 
 # Install the site in a ddev-drupal-contrib checkout
 
-The checkout has a ddev-drupal-contrib setup: `.ddev/config.contrib.yaml`
-exists and `ddev poser` has run. Without one, set it up first with
+The checkout has a ddev-drupal-contrib setup: `.ddev/config.contrib.yaml` exists
+and `ddev poser` has run. Without one, set it up first with
 `drupal-contrib:ddev-drupal-contrib`. As there, nothing the project tracks
 changes in the end.
 
@@ -36,8 +36,8 @@ changes in the end.
    - `git status --porcelain` lists no file that it did not list before the
      install.
 
-Done when all three checks pass. `ddev drush user:login` prints a one-time
-login link for the browser, and `ddev describe` the site's URL.
+Done when all three checks pass. `ddev drush user:login` prints a one-time login
+link for the browser, and `ddev describe` the site's URL.
 
 ## Add packages
 
@@ -57,13 +57,13 @@ The ddev-drupal-contrib README puts such packages in the project's
 `composer.json`, so `composer.json` needs them only while `ddev poser` runs.
 `--no-plugins` keeps Composer from failing on the plugins in `vendor/`, which
 the project's `composer.json` does not allow. With `--no-update`, a package
-without a version constraint can resolve to a development release: give each
-one the constraint of its latest stable release.
+without a version constraint can resolve to a development release: give each one
+the constraint of its latest stable release.
 
 Each `ddev poser` installs only what `composer.json` lists at that moment, and
-removes every package added before. Name Drush and every package added
-earlier in each `ddev composer require`.
+removes every package added before. Name Drush and every package added earlier
+in each `ddev composer require`.
 
 Verify with `git status --porcelain`, which lists no file that it did not list
-before, and `ddev drush pm:list --status=enabled --filter=<module>`, which
-lists each module.
+before, and `ddev drush pm:list --status=enabled --filter=<module>`, which lists
+each module.

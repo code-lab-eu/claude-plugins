@@ -5,16 +5,17 @@ A plugin marketplace: `.claude-plugin/marketplace.json` lists the plugins under
 
 ## Conventions
 
-- Wrap Markdown prose at 80 columns. When editing a paragraph, rewrap it so
-  every line matches the wrapping of its neighbours.
-- Bump `version` in a plugin's `.claude-plugin/plugin.json` once per
-  completed piece of work, such as a pull request or a finished task on
-  `master`, not per commit; installed copies only update on a new version.
+- Markdown prose is rewrapped by the pre-commit hook (rumdl, width in
+  `.rumdl.toml`). Run `prek install` once per clone; it needs `rumdl` and `prek`
+  installed.
+- Bump `version` in a plugin's `.claude-plugin/plugin.json` once per completed
+  piece of work, such as a pull request or a finished task on `master`, not per
+  commit; installed copies only update on a new version.
 - The descriptions in `marketplace.json`, `plugin.json` and skill frontmatter,
   and `README.md`, state the purpose of each plugin and component, one short
-  sentence per component. Change them only when a component is added or
-  removed or its purpose changes; details, such as what a skill's body
-  covers, live in the component.
+  sentence per component. Change them only when a component is added or removed
+  or its purpose changes; details, such as what a skill's body covers, live in
+  the component.
 - Future work goes in `docs/roadmap.md`.
 
 ## Correct over easy

@@ -16,11 +16,11 @@ These notes are **ephemeral**: `docs/notes/` is excluded from version control
 and the developer purges it regularly. If `git check-ignore docs/notes` reports
 that the directory is not ignored, add `docs/notes/` to `.git/info/exclude`; do
 not edit `.gitignore` for this: that file is tracked and shared with the whole
-team, and the session note is a personal practice. Treat a note as scratch
-input for the loop, never as a source of truth. **Never link to or cite a
-session note from durable documentation** (guides, ADRs, READMEs, skills,
-rules, code comments) — anything worth keeping must be promoted into its proper
-home when the loop closes (§4).
+team, and the session note is a personal practice. Treat a note as scratch input
+for the loop, never as a source of truth.
+**Never link to or cite a session note from durable documentation** (guides,
+ADRs, READMEs, skills, rules, code comments) — anything worth keeping must be
+promoted into its proper home when the loop closes (§4).
 
 ## 2. During the session — record noteworthy facts
 
@@ -32,8 +32,8 @@ Keep entries concise and evidence-based. Do not record private internal
 deliberation or reconstruct unspoken intermediate thoughts.
 
 - **Lessons learned** — anything now understood that wasn't before.
-- **Developer corrections** — what the developer pushed back on, and the rule
-  it implies. Cross-check existing memory and rules; flag conflicts.
+- **Developer corrections** — what the developer pushed back on, and the rule it
+  implies. Cross-check existing memory and rules; flag conflicts.
 - **Non-trivial discovery** — the finding, its supporting file or source, and
   any commands or results needed to reproduce or verify it.
 - **Skill gaps** — a task that should have a skill/rule but doesn't.
@@ -71,9 +71,9 @@ dialog. Do not skip or defer the update because plan mode is active.
 
 ## 4. Closing the loop
 
-When the developer says to **end** or **wrap up** the session, or asks to **run
-the self-improvement loop**, invoke the `self-improvement-loop:close` skill and
-follow it.
+When the developer says to **end** or **wrap up** the session, or asks to
+**run the self-improvement loop**, invoke the `self-improvement-loop:close`
+skill and follow it.
 
 ## Session note template
 

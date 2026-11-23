@@ -14,10 +14,10 @@ the entry's command and scope, and update the count and the version.
 - Standard: none; the order of documentation sections in
   https://project.pages.drupalcode.org/coding_standards/php/documentation/#order-of-documentation-sections
   does not list `@internal`.
-- Count: 20 to 10, core 11.4, method docblocks (functions in a class,
-  interface, trait or enum) that carry both tags, test code excluded; 5 of the
-  10 are in `core/lib/Drupal/Core/Database/StatementIteratorTrait.php`.
-  Functions outside a class have no majority (2 to 3).
+- Count: 20 to 10, core 11.4, method docblocks (functions in a class, interface,
+  trait or enum) that carry both tags, test code excluded; 5 of the 10 are in
+  `core/lib/Drupal/Core/Database/StatementIteratorTrait.php`. Functions outside
+  a class have no majority (2 to 3).
 - Command: PHP tokenizer probe over the docblocks directly before a function;
   the probe was not kept.
 
@@ -26,8 +26,7 @@ the entry's command and scope, and update the count and the version.
 - Form: `[X::class, 'method']`, as in
   `core/modules/layout_builder/src/Section.php:388` and
   `core/modules/layout_builder/src/Entity/LayoutBuilderEntityViewDisplayStorage.php:38`.
-- Standard: none; the API documentation standards do not cover callable
-  syntax.
+- Standard: none; the API documentation standards do not cover callable syntax.
 - Count: 10 to 9 string `'\X::method'` and 1 first-class callable
   (`core/modules/package_manager/src/ComposerInspector.php:330`), core 11.4,
   test code excluded.

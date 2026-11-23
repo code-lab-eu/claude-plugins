@@ -14,9 +14,9 @@ Two choices, trading the two loads:
   agent discovery, never removes the human's. The description is the skill's
   top-level context pointer, forced to stay loaded at all times: permanent
   context load in exchange for discoverability. A model-invoked skill whose
-  content is all reference is also one home for shared reference: another
-  skill can invoke it, so reference needed by several skills lives in one
-  place. Mechanics: omit `disable-model-invocation`, and write a model-facing
+  content is all reference is also one home for shared reference: another skill
+  can invoke it, so reference needed by several skills lives in one place.
+  Mechanics: omit `disable-model-invocation`, and write a model-facing
   description carrying the trigger branches (the pointer-writing rules in
   `SKILL.md` apply in full).
 - A **user-invoked** skill strips the description from the agent's reach: only

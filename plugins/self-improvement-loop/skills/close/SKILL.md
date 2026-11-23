@@ -11,8 +11,8 @@ description: Close the self-improvement loop by promoting findings from the sess
    automations, or memory.
 3. **Check each finding against the current text.** Read the file it would go
    into and the files that file refers to, and drop the finding when they
-   already state it. A note entry can be outdated: work later in the session
-   may have documented or fixed what it describes.
+   already state it. A note entry can be outdated: work later in the session may
+   have documented or fixed what it describes.
 4. **Vet each remaining finding with the developer before anything is applied**,
    one finding per message. The question quotes the correction or observation as
    it was made and offers the plausible ways to encode it, each a different
@@ -51,17 +51,15 @@ home only when its description matches the task during which the finding arose;
 a shared tool or topic is not a match. When no existing file passes, the home is
 a new file. Projects have up to four kinds:
 
-- **Rules** — agent conventions and working practices that are always in
-  context (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by
-  them). Content that applies broadly, with no single discrete trigger, belongs
-  here.
-- **Skills** — procedures keyed to a discrete, nameable agent action (creating
-  a commit, working on CI/deploy). Prefer a skill over a rule whenever the
-  content only matters at one identifiable point in a session — it avoids
-  paying context on every turn for a concern that applies rarely. The harness
-  only discovers project skills under `.claude/skills/` (directly or through a
-  symlink); verify a new skill is reachable from there before trusting it to be
-  found.
+- **Rules** — agent conventions and working practices that are always in context
+  (for example `CLAUDE.md`, `AGENTS.md`, or rule files imported by them).
+  Content that applies broadly, with no single discrete trigger, belongs here.
+- **Skills** — procedures keyed to a discrete, nameable agent action (creating a
+  commit, working on CI/deploy). Prefer a skill over a rule whenever the content
+  only matters at one identifiable point in a session — it avoids paying context
+  on every turn for a concern that applies rarely. The harness only discovers
+  project skills under `.claude/skills/` (directly or through a symlink); verify
+  a new skill is reachable from there before trusting it to be found.
 - **Docs** — project facts and decisions (guides, ADRs).
 - **Scripts and automations** — tests, CI jobs, hooks, linters, and scripts.
   Prefer one over an instruction when it can catch or do the work.

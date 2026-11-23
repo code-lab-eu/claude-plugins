@@ -2,8 +2,8 @@
 
 How a vulnerability reported in a drupal.org contrib project goes from the
 private report to a published security advisory (SA), from the maintainer's
-side. Drupal core follows its own release procedures, which this plugin does
-not cover.
+side. Drupal core follows its own release procedures, which this plugin does not
+cover.
 
 Volunteers report vulnerabilities through a private process; the Security Team
 manages the reports and guides the maintainer through the fix, the advisory and
@@ -27,9 +27,9 @@ co-maintainers.
 - Code goes only to the issue's private fork on git.drupalcode.org. The
   canonical project repository and its public merge requests stay untouched
   until the security team gives the go-ahead.
-- Commit messages are neutral: they describe the change without naming
-  security, a vulnerability or an exploit, as in "Fixed sanitization of output
-  in overview table."
+- Commit messages are neutral: they describe the change without naming security,
+  a vulnerability or an exploit, as in "Fixed sanitization of output in overview
+  table."
 - Tests are committed with the fix, so that the vulnerability does not come
   back. The security team's guidance,
   [Contacted by the security team, now what?](https://www.drupal.org/drupal-security-team/contacted-by-the-security-team-now-what),
@@ -42,10 +42,10 @@ co-maintainers.
 
 drupal.org's
 [AI policy](https://www.drupal.org/docs/develop/issues/issue-procedures-and-etiquette/policy-on-the-use-of-ai-when-contributing-to-drupal)
-requires a human-written statement at the end of every comment and merge
-request description that AI helped write. End each one drafted for the
-maintainer with this placeholder, and post it only after the maintainer has
-replaced it with their own words:
+requires a human-written statement at the end of every comment and merge request
+description that AI helped write. End each one drafted for the maintainer with
+this placeholder, and post it only after the maintainer has replaced it with
+their own words:
 
 ```
 AI disclosure: <write what AI was used for>
@@ -53,9 +53,9 @@ AI disclosure: <write what AI was used for>
 
 ## Environment
 
-The skills that work on code run in a clone of the work item's private fork
-that has the fork as its only git remote, so that nothing can be pushed to the
-public project or its issue forks by mistake. The developer makes the clone, as
+The skills that work on code run in a clone of the work item's private fork that
+has the fork as its only git remote, so that nothing can be pushed to the public
+project or its issue forks by mistake. The developer makes the clone, as
 drupalbot's first comment in the work item instructs:
 
 ```
@@ -79,17 +79,17 @@ git ls-remote git@git.drupal.org:project/<machine_name>.git refs/heads/<branch>
 git rev-parse origin/<branch>
 ```
 
-When they differ, fast-forward the fork's branch to the public one, and tell
-the developer. The push adds only public commits and cannot lose any, so it
-needs no approval:
+When they differ, fast-forward the fork's branch to the public one, and tell the
+developer. The push adds only public commits and cannot lose any, so it needs no
+approval:
 
 ```
 git fetch git@git.drupal.org:project/<machine_name>.git <branch>
 git push origin FETCH_HEAD:refs/heads/<branch>
 ```
 
-When the push is refused, the fork's branch has commits of its own: stop and
-ask the developer.
+When the push is refused, the fork's branch has commits of its own: stop and ask
+the developer.
 
 Tests run with the project's own tooling. When the clone has no local site yet
 and the drupal-contrib plugin is installed, set one up with
@@ -115,20 +115,20 @@ agreement in the work item otherwise.
 
 ## Stages
 
-1. **Report.** The reporter files a confidential issue titled with the
-   project's machine name, such as `token: access bypass in ...`. Automation
-   creates a private fork of the project in the `security` group, such as
+1. **Report.** The reporter files a confidential issue titled with the project's
+   machine name, such as `token: access bypass in ...`. Automation creates a
+   private fork of the project in the `security` group, such as
    `security/185873-scheduler-security` forked from `project/scheduler`, with
    the report as its work item 1, adds labels and posts instructions.
    Maintainers are granted access with a comment line
    `/access @gitlab-username`.
 2. **Validate.** The maintainer confirms the vulnerability, asks the reporter
-   for details when needed, and checks the project for similar
-   vulnerabilities. Progress on the code must show within **2 weeks** of first
-   contact, or the team may mark the project unsupported and publish an SA
-   telling users to uninstall it.
-3. **Fix.** One branch and merge request per vulnerable supported branch, all
-   in the private fork, worked on in the clone described under
+   for details when needed, and checks the project for similar vulnerabilities.
+   Progress on the code must show within **2 weeks** of first contact, or the
+   team may mark the project unsupported and publish an SA telling users to
+   uninstall it.
+3. **Fix.** One branch and merge request per vulnerable supported branch, all in
+   the private fork, worked on in the clone described under
    [Environment](#environment):
    ```
    git checkout -b 2.x-security origin/2.x
@@ -137,29 +137,29 @@ agreement in the work item otherwise.
    Each merge request targets a branch of the private fork, never the public
    project, and references the work item. The security team reviews it.
 4. **Advisory.** The comment `/label ~"Security advisory::needed"` makes
-   drupalbot post a link to a prefilled SA draft form. Saving the draft adds
-   the `Security advisory::drafted` label. The maintainer posts the SA link in
-   the work item; the team reviews it and asks the maintainer to pick a release
+   drupalbot post a link to a prefilled SA draft form. Saving the draft adds the
+   `Security advisory::drafted` label. The maintainer posts the SA link in the
+   work item; the team reviews it and asks the maintainer to pick a release
    Wednesday.
-5. **Release.** On the agreed Tuesday after 17:00 UTC, or within 24 hours
-   before the window, the maintainer downloads each merge request as a plain
-   diff (append `.diff` to its URL), applies it with `git apply` to a clone of
-   the canonical repository, commits with a neutral message, pushes, tags, and
-   creates a release node with release type "Security update". The release
-   node stays unpublished. The maintainer links the release in the SA and
-   comments in the work item that the release is done.
-6. **Publish.** The security team publishes the releases and the SA on
-   Wednesday between 16:00 and 22:00 UTC, assigns the CVE, and fills in
-   "Fixed in" and "Affected versions". A missed window is rescheduled in the
-   work item; nothing is pushed until then.
+5. **Release.** On the agreed Tuesday after 17:00 UTC, or within 24 hours before
+   the window, the maintainer downloads each merge request as a plain diff
+   (append `.diff` to its URL), applies it with `git apply` to a clone of the
+   canonical repository, commits with a neutral message, pushes, tags, and
+   creates a release node with release type "Security update". The release node
+   stays unpublished. The maintainer links the release in the SA and comments in
+   the work item that the release is done.
+6. **Publish.** The security team publishes the releases and the SA on Wednesday
+   between 16:00 and 22:00 UTC, assigns the CVE, and fills in "Fixed in" and
+   "Affected versions". A missed window is rescheduled in the work item; nothing
+   is pushed until then.
 
 A security release is a normal release with the next version number; nothing in
 the version marks it as a security release.
 
 ## Finding the work items
 
-A maintainer works on the work items they were granted access to. List the
-open ones with:
+A maintainer works on the work items they were granted access to. List the open
+ones with:
 
 ```
 glab api --hostname git.drupalcode.org "groups/security/issues?state=opened"

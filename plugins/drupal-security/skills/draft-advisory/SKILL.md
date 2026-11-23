@@ -27,8 +27,7 @@ https://www.drupal.org/drupal-security-team/security-team-procedures/drafting-a-
    - **Reported by**, **Fixed by:** drupal.org usernames.
 3. The maintainer fills the form from that text and saves the draft. When the
    chrome-devtools-mcp plugin is installed, offer to fill the form in the
-   maintainer's logged-in browser instead, and leave saving to the
-   maintainer.
+   maintainer's logged-in browser instead, and leave saving to the maintainer.
 4. Post the advisory link in the work item.
 
 Done when the advisory link is in the work item.

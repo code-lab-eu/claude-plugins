@@ -1,7 +1,7 @@
 # Security risk score
 
-Drupal scores each vulnerability with the NIST Common Misuse Scoring System:
-six metrics, summed to a score from 0 to 25.
+Drupal scores each vulnerability with the NIST Common Misuse Scoring System: six
+metrics, summed to a score from 0 to 25.
 
 Sources, checked 2026-10-31:
 
@@ -48,8 +48,8 @@ Sources, checked 2026-10-31:
   SA.
 - XSS and some improper-authentication issues use `CI:Some` and `II:Some`.
 - Remote code execution uses `CI:All` and `II:All`.
-- Steps to reproduce in the confidential issue are `E:Theoretical`. `E:Proof`
-  is only for a publicly disclosed proof of concept.
+- Steps to reproduce in the confidential issue are `E:Theoretical`. `E:Proof` is
+  only for a publicly disclosed proof of concept.
 - `TD:Default` covers configuration changes unrelated to permissions.
 
 ## Notation

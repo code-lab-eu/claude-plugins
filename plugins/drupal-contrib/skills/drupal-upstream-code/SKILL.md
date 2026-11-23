@@ -13,25 +13,24 @@ own sites, does not apply here.
 ## Find the precedent
 
 Everything you write takes the form core uses most. Code idioms, designs,
-comments, docblocks, tags, labels, messages, terms and spelling (US English)
-are examples, not the full list. For each, look up the problem in
+comments, docblocks, tags, labels, messages, terms and spelling (US English) are
+examples, not the full list. For each, look up the problem in
 [core-forms.md](core-forms.md) first, and use a listed form as it is, without
 recounting it, unless the core version in use is higher than the entry's: then
-recount it with the entry's command and scope, and update its count and
-version. For a problem not listed, check the written standards first. Only
-when they are silent, find how core (`web/core` in a ddev-drupal-contrib site)
-solves the same problem, count the forms it uses, copy the one in the
-majority, and add an entry to `core-forms.md`. Core 11.4 declares 9565 methods
-`protected` and 485 `private`: `private` exists in core, but it is the
-minority and not core's form, so methods and properties are `protected`. Start
-from the problem, not from a construct already chosen: a form found once, or
-only in `@internal` or test code, is not core practice. Report the precedent
-(file and line) with the change. When core has no precedent, ask the
-developer.
+recount it with the entry's command and scope, and update its count and version.
+For a problem not listed, check the written standards first. Only when they are
+silent, find how core (`web/core` in a ddev-drupal-contrib site) solves the same
+problem, count the forms it uses, copy the one in the majority, and add an entry
+to `core-forms.md`. Core 11.4 declares 9565 methods `protected` and 485
+`private`: `private` exists in core, but it is the minority and not core's form,
+so methods and properties are `protected`. Start from the problem, not from a
+construct already chosen: a form found once, or only in `@internal` or test
+code, is not core practice. Report the precedent (file and line) with the
+change. When core has no precedent, ask the developer.
 
-Code for a contrib project serves any site: a rule, default or integration
-taken from the site that commissioned it becomes an option, off by default, or
-stays out.
+Code for a contrib project serves any site: a rule, default or integration taken
+from the site that commissioned it becomes an option, off by default, or stays
+out.
 
 The written standards: https://project.pages.drupalcode.org/coding_standards/
 
@@ -51,5 +50,5 @@ The written standards: https://project.pages.drupalcode.org/coding_standards/
 - A number in prose names what it is, such as "Run after
   HtmlResponsePlaceholderStrategySubscriber (priority 5)" in
   `core/modules/big_pipe/src/EventSubscriber/HtmlResponseBigPipeSubscriber.php`.
-- An existing `@todo` or comment is a claim about the code: check it against
-  the current code and the supported core versions before reusing its wording.
+- An existing `@todo` or comment is a claim about the code: check it against the
+  current code and the supported core versions before reusing its wording.

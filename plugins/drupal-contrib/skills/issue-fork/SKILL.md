@@ -5,13 +5,13 @@ description: Iterates on a drupal.org issue in its public issue fork, reads the 
 
 # Iterate on an issue in its issue fork
 
-The merge request branch is shared history: it holds the commits of everyone
-who worked on the issue, and many contributors may be working from it. Every
-commit already on the fork's branch stays as it is. New commits go on top of
-the fork's remote head, so each push is a fast-forward.
+The merge request branch is shared history: it holds the commits of everyone who
+worked on the issue, and many contributors may be working from it. Every commit
+already on the fork's branch stays as it is. New commits go on top of the fork's
+remote head, so each push is a fast-forward.
 
-The developer creates forks. Comments are posted under the developer's
-account; see [Comments](#comments).
+The developer creates forks. Comments are posted under the developer's account;
+see [Comments](#comments).
 
 ## Before you start
 
@@ -21,36 +21,36 @@ account; see [Comments](#comments).
   `GITLAB_HOST=git.drupalcode.org` to every `glab` command, as `glab` defaults
   to gitlab.com.
 - The developer has push access to the issue fork: their drupal.org account is
-  linked to git.drupalcode.org, an SSH key is on that profile, and they
-  clicked "Get push access" on the issue, or commented `/do:access` on a
-  GitLab work item.
+  linked to git.drupalcode.org, an SSH key is on that profile, and they clicked
+  "Get push access" on the issue, or commented `/do:access` on a GitLab work
+  item.
 - The checkout is a clone of the project or of the issue fork, and
   `git status --porcelain` prints nothing. When it lists a file, stop and show
   the list to the developer. Personal files belong in `.git/info/exclude`.
 - The issue shows its fork as `<project>-<number>`. The fork's SSH URL is
-  `git@git.drupal.org:issue/<project>-<number>.git`, and its branches start
-  with `<number>-`. When the fork is already a remote, such as `origin`, use
-  that remote's name for `<project>-<number>` below.
+  `git@git.drupal.org:issue/<project>-<number>.git`, and its branches start with
+  `<number>-`. When the fork is already a remote, such as `origin`, use that
+  remote's name for `<project>-<number>` below.
 
 ## Steps
 
-1. Read the issue with its comments. For a work item on git.drupalcode.org,
-   with the number from its URL:
+1. Read the issue with its comments. For a work item on git.drupalcode.org, with
+   the number from its URL:
 
    ```sh
    GITLAB_HOST=git.drupalcode.org glab issue view <number> -R project/<project> --comments
    ```
 
-   For an issue on drupal.org, read the issue page. Then find the merge
-   request, whose source branch starts with `<number>-`, and read it:
+   For an issue on drupal.org, read the issue page. Then find the merge request,
+   whose source branch starts with `<number>-`, and read it:
 
    ```sh
    GITLAB_HOST=git.drupalcode.org glab mr list -R project/<project> --search <number>
    GITLAB_HOST=git.drupalcode.org glab mr view <iid> -R project/<project> --comments
    ```
 
-   When the issue has no fork, stop: the developer creates it. When the fork
-   has no merge request yet, use its branch that starts with `<number>-`. When
+   When the issue has no fork, stop: the developer creates it. When the fork has
+   no merge request yet, use its branch that starts with `<number>-`. When
    several merge requests are open, ask which one.
 2. Add the fork as a remote named `<project>-<number>`, unless `git remote`
    already lists it, fetch it, and switch to the branch:
@@ -61,18 +61,17 @@ account; see [Comments](#comments).
    git switch <branch>
    ```
 
-   `git switch` creates the local branch, tracking the fork's, when it does
-   not exist yet.
+   `git switch` creates the local branch, tracking the fork's, when it does not
+   exist yet.
 3. Make the change with `drupal-contrib:drupal-upstream-code`: load it before
    writing any code, comment or test. Checks run on the local site from
    `drupal-contrib:ddev-drupal-contrib`. The step is done when the skill's
-   precedent report covers every construct in the diff, code and comments
-   alike.
+   precedent report covers every construct in the diff, code and comments alike.
 4. Commit with a plain message that says what the commit does, such as
    `Address PHPStan warnings`, with no prefix and no issue number.
 5. Bring in commits pushed to the fork in the meantime, check that only your
-   commits are new, and push. When the branch has a merge request, first
-   record its `head_pipeline.id` with the command in step 8:
+   commits are new, and push. When the branch has a merge request, first record
+   its `head_pipeline.id` with the command in step 8:
 
    ```sh
    git fetch <project>-<number>
@@ -81,11 +80,11 @@ account; see [Comments](#comments).
    git push <project>-<number> <branch>
    ```
 
-   The rebase moves only the commits that are not on the fork yet, and
-   `git log` lists exactly those.
+   The rebase moves only the commits that are not on the fork yet, and `git log`
+   lists exactly those.
 6. Verify: the push is accepted. `! [rejected]` with `fetch first` means the
-   fork moved: repeat step 5. "You are not allowed to push code to this
-   project" means the developer has no push access yet; see
+   fork moved: repeat step 5. "You are not allowed to push code to this project"
+   means the developer has no push access yet; see
    [Before you start](#before-you-start).
 7. When the developer asks for the merge request, create it from the fork's
    branch into the target branch, with drupal.org's default title and
@@ -102,18 +101,18 @@ account; see [Comments](#comments).
    GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
    ```
 
-   The step is done when `sha` is the pushed commit, `head_pipeline.id`
-   differs from the id recorded in step 5, and `head_pipeline.status` is
-   `success`. Right after the push, `head_pipeline` can still be the previous
-   pipeline, and the new one runs on the merge of the branch into the target,
-   so its own `sha` is not the pushed commit. When it fails, read the failing
-   job and fix it in a new commit.
+   The step is done when `sha` is the pushed commit, `head_pipeline.id` differs
+   from the id recorded in step 5, and `head_pipeline.status` is `success`.
+   Right after the push, `head_pipeline` can still be the previous pipeline, and
+   the new one runs on the merge of the branch into the target, so its own `sha`
+   is not the pushed commit. When it fails, read the failing job and fix it in a
+   new commit.
 
 ## Backport to another branch
 
-When the developer asks for the change on another branch, such as `2.x`,
-start a branch from the project's current target branch, named after the
-merge request branch with the target appended, and push it to the fork:
+When the developer asks for the change on another branch, such as `2.x`, start a
+branch from the project's current target branch, named after the merge request
+branch with the target appended, and push it to the fork:
 
 ```sh
 git fetch git@git.drupal.org:project/<project>.git <target>
@@ -121,9 +120,9 @@ git switch -c <branch>-<target> FETCH_HEAD
 git push -u <project>-<number> <branch>-<target>
 ```
 
-Cherry-pick the commits when they apply; otherwise write the change for
-that branch. Then follow steps 3 to 8 on the new branch, with
-`-b <target>` in step 7.
+Cherry-pick the commits when they apply; otherwise write the change for that
+branch. Then follow steps 3 to 8 on the new branch, with `-b <target>` in step
+7.
 
 ## Comments
 
@@ -144,8 +143,8 @@ GITLAB_HOST=git.drupalcode.org glab issue note <number> -R project/<project> \
   -m "$(cat <draft file>)"
 ```
 
-The command prints the comment's URL. Report it. On an issue on drupal.org,
-the developer posts it.
+The command prints the comment's URL. Report it. On an issue on drupal.org, the
+developer posts it.
 
 ## Never
 

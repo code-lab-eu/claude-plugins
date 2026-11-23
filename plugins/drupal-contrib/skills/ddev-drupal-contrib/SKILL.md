@@ -31,8 +31,8 @@ project tracks is changed.
    ddev add-on get ddev/ddev-drupal-contrib
    ```
 
-2. Exclude the setup files locally, in `.git/info/exclude`, which every
-   worktree of the clone shares:
+2. Exclude the setup files locally, in `.git/info/exclude`, which every worktree
+   of the clone shares:
 
    ```sh
    printf '%s\n' '# ddev-drupal-contrib' /.ddev/ /web/ /vendor/ /recipes/ \
@@ -65,12 +65,12 @@ project tracks is changed.
      `git checkout -- <file>`.
    - A test of the project passes, e.g. `ddev phpunit tests/src/Kernel`, with
      the path relative to the checkout root. When the project has no
-     `phpunit.xml(.dist)`, CI uses core's configuration, which fails on
-     warnings and risky tests: add it after the path, as in
-     `ddev phpunit tests/src/Kernel -c web/core/phpunit.xml.dist`. The
-     add-on's `phpunit` command reads only its first argument as the path;
-     with `-c` first, it also runs `web/modules/custom`, which holds the
-     symlinked project, so every test runs twice.
+     `phpunit.xml(.dist)`, CI uses core's configuration, which fails on warnings
+     and risky tests: add it after the path, as in
+     `ddev phpunit tests/src/Kernel -c web/core/phpunit.xml.dist`. The add-on's
+     `phpunit` command reads only its first argument as the path; with `-c`
+     first, it also runs `web/modules/custom`, which holds the symlinked
+     project, so every test runs twice.
 
 ## Never
 

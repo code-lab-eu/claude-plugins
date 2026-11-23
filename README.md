@@ -140,12 +140,12 @@ when they are present. With the chrome-devtools-mcp plugin installed,
 
 ### ticket-worktrees
 
-Runs one background Claude Code session per ticket, each in its own git
-worktree under `.claude/worktrees/<ticket>` on branch `<ticket>`. Open PRs
-labelled `gilfoyle:changes-requested` get a review session that commits,
-pushes, and requests a new review; tickets the developer names get a
-greenfield session that leaves its changes uncommitted, and commits or pushes
-only on the developer's instruction and approval.
+Runs one background Claude Code session per ticket, each in its own git worktree
+under `.claude/worktrees/<ticket>` on branch `<ticket>`. Open PRs labelled
+`gilfoyle:changes-requested` get a review session that commits, pushes, and
+requests a new review; tickets the developer names get a greenfield session that
+leaves its changes uncommitted, and commits or pushes only on the developer's
+instruction and approval.
 
 | Component | Purpose |
 |---|---|
@@ -156,15 +156,14 @@ only on the developer's instruction and approval.
 | `scripts/prune-worktrees.sh` | Removes the worktrees of merged tickets. |
 | `prompts/fix.md`, `prompts/new.md` | The ticket session prompts. |
 
-Each repository adds `/.claude/worktrees/` to its `.gitignore`, and may
-provide an executable `scripts/worktree-setup.sh <main-checkout>` that prepares
-the worktree in its working directory, such as a virtualenv and local
-settings. The main checkout's copy runs, so branches without the script are
-set up too. Start the orchestrator session with `claude --model sonnet
---effort low`.
+Each repository adds `/.claude/worktrees/` to its `.gitignore`, and may provide
+an executable `scripts/worktree-setup.sh <main-checkout>` that prepares the
+worktree in its working directory, such as a virtualenv and local settings. The
+main checkout's copy runs, so branches without the script are set up too. Start
+the orchestrator session with `claude --model sonnet --effort low`.
 
-Requires `gh` authenticated for the repository, `jq`, and the Phorge Conduit
-MCP server for greenfield tickets.
+Requires `gh` authenticated for the repository, `jq`, and the Phorge Conduit MCP
+server for greenfield tickets.
 
 ### writing-for-agents
 
@@ -182,9 +181,9 @@ Adapted from the MIT-licensed skills of Matt Pocock; see
 
 Executes the phases of a plan unattended. The session is the orchestrator: per
 phase it starts a worker sub-agent, fresh reviewer sub-agents until one
-approves, and a fresh agent that commits the phase. A decision that would go
-to the developer is taken on precedent or best practice and listed in the
-final report. The plan and the skills it names carry the rules of the stack.
+approves, and a fresh agent that commits the phase. A decision that would go to
+the developer is taken on precedent or best practice and listed in the final
+report. The plan and the skills it names carry the rules of the stack.
 
 | Component | Purpose |
 |---|---|

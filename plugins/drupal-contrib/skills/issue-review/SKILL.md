@@ -5,8 +5,8 @@ description: Reviews the merge request of a drupal.org issue, checks each findin
 
 # Review the merge request of an issue
 
-The review is posted under the developer's account. Every claim in it is
-checked on the local site.
+The review is posted under the developer's account. Every claim in it is checked
+on the local site.
 
 ## Before you start
 
@@ -18,8 +18,8 @@ checked on the local site.
 ## Steps
 
 1. Read the issue summary, whether it is a bug report, a feature request or a
-   task, and the merge request. Search the project for every other place that
-   is affected by the change, such as other calls to the same API or code that
+   task, and the merge request. Search the project for every other place that is
+   affected by the change, such as other calls to the same API or code that
    depends on the changed code. The step is done when each place is listed as
    handled by the merge request or not, with the reason.
 2. Test the merge request and its side effects on the local site. Run the
@@ -41,10 +41,10 @@ checked on the local site.
      it was confirmed.
    - The requested changes, such as missing test coverage, as a numbered list.
 
-   Review the merge request as it is now, without mentioning changes you plan
-   to push.
+   Review the merge request as it is now, without mentioning changes you plan to
+   push.
 4. When the review requests changes, the issue status becomes Needs work
-   (`state::needsWork` on a work item). The developer sets the status; on a
-   work item it may need maintainer rights.
+   (`state::needsWork` on a work item). The developer sets the status; on a work
+   item it may need maintainer rights.
 5. Once the review is posted and the developer asks for the changes, make them
    with `drupal-contrib:issue-fork`.

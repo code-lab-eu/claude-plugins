@@ -17,15 +17,15 @@ reviews every draft before it is filed.
     https://www.drupal.org/project/issues/<project>
   ```
 
-  A 301 to `https://git.drupalcode.org/project/<project>/-/work_items` means
-  the queue is migrated to GitLab work items: every step below applies. A 200
-  means it is still on drupal.org: search it there, draft the issue, and the
-  developer files it. Search with WebFetch on
+  A 301 to `https://git.drupalcode.org/project/<project>/-/work_items` means the
+  queue is migrated to GitLab work items: every step below applies. A 200 means
+  it is still on drupal.org: search it there, draft the issue, and the developer
+  files it. Search with WebFetch on
   `https://www.drupal.org/project/issues/<project>?text=<term>&status=All`, and
-  retry a 503 or a timeout. Do not use `curl` for the search: it gets a
-  "Client Challenge" page with HTTP 200 and no results. That search returns
-  nothing for a term joined by `.` or `-`, such as `toolbar-tray`: search the
-  bare word, `tray`.
+  retry a 503 or a timeout. Do not use `curl` for the search: it gets a "Client
+  Challenge" page with HTTP 200 and no results. That search returns nothing for
+  a term joined by `.` or `-`, such as `toolbar-tray`: search the bare word,
+  `tray`.
 - The issues of a deprecated core module are moved to the contributed project
   that continues it, such as `toolbar`: search that queue as well as `drupal`.
 - For a migrated queue, `glab` is logged in to git.drupalcode.org:
@@ -34,8 +34,8 @@ reviews every draft before it is filed.
 
 ## Steps
 
-1. Search titles and descriptions, once for each term: the class or method
-   name, the error message, and the problem in plain words.
+1. Search titles and descriptions, once for each term: the class or method name,
+   the error message, and the problem in plain words.
 
    ```sh
    GITLAB_HOST=git.drupalcode.org glab api \
@@ -43,8 +43,8 @@ reviews every draft before it is filed.
    ```
 
    Report each match with its number, title, state and version label. A closed
-   match may have fixed the problem on another branch: a change that ports it
-   is a backport of that issue. The step is done when every term is searched.
+   match may have fixed the problem on another branch: a change that ports it is
+   a backport of that issue. The step is done when every term is searched.
 2. Draft the issue in Drupal's issue summary template, with `###` headings:
    Problem/Motivation, Steps to reproduce (for a bug), Proposed resolution,
    Remaining tasks, User interface changes, API changes, Data model changes.
@@ -54,10 +54,10 @@ reviews every draft before it is filed.
    - End with `_Drafted with AI assistance and reviewed by me._`. drupalbot
      cites the AI contribution policy on every new issue:
      https://www.drupal.org/docs/develop/issues/issue-procedures-and-etiquette/policy-on-the-use-of-ai-when-contributing-to-drupal
-3. Choose the labels from those a recent open issue of the project carries,
-   such as `category::task,code,priority::normal,state::accepted,v3.x-dev`:
-   a `category::`, a component, a `priority::`, `state::accepted` for a new
-   issue, and the version as `v<branch>-dev`.
+3. Choose the labels from those a recent open issue of the project carries, such
+   as `category::task,code,priority::normal,state::accepted,v3.x-dev`: a
+   `category::`, a component, a `priority::`, `state::accepted` for a new issue,
+   and the version as `v<branch>-dev`.
 
    ```sh
    GITLAB_HOST=git.drupalcode.org glab issue list -R project/<project> \
@@ -77,19 +77,19 @@ reviews every draft before it is filed.
 
 ## After the merge
 
-When the developer has set the merge request to auto-merge and asks to wait
-for it, poll it until `state` is `merged`:
+When the developer has set the merge request to auto-merge and asks to wait for
+it, poll it until `state` is `merged`:
 
 ```sh
 GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
 ```
 
-Stop and report to the developer when `merge_when_pipeline_succeeds` is
-`false`, when `head_pipeline.status` is `failed` or `canceled`, or when
+Stop and report to the developer when `merge_when_pipeline_succeeds` is `false`,
+when `head_pipeline.status` is `failed` or `canceled`, or when
 `detailed_merge_status` is none of `mergeable`, `ci_must_pass`,
 `ci_still_running`, `checking`, `unchecked`, `preparing` and
-`approvals_syncing`. These only wait for checks; any other status needs
-someone to act, such as `requested_changes`.
+`approvals_syncing`. These only wait for checks; any other status needs someone
+to act, such as `requested_changes`.
 
 A merge request with `Closes #<number>` closes the work item when it is merged,
 but leaves its `state::` label. When the developer asks, replace that label,
