@@ -16,7 +16,8 @@ clean: it sees the skill and the task, never the evaluation.
    files and its session note, so the run starts clean.
 2. Give the developer the command that starts the worker in the target project,
    with a `--plugin-dir` for each plugin of this working tree that the skill
-   uses, and the skill invocation:
+   uses. The developer starts it without a prompt; this session sends the task
+   in step 3:
 
    ```sh
    cd <project> && claude --plugin-dir <repo>/plugins/<plugin> --plugin-dir ...
@@ -27,10 +28,12 @@ clean: it sees the skill and the task, never the evaluation.
    it after the last edit to the skill, or have the developer run
    `/reload-skills` in it. The developer answers the worker's questions and
    permission prompts.
-3. Find the worker with `ListAgents` and send it the task with `SendMessage`,
-   with `notify_when_idle`: the skill, its target, and a request to report back
-   by `SendMessage` when it is done or blocked, with what did not fit the skill.
-   The message holds the task only, never the evaluation.
+3. Find the worker with `ListAgents` and send it the task with `SendMessage`:
+   the skill, its target, and a request to report back by `SendMessage` when it
+   is done or blocked, with what did not fit the skill. The message holds the
+   task only, never the evaluation. The run ends with the worker's report or the
+   developer's word; a worker is idle while a background command runs, so an
+   idle notice is not the end.
 4. When the worker reports, or the developer says the run is done, read the
    worker's transcript, the newest `.jsonl` file in
    `~/.claude/projects/<project path, with each character other than a letter or digit replaced by ->/`,
