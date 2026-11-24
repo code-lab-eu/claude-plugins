@@ -7,7 +7,8 @@ A plugin marketplace: `.claude-plugin/marketplace.json` lists the plugins under
 
 - Markdown prose is rewrapped by the pre-commit hook (rumdl, width in
   `.rumdl.toml`). Run `prek install` once per clone; it needs `rumdl` and `prek`
-  installed.
+  installed. After editing Markdown, run `prek run --files <changed files>`
+  before reporting the work or staging it.
 - Bump `version` in a plugin's `.claude-plugin/plugin.json` once per completed
   piece of work, such as a pull request or a finished task on `master`, not per
   commit; installed copies only update on a new version.

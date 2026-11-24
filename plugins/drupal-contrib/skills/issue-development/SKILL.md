@@ -168,19 +168,47 @@ Comments are posted under the developer's account; see [Comments](#comments).
 
 ## Backport to another branch
 
-When the developer asks for the change on another branch, such as `2.x`, start a
-branch from the project's current target branch, named after the merge request
-branch with the target appended, and push it to the fork:
+When the developer asks for the change on another branch, such as `2.x`, the
+work happens in a worktree of its own, beside the checkout, with a local site
+built from that branch's dependencies. The checkout and its site stay on their
+branch. `git worktree list` shows whether the worktree exists from an earlier
+backport to that branch.
+
+Start a branch from the project's current `<target>`, named after the merge
+request branch with the target appended, in a new worktree, or with
+`git switch -c` in the existing one, and push it to the fork:
 
 ```sh
 git fetch git@git.drupal.org:project/<project>.git <target>
-git switch -c <branch>-<target> FETCH_HEAD
+git worktree add -b <branch>-<target> ../<checkout>-<target> FETCH_HEAD
+cd ../<checkout>-<target>
 git push -u <project>-<number> <branch>-<target>
 ```
 
-Cherry-pick the commits when they apply; otherwise write the change for that
-branch. Then follow steps 4 to 9 on the new branch, with `-b <target>` in step
-8.
+`<checkout>` is the checkout's directory name. Set up the worktree's site with
+`drupal-contrib:ddev-drupal-contrib` when it has none, and run every command for
+the branch in the worktree, as in `cd ../<checkout>-<target> && ddev phpunit …`.
+
+Apply the change of the merge request you backport from, open or merged:
+
+```sh
+GITLAB_HOST=git.drupalcode.org glab mr diff <iid> -R project/<project> --raw | git apply --3way
+```
+
+The diff starts at the merge base, so it holds the issue's change and nothing
+the branch merged in from its target. `git status` shows a conflicting file as
+`UU`. Resolve it for the code on the new branch and `git add` it. Resolving a
+conflict is writing code: load `drupal-contrib:drupal-upstream-code` before the
+first one. The precedent report covers the resolved conflicts and the commits
+only this branch has; for the code applied unchanged, it cites the merge request
+you backport from. Then follow steps 4 to 9 on the new branch, with
+`-b <target>` in step 8.
+
+While the merge request you backport from is open, each commit pushed to it goes
+to every backport branch as well. In each backport worktree, run
+`git cherry-pick <commit>` and follow steps 6 to 9. A commit that only one
+branch needs, such as one for a dependency version of that branch, stays on that
+branch.
 
 ## Comments
 

@@ -18,18 +18,26 @@ project tracks is changed.
   changes in `.ddev/config.local.yaml`, which DDEV ignores.
 - Name the DDEV project after the module's machine name, with hyphens for
   underscores: the project name becomes the site's hostname. When `ddev list`
-  already shows a project of that name, such as another checkout of the same
-  module, add a suffix, as in `<machine-name>-security`. In a project that
-  tracks `.ddev/`, set the name with `name:` in `.ddev/config.local.yaml`.
+  already shows a project of that name, such as another checkout or a worktree
+  of the same module, add a suffix, as in `<machine-name>-security`, or
+  `<machine-name>-2x` for a worktree of `2.x`. In a project that tracks
+  `.ddev/`, set the name with `name:` in `.ddev/config.local.yaml`.
 
 ## Steps
 
 1. Configure DDEV and add the add-on:
 
    ```sh
-   ddev config --project-type=drupal11 --docroot=web --project-name=<machine-name>
+   ddev config --project-type=drupal11 --docroot=web --project-name=<machine-name> \
+     --web-environment-add=COMPOSER_NO_BLOCKING=1
    ddev add-on get ddev/ddev-drupal-contrib
    ```
+
+   CI on git.drupalcode.org sets `COMPOSER_NO_BLOCKING=1`, so Composer installs
+   a dependency version that has a security advisory, as a supported branch may
+   require. Without it, `ddev poser` fails on such a dependency. In a project
+   that tracks `.ddev/`, set it under `web_environment:` in
+   `.ddev/config.local.yaml`.
 
 2. Exclude the setup files locally, in `.git/info/exclude`, which every worktree
    of the clone shares:
@@ -43,7 +51,9 @@ project tracks is changed.
    `ddev poser` scaffolds core's `.editorconfig`, `.gitattributes` and
    `recipes/` into the checkout root, and `ddev symlink-project` writes a
    `.gitignore` when the project has none. Leave out any of these paths the
-   project tracks; an exclude has no effect on tracked files.
+   project tracks; an exclude has no effect on tracked files. Skip the step when
+   the exclude file already holds these lines, as for a worktree of a clone that
+   has a site.
 
 3. Build the site:
 
