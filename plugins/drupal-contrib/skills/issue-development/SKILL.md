@@ -50,7 +50,8 @@ Comments are posted under the developer's account; see [Comments](#comments).
    merge request's target. For an issue without a merge request, it is the
    issue's version: the work item label `v<target>-dev`, such as `v3.x-dev` for
    `3.x`, or the Version field on drupal.org. When the issue names no version,
-   ask.
+   ask. Note the other branches the issue asks the change for, such as a
+   backport under Remaining tasks or in a comment.
 2. Make sure the fork exists and the developer can push to it. The fork exists
    when `git ls-remote git@git.drupal.org:issue/<project>-<number>.git`
    succeeds; "The project you were looking for could not be found" means it does
@@ -70,6 +71,9 @@ Comments are posted under the developer's account; see [Comments](#comments).
    ```sh
    git push --dry-run git@git.drupal.org:issue/<project>-<number>.git HEAD:refs/heads/<number>-access-check
    ```
+
+   The dry run prints the branch as `[new branch]` but creates nothing on the
+   fork.
 
    "You are not allowed to push code to this project" means the developer has no
    push access. On a work item, post `/do:access` the same way as `/do:fork`,
@@ -117,17 +121,22 @@ Comments are posted under the developer's account; see [Comments](#comments).
    `Address PHPStan warnings`, with no prefix and no issue number.
 6. Bring in commits pushed to the fork in the meantime, check that only your
    commits are new, and push. When the branch has a merge request, first record
-   its `head_pipeline.id` with the command in step 9:
+   its `head_pipeline.id`:
+
+   ```sh
+   GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
+   ```
 
    ```sh
    git fetch <project>-<number>
-   git rebase <project>-<number>/<branch>
+   git rebase --autostash <project>-<number>/<branch>
    git log --oneline <project>-<number>/<branch>..HEAD
    git push <project>-<number> <branch>
    ```
 
    The rebase moves only the commits that are not on the fork yet, and `git log`
-   lists exactly those.
+   lists exactly those. Uncommitted changes the developer keeps in the tree are
+   stashed for the rebase and come back after it.
 7. Verify: the push is accepted. `! [rejected]` with `fetch first` means the
    fork moved: repeat step 6. "You are not allowed to push code to this project"
    means the developer has no push access yet; see step 2.
@@ -140,18 +149,22 @@ Comments are posted under the developer's account; see [Comments](#comments).
      --head issue/<project>-<number> -s <branch> -b <target> \
      -t 'Resolve #<number> "<issue title>"' -d 'Closes #<number>' --yes
    ```
-9. When the branch has a merge request, wait for its pipeline:
+
+   Then name the other branches noted in step 1 to the developer, and offer to
+   start each with [Backport to another branch](#backport-to-another-branch).
+9. When the branch has a merge request, wait for its pipeline with
+   `wait-pipeline.sh` from this skill's base directory, run in the background:
 
    ```sh
-   GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
+   <skill directory>/wait-pipeline.sh <project> <iid> <pushed commit> <pipeline id from step 6>
    ```
 
-   The step is done when `sha` is the pushed commit, `head_pipeline.id` differs
-   from the id recorded in step 6, and `head_pipeline.status` is `success`.
-   Right after the push, `head_pipeline` can still be the previous pipeline, and
-   the new one runs on the merge of the branch into the target, so its own `sha`
-   is not the pushed commit. When it fails, read the failing job and fix it in a
-   new commit.
+   Leave out the pipeline id for a merge request created in step 8. Right after
+   the push, `head_pipeline` can still be the previous pipeline, so the script
+   waits for a pipeline other than that one on the pushed commit, until it ends.
+   It prints the pipeline's id, status, commit and URL. The step is done when it
+   exits with 0, for `success`. When the pipeline fails, read the failing job
+   and fix it in a new commit.
 
 ## Backport to another branch
 

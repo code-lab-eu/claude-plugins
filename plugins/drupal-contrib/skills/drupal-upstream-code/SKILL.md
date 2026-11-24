@@ -17,22 +17,43 @@ comments, docblocks, tags, labels, messages, terms and spelling (US English) are
 examples, not the full list. For each, look up the problem in
 [core-forms.md](core-forms.md) first, and use a listed form as it is, without
 recounting it, unless the core version in use is higher than the entry's: then
-recount it with the entry's command and scope, and update its count and version.
-For a problem not listed, check the written standards first. Only when they are
-silent, find how core (`web/core` in a ddev-drupal-contrib site) solves the same
-problem, count the forms it uses, copy the one in the majority, and add an entry
-to `core-forms.md`. Core 11.4 declares 9565 methods `protected` and 485
-`private`: `private` exists in core, but it is the minority and not core's form,
-so methods and properties are `protected`. Start from the problem, not from a
-construct already chosen: a form found once, or only in `@internal` or test
-code, is not core practice. Report the precedent (file and line) with the
-change. When core has no precedent, ask the developer.
+recount it with the entry's command and scope. For a problem not listed, check
+the written standards first. Only when they are silent, find how core
+(`web/core` in a ddev-drupal-contrib site) solves the same problem, count the
+forms it uses, and copy the one in the majority. Core 11.4 declares 9565 methods
+`protected` and 485 `private`: `private` exists in core, but it is the minority
+and not core's form, so methods and properties are `protected`. Start from the
+problem, not from a construct already chosen: a form found once, or only in
+`@internal` or test code, is not core practice. When core has no precedent, ask
+the developer.
 
 Code for a contrib project serves any site: a rule, default or integration taken
 from the site that commissioned it becomes an option, off by default, or stays
 out.
 
 The written standards: https://project.pages.drupalcode.org/coding_standards/
+
+## Scope of the change
+
+Maintainers review against Drupal's
+[issue scope guidelines](https://www.drupal.org/core/scope): "Each issue should
+fix only one problem", in "the simplest way possible". Code the issue does not
+need stays as it is: existing code is not moved into a shared trait or helper. A
+few lines used in one place stay at that place, without a helper, trait or class
+around them. Other improvements go in a follow-up issue, filed with
+`drupal-contrib:issue-queue`.
+
+## Report the precedents
+
+With the change, give the developer the precedent report: one line for each
+construct in the diff, code and comments alike, that names the `core-forms.md`
+entry, the written standard, or the core file and line that settles it. A
+problem that `core-forms.md` does not list, or an entry recounted for a newer
+core version, comes with the entry in that file's format: form, standard, count
+with the core version, and command. `core-forms.md` is part of this plugin, not
+of the project, so the entry is a change to the plugin's repository, which the
+developer takes there. The report goes in neither the commit nor the merge
+request.
 
 ## Comment forms core uses
 

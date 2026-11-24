@@ -3,7 +3,8 @@
 Each entry settles one problem: the form to use, the written standard that
 settles it, or else the count in core that does. Use a listed form as it is.
 Recount it only when the core version in use is higher than the entry's, with
-the entry's command and scope, and update the count and the version.
+the entry's command and scope, and give the updated entry in the precedent
+report.
 
 ### Order of `@internal` and `@see` in a method docblock
 
