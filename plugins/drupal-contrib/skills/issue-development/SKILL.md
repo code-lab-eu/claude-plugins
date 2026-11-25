@@ -10,6 +10,11 @@ worked on the issue, and many contributors may be working from it. Every commit
 already on the fork's branch stays as it is. New commits go on top of the fork's
 remote head, so each push is a fast-forward.
 
+Asking for an iteration, a change or a backport on an issue is the developer's
+instruction to commit it and push it to the fork as the steps below describe:
+the developer reviews it in the merge request. Creating the merge request and
+posting a comment still wait for the developer to ask.
+
 Comments are posted under the developer's account; see [Comments](#comments).
 
 ## Before you start
@@ -128,14 +133,16 @@ Comments are posted under the developer's account; see [Comments](#comments).
 
    ```sh
    git fetch <project>-<number>
-   git rebase --autostash <project>-<number>/<branch>
+   git rebase --rebase-merges --autostash <project>-<number>/<branch>
    git log --oneline <project>-<number>/<branch>..HEAD
    git push <project>-<number> <branch>
    ```
 
    The rebase moves only the commits that are not on the fork yet, and `git log`
-   lists exactly those. Uncommitted changes the developer keeps in the tree are
-   stashed for the rebase and come back after it.
+   lists exactly those. `--rebase-merges` keeps a merge of the target branch as
+   a merge; without it, the rebase replays the target's commits onto the branch.
+   Uncommitted changes the developer keeps in the tree are stashed for the
+   rebase and come back after it.
 7. Verify: the push is accepted. `! [rejected]` with `fetch first` means the
    fork moved: repeat step 6. "You are not allowed to push code to this project"
    means the developer has no push access yet; see step 2.
