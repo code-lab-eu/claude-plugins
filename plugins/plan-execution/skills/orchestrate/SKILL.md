@@ -80,8 +80,9 @@ brings back its whole context, and a resumed agent's commit was blocked twice.
    checks with `git status` that nothing of the phase is left unstaged and
    nothing else is staged, and commits in the plan's message form with plain
    `git commit -m '<summary>' -m '<body>'`.
-5. In merge request review, push and wait for the pipeline; a red pipeline
-   starts a pipeline round of the phase.
+5. In merge request review, push the phase when it is due and no pipeline runs,
+   and wait for its pipeline in the background; a red pipeline starts a pipeline
+   round.
 6. Start the next phase.
 
 After each review, before the next sub-agent starts:
