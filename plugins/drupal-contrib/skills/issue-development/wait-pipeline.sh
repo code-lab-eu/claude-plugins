@@ -4,6 +4,9 @@
 #
 # Usage: wait-pipeline.sh <project> <iid> <pushed commit> [<previous pipeline id>]
 #
+# Run it in the checkout: the pushed commit is any revision git resolves there,
+# such as HEAD, and a revision that names no commit fails at once.
+#
 # Right after a push, the head pipeline of the merge request can still be the
 # previous one. The script waits until the commit of the merge request is the
 # pushed one and its head pipeline is not the previous pipeline, then until that
@@ -13,7 +16,7 @@ set -euo pipefail
 
 project=${1:?project}
 iid=${2:?merge request iid}
-commit=${3:?pushed commit}
+commit=$(git rev-parse --verify "${3:?pushed commit}^{commit}")
 previous=${4:-}
 
 export GITLAB_HOST=git.drupalcode.org
@@ -30,7 +33,7 @@ print(mr["sha"], pipeline.get("id", "-"), pipeline.get("status", "-"),
       pipeline.get("web_url", "-"))
 '); then
     read -r sha id status url <<<"$line"
-    if [[ $sha == "$commit"* && $id != - && $id != "$previous" ]]; then
+    if [[ $sha == "$commit" && $id != - && $id != "$previous" ]]; then
       case $status in
         created | waiting_for_resource | preparing | pending | running | scheduled) ;;
         *)

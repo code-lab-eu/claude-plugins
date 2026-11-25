@@ -66,19 +66,18 @@ Comments are posted under the developer's account; see [Comments](#comments).
    succeeds. On an issue on drupal.org, the developer creates the fork with
    "Create issue fork".
 
-   Check push access with a dry run, which pushes nothing:
+   Check push access with the developer's role on the fork:
 
    ```sh
-   git push --dry-run git@git.drupal.org:issue/<project>-<number>.git HEAD:refs/heads/<number>-access-check
+   GITLAB_HOST=git.drupalcode.org glab api projects/issue%2F<project>-<number> \
+     | jq .permissions.project_access.access_level
    ```
 
-   The dry run prints the branch as `[new branch]` but creates nothing on the
-   fork.
-
-   "You are not allowed to push code to this project" means the developer has no
-   push access. On a work item, post `/do:access` the same way as `/do:fork`,
-   and repeat the dry run until it succeeds. On an issue on drupal.org, the
-   developer clicks "Get push access".
+   30 or higher means the developer can push. A lower level or `null` means no
+   push access: on a work item, post `/do:access` the same way as `/do:fork`,
+   and repeat the check until it prints 30. On an issue on drupal.org, the
+   developer clicks "Get push access". A `git push --dry-run` is no check: the
+   server refuses a push in its pre-receive hook, which a dry run never reaches.
 3. Add the fork as a remote named `<project>-<number>`, unless `git remote`
    already lists it, fetch it, and fetch the target branch from the project:
 
@@ -153,10 +152,11 @@ Comments are posted under the developer's account; see [Comments](#comments).
    Then name the other branches noted in step 1 to the developer, and offer to
    start each with [Backport to another branch](#backport-to-another-branch).
 9. When the branch has a merge request, wait for its pipeline with
-   `wait-pipeline.sh` from this skill's base directory, run in the background:
+   `wait-pipeline.sh` from this skill's base directory, run in the background
+   from the checkout, where `HEAD` is the pushed commit:
 
    ```sh
-   <skill directory>/wait-pipeline.sh <project> <iid> <pushed commit> <pipeline id from step 6>
+   <skill directory>/wait-pipeline.sh <project> <iid> HEAD <pipeline id from step 6>
    ```
 
    Leave out the pipeline id for a merge request created in step 8. Right after
