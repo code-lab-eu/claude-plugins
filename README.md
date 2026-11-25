@@ -128,6 +128,7 @@ worked out.
 |---|---|
 | `drupal-security:validate-report` skill | Validates a vulnerability report. |
 | `drupal-security:fix-vulnerability` skill | Fixes a validated vulnerability. |
+| `drupal-security:review-fix` skill | Reviews the fix of a vulnerability. |
 | `drupal-security:draft-advisory` skill | Drafts the security advisory. |
 | `drupal-security:move-to-public` skill | Moves a report that gets no advisory to the public issue queue. |
 | `reference/workflow.md` | The security issue process. |

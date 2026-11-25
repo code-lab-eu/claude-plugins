@@ -1,6 +1,6 @@
 {
   "name": "drupal-security",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Helps maintainers resolve vulnerabilities in their drupal.org contrib projects through the Drupal Security Team process.",
   "author": {
     "name": "Code Lab"
