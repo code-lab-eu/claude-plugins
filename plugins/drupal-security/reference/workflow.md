@@ -59,7 +59,7 @@ project or its issue forks by mistake. The developer makes the clone, as
 drupalbot's first comment in the work item instructs:
 
 ```
-git clone git@git.drupal.org:security/<nid>-<machine_name>-security.git
+git clone git@git.drupal.org:security/<id>-<machine_name>-security.git
 ```
 
 Before working on code, check with `git remote -v` that the private fork is the
@@ -163,6 +163,14 @@ ones with:
 
 ```
 glab api --hostname git.drupalcode.org "groups/security/issues?state=opened"
+```
+
+Another work item can already cover a vulnerability, or the security team can
+have cleared it for the public queue. Before reporting a vulnerability or asking
+for its fix, read the project's other work items, closed ones included:
+
+```
+glab api --hostname git.drupalcode.org "groups/security/issues?state=all&search=<machine_name>"
 ```
 
 ## Labels

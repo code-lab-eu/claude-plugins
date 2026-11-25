@@ -22,8 +22,9 @@ show the comment as a draft first.
 1. Check that the session runs in a clone of the work item's private fork, as
    described under Environment in `workflow.md`.
 2. Read the work item, its comments, and each merge request of the fix with the
-   latest pipeline of each. List the supported branches the vulnerability
-   affects, from the release history at
+   latest pipeline of each, and the project's other work items, as under Finding
+   the work items in `workflow.md`. List the supported branches the
+   vulnerability affects, from the release history at
    `https://updates.drupal.org/release-history/<machine_name>/current`. Each of
    them needs a merge request; a missing one is a finding.
 3. Review each merge request, the highest branch first:
@@ -64,13 +65,18 @@ show the comment as a draft first.
    Confirm each finding with a test or a command on the local site. Keep
    throwaway tests out of git, such as in `web/scratch/` in a
    ddev-drupal-contrib setup.
-4. A gap that is itself a vulnerability, also one the merge request names as out
-   of scope, is fixed with this fix or reported as a finding in the work item. A
-   public follow-up issue would disclose it before the advisory. A bug that is
-   not a vulnerability goes to the maintainer in the session, for the public
-   issue queue, described so that it reveals nothing of the vulnerability. The
-   comment mentions it only where it bears on the review, such as a check it
-   blocked.
+4. The requested changes cover the reported vulnerability, its bypasses
+   included, and what the diff itself breaks or introduces. Any other
+   vulnerability found, pre-existing or in a part the merge request leaves out
+   of scope, is never requested or offered as part of this fix: an author who
+   takes it on reworks the fix and delays the release. The comment names it with
+   its steps, says it is outside this fix, and links the work item that covers
+   it, or says that it gets a new confidential report, filed with
+   `drupal-security:file-report`. A public follow-up issue would disclose it
+   before the advisory. A bug that is not a vulnerability goes to the maintainer
+   in the session, for the public issue queue, described so that it reveals
+   nothing of the vulnerability. The comment mentions it only where it bears on
+   the review, such as a check it blocked.
 5. Draft the review as a comment on the work item, as described under
    [The comment](#the-comment), and give the maintainer the draft to review.
 6. Once the maintainer has replaced the AI disclosure placeholder and approves

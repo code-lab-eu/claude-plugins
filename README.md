@@ -126,6 +126,7 @@ worked out.
 
 | Component | Purpose |
 |---|---|
+| `drupal-security:file-report` skill | Files a new confidential vulnerability report. |
 | `drupal-security:validate-report` skill | Validates a vulnerability report. |
 | `drupal-security:fix-vulnerability` skill | Fixes a validated vulnerability. |
 | `drupal-security:review-fix` skill | Reviews the fix of a vulnerability. |
