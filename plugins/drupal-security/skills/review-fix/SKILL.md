@@ -100,7 +100,9 @@ comment claims only what this run observed:
 - Each problem with `path:line`, the steps or the test that shows it, and the
   result. A bypass gets steps the author can follow on a site.
 - Each pipeline failure with its cause.
-- The requested changes as a numbered list.
+- The requested changes as a numbered list. An effect given for a change, such
+  as a test that still fails without the fix, is checked on the local site
+  first, or left out.
 - The maintainer's AI disclosure placeholder as the last line.
 
 Review the merge requests as they are now; the changes are the author's to make.
