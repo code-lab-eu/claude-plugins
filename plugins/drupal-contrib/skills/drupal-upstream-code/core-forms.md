@@ -32,3 +32,17 @@ report.
   (`core/modules/package_manager/src/ComposerInspector.php:330`), core 11.4,
   test code excluded.
 - Command: not recorded.
+
+### Message of a deprecated optional argument that becomes required
+
+- Form:
+  `Calling X() without the $y argument is deprecated in drupal:A and it will be required in drupal:B. See https://www.drupal.org/node/N`,
+  as in `core/modules/editor/src/EditorController.php:18` and
+  `core/modules/editor/src/Element.php:25`.
+- Standard: not checked; the deprecation how-to page on drupal.org returned 404
+  (2026-11-26).
+- Count: 39 "and it will be required in", 19 "and will be required in", 1 "and
+  the argument will be required in", 1 "and is required in" (4 "and it will
+  throw an error in" are a different case), core 11.4.13.
+- Command:
+  `grep -rhoE "argument is deprecated in drupal:[0-9.]+ and [a-z ]+ in" web/core --include=*.php | sed -E 's/[0-9.]+//' | sort | uniq -c`
