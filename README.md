@@ -97,6 +97,7 @@ core uses.
 | `drupal-contrib:issue-queue` skill | Manages a project's issues on git.drupalcode.org. |
 | `drupal-contrib:issue-development` skill | Develops a change for a drupal.org issue in its issue fork. |
 | `drupal-contrib:issue-review` skill | Reviews the merge request of a drupal.org issue. |
+| `drupal-contrib:wait-pipeline` skill | Waits for a merge request's pipeline after a push. |
 
 Requires DDEV, and `glab` for the issue skills.
 

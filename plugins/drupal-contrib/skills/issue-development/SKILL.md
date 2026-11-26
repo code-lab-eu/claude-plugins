@@ -124,12 +124,9 @@ Comments are posted under the developer's account; see [Comments](#comments).
 5. Commit with a plain message that says what the commit does, such as
    `Address PHPStan warnings`, with no prefix and no issue number.
 6. Bring in commits pushed to the fork in the meantime, check that only your
-   commits are new, and push. When the branch has a merge request, first record
-   its `head_pipeline.id`:
-
-   ```sh
-   GITLAB_HOST=git.drupalcode.org glab api projects/project%2F<project>/merge_requests/<iid>
-   ```
+   commits are new, and push. When the branch has a merge request, first load
+   `drupal-contrib:wait-pipeline` and record its pipeline, with the path
+   `project/<project>`.
 
    ```sh
    git fetch <project>-<number>
@@ -159,19 +156,8 @@ Comments are posted under the developer's account; see [Comments](#comments).
    Then name the other branches noted in step 1 to the developer, and offer to
    start each with [Backport to another branch](#backport-to-another-branch).
 9. When the branch has a merge request, wait for its pipeline with
-   `wait-pipeline.sh` from this skill's base directory, run in the background
-   from the checkout, where `HEAD` is the pushed commit:
-
-   ```sh
-   <skill directory>/wait-pipeline.sh <project> <iid> HEAD <pipeline id from step 6>
-   ```
-
-   Leave out the pipeline id for a merge request created in step 8. Right after
-   the push, `head_pipeline` can still be the previous pipeline, so the script
-   waits for a pipeline other than that one on the pushed commit, until it ends.
-   It prints the pipeline's id, status, commit and URL. The step is done when it
-   exits with 0, for `success`. When the pipeline fails, read the failing job
-   and fix it in a new commit.
+   `drupal-contrib:wait-pipeline`. The step is done when the pipeline succeeds.
+   When it fails, fix the failing job in a new commit.
 
 ## Backport to another branch
 

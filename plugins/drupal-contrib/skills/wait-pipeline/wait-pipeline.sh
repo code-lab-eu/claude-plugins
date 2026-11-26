@@ -2,7 +2,11 @@
 # Waits for the pipeline of a merge request on git.drupalcode.org to finish
 # after a push, and prints its id, status, commit and URL.
 #
-# Usage: wait-pipeline.sh <project> <iid> <pushed commit> [<previous pipeline id>]
+# Usage: wait-pipeline.sh <project path> <iid> <pushed commit> [<previous pipeline id>]
+#
+# The project path is the full path of the project that holds the merge
+# request, such as project/graphql_webform or
+# security/3617853-graphql_core_schema-security.
 #
 # Run it in the checkout: the pushed commit is any revision git resolves there,
 # such as HEAD, and a revision that names no commit fails at once.
@@ -14,7 +18,8 @@
 # another status, and 2 when it does not end within an hour.
 set -euo pipefail
 
-project=${1:?project}
+project=${1:?project path}
+project=${project//\//%2F}
 iid=${2:?merge request iid}
 commit=$(git rev-parse --verify "${3:?pushed commit}^{commit}")
 previous=${4:-}
@@ -24,7 +29,7 @@ deadline=$((SECONDS + 3600))
 line='- - - -'
 
 while ((SECONDS < deadline)); do
-  if line=$(glab api "projects/project%2F${project}/merge_requests/${iid}" |
+  if line=$(glab api "projects/${project}/merge_requests/${iid}" |
     python3 -I -c '
 import json, sys
 mr = json.load(sys.stdin)
