@@ -63,6 +63,8 @@ request.
   and the reason follows, such as "Check that the URL is well formed, starting
   with 'scheme://', where 'scheme' is a database driver name." in
   `core/lib/Drupal/Core/Database/Database.php`.
+- A comment describes the code as it is; what the change replaced belongs in the
+  issue, not in the code.
 - A class or method reference is an `@see` line with the fully qualified name,
   on its own line below the comment it supports, as in
   `core/modules/dynamic_page_cache/src/EventSubscriber/DynamicPageCacheSubscriber.php`.

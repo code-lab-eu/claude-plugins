@@ -51,8 +51,10 @@ reviews every draft before it is filed.
    - A backport names its original issue and commit in the title or the first
      sentence.
    - Cite code as `path:line`, and state each fact with how it was checked.
-   - End with `_Drafted with AI assistance and reviewed by me._`. drupalbot
-     cites the AI contribution policy on every new issue:
+   - End with the disclosure line the project's `AGENTS.md` prescribes, such as
+     Drupal core's `Generated with the help of an LLM.`, or else with
+     `_Drafted with AI assistance and reviewed by me._`. drupalbot cites the AI
+     contribution policy on every new issue:
      https://www.drupal.org/docs/develop/issues/issue-procedures-and-etiquette/policy-on-the-use-of-ai-when-contributing-to-drupal
 3. Choose the labels from those a recent open issue of the project carries, such
    as `category::task,code,priority::normal,state::accepted,v3.x-dev`: a
