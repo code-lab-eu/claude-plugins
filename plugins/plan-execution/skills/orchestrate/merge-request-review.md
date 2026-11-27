@@ -6,8 +6,13 @@ The plan selects this mode with an entry in its shared sections:
 Review: merge request against <target branch>[, push after phases <n>, <m>]
 ```
 
-The run pushes the plan's branch so that CI runs on its phases, and opens a
-draft merge request against the target branch. A push is due after every
+Before checking the verification commands (step 2 of `SKILL.md`), the run runs
+`git fetch origin` and, when the plan's branch has no commits beyond
+`origin/<target>`, fast-forwards it with `git merge --ff-only origin/<target>`,
+so that the local checks run on the base that CI merges into; when the branch
+has commits of its own, it stays as it is and the run records that as a
+decision. The run pushes the plan's branch so that CI runs on its phases, and
+opens a draft merge request against the target branch. A push is due after every
 committed phase, or after the listed phases and the last one. While a pipeline
 runs, the run goes on: it implements, reviews and commits the next phases, but
 pushes none of them until the pipeline is green. The run reports when the
