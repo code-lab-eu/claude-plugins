@@ -29,7 +29,7 @@ a new commit.
    `git push origin <sha>:refs/heads/<branch>`. Pushing `<branch>` would also
    push a phase committed after it while the push retries.
 3. After the first push, create the merge request, with the plan's title and a
-   description of its goal and phases in `<scratchpad>/briefs/mr.md`:
+   description in `<scratchpad>/briefs/mr.md`:
 
    ```sh
    glab mr create --source-branch <branch> --target-branch <target> \
