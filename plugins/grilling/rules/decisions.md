@@ -73,6 +73,16 @@ before listing it. Weigh every option, pro and con by one measure: the highest
 possible quality of the result. Implementation effort counts only where it
 affects that quality.
 
+Then check every pro and con against the other options. A pro or con is a
+difference between the options: something one option has and another option
+lacks, or has to a different degree. An effect that every option has, in
+whatever form or by whatever means, such as the work, the time or the failure
+handling that the purpose itself requires, is neither; state it once in the
+decision text when it bears on the decision. Meeting a requirement of the
+purpose is never a con, and a pro only for an option that meets it where another
+option does not; an option that fails or weakens a requirement has that as a
+con.
+
 Judge the result in its end state: after the planned work, such as the entries
 of the roadmap or the backlog, is done, and over the years it is maintained. A
 mechanism that nothing in the end state needs is obsolete, even when something
